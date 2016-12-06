@@ -1,0 +1,36 @@
+
+I wrote this little GNU C++ library to get a CD audio control easy access...
+
+
+Short explanations (you don't need more) :
+
+The "CdDrive" class provides most of the commands you might
+want to use : play, pause, resume, stop...
+
+CD errors can be handled with the "CdStatus" class.
+
+Total CD length and track positions are managed with the "CdLocation"
+and "CdTrackLocation" classes.
+
+
+
+These codes are based on the "cdromio.h" and "metados.h" patched for
+GNU C++ use.
+
+The cdplay01 prog shows an example of using this library.
+It works fine on my Falcon with the Extendos driver and my NEC drive...
+
+
+Please tell me about any improvement you might add.
+You can join me at :
+
+           Olivier AZEAU
+           2 rue Jean-Baptiste POTIN
+           92170 VANVES
+           FRANCE
+
+           email : azeau@MicroNet.fr
+
+
+Read the COPYING file for GNU General Public License details.
+

@@ -1,0 +1,37 @@
+
+CC=gcc
+C++=gcc
+LINK=gcc
+LINK.o=gcc
+AR=gcc-ar
+
+OBJ=cddrive.o cdstatus.o cdtrloc.o cdlocat.o
+LDLIBS=-lg++
+LDFLAGS=
+
+C++FLAGS:=$(C++FLAGS) -O2 -I.
+
+LIBRARY=cdlib01.olb
+
+
+all: $(LIBRARY) cdplay01.tos
+
+##############################
+
+cdplay01.tos : $(LIBRARY) cdplay01.o
+	$(LINK.o) $(LDFLAGS) cdplay01.o -l$(LIBRARY) $(LDLIBS) -o $@
+
+##############################
+
+$(LIBRARY) : $(OBJ)
+	$(AR) r $(LIBRARY) $?
+	$(AR) s $(LIBRARY)
+
+##############################
+
+cdlocat.o : cdlocat.cc cdlocat.h
+cdtrloc.o : cdtrloc.cc cdtrloc.h cdlocat.h
+cdstatus.o : cdstatus.cc cdstatus.h cddrive.h cdtrloc.h cdlocat.h
+cddrive.o : cddrive.cc cddrive.h cdstatus.h cdtrloc.h cdlocat.h
+
+cdplay01.o : cdplay01.cc cddrive.h cdstatus.h cdtrloc.h cdlocat.h 

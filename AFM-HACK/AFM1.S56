@@ -1,0 +1,758 @@
+; /// Surround Effect for CDTracker - KOSS 2000-2002 ///
+
+               ORG     P:$0000                                         ; DSP Starts Here !
+
+               jmp     dsp_reset                                       ;>DSP Init
+
+; *****************************************************************************
+
+               ORG     P:$000C                                         ; SSI Receive Data
+
+               jsr     ssi_receive                                     ;>Receive Interrupt
+
+; *****************************************************************************
+
+               ORG     P:$0010                                         ; SSI transmit Data
+
+               jsr     ssi_transmit                                    ;>Transmit Interrupt
+
+; *****************************************************************************
+
+               ORG     P:$0040                                         ; Fast Routines (On-Chip RAM)
+
+; -*- R‚ception -*-
+
+ssi_receive:   jset    #$08,Y:<$0000,ssi_receive_ri                    ; If Bit 8 of
+; Y:$0000 (24 Bits
+; memory location)
+; is SET, then Jump
+; to...
+
+               movep   X:<<$FFEF,X:<$0000                              ; Move Peripheral Data
+; (<<) in X:$0000
+; (Here LeftData)
+
+; X:$FFEF is :
+; SSI Receive/Transmit
+; Data Reg. (RX/TX)
+
+               bchg    #<$08,Y:<$0000                                  ; Netx time, RightData...
+; Complement Bit 8 of
+; Y:$0000
+
+               rti                                                     ; Youps, End Of Interrupt
+
+ssi_receive_ri:  movep  X:<<$FFEF,X:<$0001                             ; Load Peripheral Data
+; in X:$0001 (RightData)
+
+               bchg    #<$08,Y:<$0000                                  ; Netx time, LeftData...
+
+; Save Registers
+
+               move    B,L:<$0002                                      ; B1 stored in X:$0002
+; B0 stored in Y:$0002
+
+               move    Y,L:<$0003                                      ; Y1 stored in X:$0003
+; Y0 stored in Y:$0003
+; Send 3 (Surround + Equalizer)
+; Y:$0000 Bit  9 Transmit Flag
+; Bit  8 Receive Flag
+;
+; Bit  6 Module 3
+; Bit  5 Module 2
+; Bit  4 Module 1
+; Bit  3 Flanger
+; Bit  2 Cyborg
+; Bit  1 Surround
+; Bit  0 Equalizer
+
+               jsset   #$06,Y:<$0000,mod3_main                         ; P:01A0
+               jsset   #$05,Y:<$0000,mod2_main                         ; P:0140
+               jsset   #$04,Y:<$0000,mod1_main                         ; P:00E0
+               jsset   #$03,Y:<$0000,flanger_main
+               jsset   #$02,Y:<$0000,cyborg_main
+
+               jsset   #$01,Y:<$0000,surround_main                     ; If Bit 1 of Y:$0000
+; is SET, then Jump to
+; the SubRoutine...
+
+               jsset   #$00,Y:<$0000,equaliz_main                      ; If Bit 0 of Y:$0000
+; is SET, then Jump to
+; the SubRoutine...
+
+               move    X:<$0001,X0                                     ; Move RightData in X0
+               move    X0,X:<$0009                                     ; Move X0 (RightData) in
+; X:$0009
+
+; DON'T FORGET : IT'S
+; IMPOSSIBLE TO ACCESS
+; TWICE THE SAME MEMORY,
+; THAT'S WHY X0 IS USED
+; TO TRANFERT THESE MEMORY
+; LOCATIONS...
+
+               move    X:<$0000,X0                                     ; Move LeftData in X:$0008
+               move    X0,X:<$0008
+
+; Restore Registers
+
+               move    L:<$0002,B
+               move    L:<$0003,Y
+
+               rti
+
+; -*- Transmission -*-
+
+ssi_transmit:  jset    #$09,Y:<$0000,ssi_transmit_ri                   ; If Bit 9 of
+; Y:$0000 (24 Bits
+; memory location)
+; is SET, then Jump
+; to...
+
+               movep   X:$0008,X:<<$FFEF                               ; Send LeftData
+               bchg    #<$09,Y:<$0000                                  ; Next time, RightData...
+
+               rti
+
+ssi_transmit_ri:  movep  X:$0009,X:<<$FFEF                             ; Send RightData
+               bchg    #<$09,Y:<$0000
+
+               rti
+
+; -*- Equilazer Graphique -*-
+
+equaliz_main:  clr     A               X:<$0000,X0
+               move    Y:(R4)+,Y0
+               ori     #<$08,MR
+
+               do      #<8,equaliz_g
+
+               mpy     Y0,X0,B         X:(R0),X1       Y:(R4)+,Y1
+               mac     -X1,Y0,B        X:(R1)+,X1      Y:(R4)+,Y0
+               mac     Y1,X1,B         X:(R1),X1
+               macr    -X1,Y0,B        Y:(R5)+,X1
+               move    B,X:(R1)+       B,Y1
+               mac     Y1,X1,A         X:(R1)+N1,X1    Y:(R4)+,Y0
+equaliz_g:                                                             ; END Loopa !
+
+               move    X0,X:(R0)+
+
+               andi    #<$F7,MR
+               move    A,X:<$0004
+               clr     A               X:<$0001,X0
+               ori     #<$08,MR
+
+               do      #<8,equaliz_d
+
+               mpy     Y0,X0,B         X:(R0),X1       Y:(R4)+,Y1
+               mac     -X1,Y0,B        X:(R1)+,X1      Y:(R4)+,Y0
+               mac     Y1,X1,B         X:(R1),X1
+               macr    -X1,Y0,B        Y:(R5)+,X1
+               move    B,X:(R1)+       B,Y1
+               mac     Y1,X1,A         X:(R1)+N1,X1    Y:(R4)+,Y0
+equaliz_d:                                                             ; END Loopa !
+
+               andi    #<$F7,MR
+
+               move    X0,X:(R0)+      Y:(R4)-,Y0
+               move    X:<$0020,Y0
+               move    X:<$0004,B
+               macr    Y0,X0,A         X:<$0000,X0
+               macr    Y0,X0,B         X:<$0021,Y0
+               move    Y:(R1)+,Y1
+               move    A,X0
+               mpy     Y0,X0,A         B,X1
+               mpy     X1,Y0,B         #$000020,N1
+               asl     A
+               asl     A               (R1)-N1
+               asl     B               #$000002,N1
+               asl     B
+               move    A,X:<$0001
+               move    B,X:<$0000
+
+               rts
+
+; -*- Surround -*-
+
+surround_main:  move   X:<$0000,A
+               move    A,X:(R2+N2)
+               move    Y:(R2),Y1
+               move    Y:<$0008,Y0
+               macr    Y1,Y0,A         X:<$0001,B
+               move    B,Y:(R2+N2)
+               move    X:(R2)+,Y1
+               macr    Y1,Y0,B         A,X:<$0000
+               move    B,X:<$0001
+
+               rts
+
+; -*- Cyborg -*-
+
+cyborg_main:   move    X:<$0000,A
+               move    Y:<$0008,Y0
+               move    Y:<$0009,X1
+               move    A,X:(R2+N2)
+
+               move    X:(R6),X0
+               move    Y:(R6),Y1
+               mac     Y0,X0,A
+               macr    Y1,X1,A         X:(R2),X0       Y:(R6),Y1
+               move    A,X:(R6+N6)
+               move    A,X:<$0000
+               move    X:<$0001,A
+               mac     X1,X0,A         A,Y:(R2+N2)
+               macr    Y1,Y0,A         (R2)+
+               move    A,Y:(R6+N6)
+               move    A,X:<$0001
+               move    (R6)+
+
+               rts
+
+; -*- Flanger -*-
+
+flanger_main:  move    L:<$000B,B
+               move    L:<$000A,A
+               add     A,B
+               tst     B
+
+               jgt     flanger_up
+
+               neg     A
+
+               jmp     flanger_do
+
+flanger_up:    move    #>$000100,X0
+               cmp     X0,B
+
+               jmi     flanger_do
+
+               neg     A
+               add     A,B
+flanger_do:    move    B1,N3
+               move    B,L:<$000B
+               move    A,L:<$000A
+               move    X:<$0000,X0
+               move    X:<$0001,X1
+               move    X0,X:(R3)
+               move    X1,Y:(R3)
+               tfr     X0,A            X:(R3+N3),X0
+               add     X0,A
+               tfr     X1,A            A,X:<$0000
+               move    Y:(R3+N3),X1
+               add     X1,A            (R3)+
+               move    A,X:<$0001
+
+               rts
+
+               ORG     P:$00E0
+mod1_main:
+               rts
+
+               ORG     P:$0140
+
+mod2_main:
+               rts
+
+               ORG     P:$01A0
+
+mod3_main:
+               rts
+
+
+; *****************************************************************************
+
+               ORG     P:$0200                                         ; Outa Memory : Main Code
+
+dsp_reset:     ori     #<$04,OMR                                       ; Yagi...
+
+; Empty PipeLine
+
+               nop                                                     ; Clear Instruction Fetch Logic (3rd NOP)
+               nop                                                     ; Clear Instruction Decode Logic (2nd NOP)
+               nop                                                     ; Clear Instruction Execution Logic (1st NOP)
+
+               movep   X:<<$FFFF,X:$0011                               ; X:$FFFF (IPR)
+; Save IPR...
+
+               move    #$000000,X0
+               move    X0,Y:<$0000                                     ; Clear Y:$0000
+
+               movep   #$001000,X:<<$FFFF                              ; Interrupt Priority Register
+; IPR :
+               movep   #$0001F8,X:<<$FFE1                              ; PORT C -      Control   Register
+; PCC :
+               movep   #$004100,X:<<$FFEC                              ; SSI Control Register A
+; CRA :
+               movep   #$000000,X:<<$FFE8                              ; Host Control Register
+; HCR :
+               movep   #$000001,X:<<$FFE0                              ; PORT B - Bus  Control   Register
+; PBC :
+               movep   #$00F800,X:<<$FFED                              ; SSI Control Register B
+; CRB :
+
+               andi    #<$FC,MR
+
+dsp_mainloop:  jclr    #$00,X:<<$FFE9,dsp_mainloop                     ; Wait for something
+; incoming...
+; Loopa !
+
+               movep   X:<<$FFEB,Y:$0001                               ; Read Peripheral,
+; then put it in
+; Y:$0001
+; Y:$0001 Bit 23 Equalizer AUTO
+; Bit 22 Surround  AUTO
+; Bit 21 Cyborg    AUTO
+; Bit 20 Flanger   AUTO
+; Bit 19 Module 1  AUTO
+; Bit 18 Module 2  AUTO
+; Bit 17 Module 3  AUTO
+; Bit 16 Loader
+
+; Bit 14 Module 3  OFF
+; Bit 13 Module 2  OFF
+; Bit 12 Module 1  OFF
+; Bit 11 Flanger   OFF
+; Bit 10 Cyborg    OFF
+; Bit  9 Surround  OFF
+; Bit  8 Equalizer OFF
+
+; Bit  6 Module 3  SWITCH
+; Bit  5 Module 2  SWITCH
+; Bit  4 Module 1  SWITCH
+; Bit  3 Flanger   SWITCH
+; Bit  2 Cyborg    SWITCH
+; Bit  1 Surround  SWITCH
+; Bit  0 Equilazer SWITCH
+
+               jsset   #$17,Y:<$0001,equaliz_auto
+               jsset   #$16,Y:<$0001,surround_auto
+               jsset   #$15,Y:<$0001,cyborg_auto
+               jsset   #$14,Y:<$0001,flanger_auto
+               jsset   #$13,Y:<$0001,$0390                             ; P:0390
+               jsset   #$12,Y:<$0001,$03C0                             ; P:03C0
+               jsset   #$11,Y:<$0001,$03F0                             ; P:03F0
+
+               jsset   #$10,Y:<$0001,load
+
+               jsset   #$0E,Y:<$0001,mod3_off                          ; P:03D0
+               jsset   #$0D,Y:<$0001,mod2_off                          ; P:03A0
+               jsset   #$0C,Y:<$0001,mod1_off                          ; P:0370
+               jsset   #$0B,Y:<$0001,flanger_off
+               jsset   #$0A,Y:<$0001,cyborg_off
+               jsset   #$09,Y:<$0001,surround_off
+               jsset   #$08,Y:<$0001,equaliz_off
+
+               jsset   #$06,Y:<$0001,mod3_switch                       ; P:03D0
+               jsset   #$05,Y:<$0001,mod2_switch                       ; P:03A0
+               jsset   #$04,Y:<$0001,mod1_switch                       ; P:0370
+               jsset   #$03,Y:<$0001,flanger_switch
+               jsset   #$02,Y:<$0001,cyborg_switch
+               jsset   #$01,Y:<$0001,surround_switch
+               jsset   #$00,Y:<$0001,equaliz_switch
+
+               jmp     <dsp_mainloop                                   ; Loopa !
+
+; -*- Equalizer Graphique -*-
+
+; -=- Switch Equalizer ON/OFF : Command $000001 -=-
+
+equaliz_switch:  jset  #$00,Y:<$0000,equaliz_off
+               jset    #$16,Y:<$0000,equaliz_on
+
+               move    #>$0002AC,R0
+               move    #$000040,R4
+               move    #$000000,Y0
+
+               do      #<$20,equaliz_init
+
+               movem   P:(R0)+,Y1
+               move    Y0,X:(R4)
+               move    Y1,Y:(R4)+
+equaliz_init:                                                          ;
+
+               move    #$000020,R4
+
+               rep     #<$10
+               move    Y0,Y:(R4)+
+
+               move    #$000020,Y0
+               move    Y0,X:<$0020
+               move    #>$7FFFFF,Y0
+               move    Y0,X:<$0021
+               move    #>$000040,Y0
+               move    Y0,X:<$0022
+
+equaliz_on:    move    #$000020,R5
+               movec   #<$0F,M5
+               move    #$000040,R4
+               movec   #<$17,M4
+               move    #$00003C,R0
+               movec   #<$03,M0
+               move    #$000040,R1
+               movec   #<$01,M1
+               move    #$000002,N1
+
+               bset    #<$16,Y:<$0000
+               bset    #<$00,Y:<$0000
+
+               rts
+
+; -=- Switch Equalizer OFF : Command $000100 -=-
+
+equaliz_off:   bclr    #<$00,Y:<$0000
+
+               rts
+
+; Y:$0001 Bit 22 Equilazer ADJUST
+; Bit 21 Equilazer ASK
+; Bit 20 Equilazer END
+
+; -=- AUTO Equalizer : Command $800000 -=-
+
+equaliz_auto:  jset    #$16,Y:<$0001,equaliz_adjust
+               jset    #$15,Y:<$0001,equaliz_ask
+               jset    #$14,Y:<$0001,equaliz_end
+
+               jsr     equaliz_reset
+
+equaliz_feed:  clr     B
+               move    B,Y:<$0001
+
+               rts
+
+equaliz_end:   movep   X:$0011,X:<<$FFFF
+
+               stop
+
+equaliz_reset:  move   #$000020,R7
+               move    #$000000,Y0
+
+               rep     #<$10
+
+               move    Y0,Y:(R7)+
+
+               rts
+
+equaliz_ask:   move    X:<$0022,R7
+               clr     B
+               move    B,X:<$0010
+               move    #>$000800,Y1
+
+               do      #<$FF,equaliz_spect
+
+               move    X:(R7),B
+               abs     B
+               move    B,Y0
+               move    X:$0010,B
+               macr    Y1,Y0,B
+               move    B,X:<$0010
+equaliz_spect:                                                         ;
+
+               movep   B,X:<<$FFEB
+
+               clr     B               (R7)+
+               move    (R7)+
+               move    R7,B1
+               move    #>$000060,Y1
+               cmp     Y1,B
+
+               jeq     equaliz_update
+
+               move    R7,X:<$0022
+
+               jmp     <equaliz_feed
+
+equaliz_update:  move  #$000040,R7
+               move    R7,X:<$0022
+
+               jmp     <equaliz_feed
+
+equaliz_adjust:  clr   B               #>$001F00,Y1
+               move    Y:<$0001,B1
+               and     Y1,B
+
+               rep     #<$08
+               asr     B
+
+               move    B1,N7
+               move    #>$0002C4,R7
+               move    #>$00000F,B1
+               movem   P:(R7+N7),Y0
+               move    Y:<$0001,Y1
+               and     Y1,B            #$000020,R7
+               move    B1,N7
+               nop
+               move    Y0,Y:(R7+N7)
+
+               jmp     <equaliz_feed
+
+equaliz_coef:  DC      $0016A5
+               DC      $7FD19B
+               DC      $3FD2B6
+               DC      $002D3A
+               DC      $7FA122
+               DC      $3FA58C
+               DC      $005A34
+               DC      $7F39FB
+               DC      $3F4B97
+               DC      $00B366
+               DC      $7E532C
+               DC      $3E9935
+               DC      $0162BE
+               DC      $7C25B3
+               DC      $3D3A83
+               DC      $02B531
+               DC      $765E6E
+               DC      $3A959F
+               DC      $0528C1
+               DC      $65C5A3
+               DC      $35AE7E
+               DC      $094A64
+               DC      $363F93
+               DC      $2D6B38
+
+equaliz_gain:  DC      $E71412
+               DC      $E7D220
+               DC      $E8AA65
+               DC      $E9930C
+               DC      $EA95EA
+               DC      $EBB646
+               DC      $ECF41F
+               DC      $EE52BD
+               DC      $EFD567
+               DC      $F17F63
+               DC      $F35A32
+               DC      $F5667B
+               DC      $F7AA26
+               DC      $FA2B17
+               DC      $FCF030
+               DC      $000000
+               DC      $03630B
+               DC      $072181
+               DC      $0B458D
+               DC      $0FD8AE
+               DC      $14EA4B
+               DC      $1A8241
+               DC      $20B439
+               DC      $278D50
+
+; -*- Surround -*-
+
+; -=- Switch Surround ON/OFF : Command $000002 -=-
+
+surround_switch:  jset  #$01,Y:<$0000,surround_off
+
+               move    #>$002000,R2
+               move    #>$000F00,N2
+               movec   #>$001DFF,M2
+               move    #$000040,Y0
+               move    Y0,Y:<$0008
+
+               bset    #<$01,Y:<$0000
+
+               rts
+
+; -=- Switch Surround OFF : Command $000200 -=-
+
+surround_off:  bclr    #<$01,Y:<$0000
+
+               rts
+
+; -=- AUTO Surround : Command $400000 -=-
+
+surround_auto:  move   Y:<$0001,B
+
+               rep     #<$03
+               lsl     B
+
+               move    #>$001DFF,Y1
+               cmp     Y1,B
+
+               jlt     x_2fb
+
+               move    Y1,B1
+
+x_2fb:         move    B1,N2
+               clr     B
+               move    B,Y:<$0001
+
+               rts
+
+; -*- Cyborg -*-
+
+; -=- Switch Cyborg ON/OFF : Command $000004 -=-
+
+cyborg_switch:  jset   #$02,Y:<$0000,cyborg_off
+
+               move    #$000000,Y0
+               move    X0,Y0
+               move    #>$001000,R2
+               movec   #<22,M2
+               move    #$000022,N2
+               move    #>$001200,R6
+               movec   #>$0001F4,M6
+               move    #>$0001F3,N6
+               move    #>$0001F3,Y1
+
+               do      Y1,cyborg_init
+
+               move    X0,X:(R2)       Y0,Y:(R6)
+               move    X0,X:(R6)+
+               move    Y0,Y:(R6)+
+cyborg_init:   move    #$000070,Y0
+               move    Y0,Y:<$0008
+               move    #$000040,Y0
+               move    Y0,Y:<$0009
+               bset    #<$02,Y:<$0000
+
+               rts
+
+; -=- Switch Cyborg OFF : Command $000400 -=-
+
+cyborg_off:    bclr    #<$02,Y:<$0000
+
+               rts
+
+; -=- AUTO Cyborg : Command $200000 -=-
+
+cyborg_auto:   move    Y:<$0001,B
+               asr     B
+               move    B1,N6
+               clr     B
+               move    B,Y:<$0001
+
+               rts
+
+; -*- Flanger -*-
+
+; -=- Switch Flanger ON/OFF : Command $000008 -=-
+
+flanger_switch:  jset  #$03,Y:<$0000,flanger_off
+
+               clr     B
+               move    B,L:<$000B
+               move    #>$010000,B0
+               move    B,L:<$000A
+               move    #>$000800,R3
+               movec   #<$FF,M3
+               bset    #<$03,Y:<$0000
+
+               rts
+
+; -=- Switch Flanger OFF : Command $000800 -=-
+
+flanger_off:   bclr    #<$03,Y:<$0000
+
+               rts
+
+; -=- AUTO Flanger : Command $100000 -=-
+
+flanger_auto:  move    Y:<$0001,B
+
+               rep     #<$10
+
+               asr     B
+               move    #$000000,B1
+               clr     B               B,L:<$000A
+               move    B,Y:<$0001
+
+               rts
+
+; -*- Chargement Module Externe -*-
+
+; -=- Load Module : Command $010000 -=-
+
+load:          clr     B
+               move    Y:<$0001,Y0
+               move    #>$000030,Y1
+               move    #>$0000E0,B0
+               mac     Y1,Y0,B
+               move    B0,R7
+               clr     B
+               move    #>$408000,Y1
+
+l_rltm:        jsr     l_word
+
+               jeq     l_ldp1
+
+               movem   B1,P:(R7)+
+
+               jmp     <l_rltm
+
+l_ldp1:        clr     B
+               move    #>$000370,B0
+               move    #>$000018,Y1
+               mac     Y1,Y0,B
+               move    B0,R7
+               move    B0,Y0
+               clr     B
+               move    #>$408000,Y1
+
+l_init:        jsr     l_word
+
+               jeq     l_ldp2
+
+               movem   B1,P:(R7)+
+
+               jmp     <l_init
+
+l_ldp2:        clr     B
+               move    #>$000020,B1
+               add     Y0,B
+               move    B1,R7
+               clr     B
+
+l_act:         jsr     l_word
+
+               jeq     l_ldp3
+
+               movem   B1,P:(R7)+
+
+               jmp     <l_act
+
+l_ldp3:        movep   #$AAAAAA,X:<<$FFEB
+               clr     B
+               move    B,Y:<$0001
+
+               rts
+
+l_word:        jclr    #$00,X:<<$FFE9,l_word
+
+               movep   X:<<$FFEB,B
+               cmp     Y1,B
+
+               rts
+
+               ORG     P:$0370
+
+mod1_off:
+mod1_switch:
+               rts
+
+               ORG     P:$0390
+
+mod1_auto:
+               rts
+
+               ORG     P:$03A0
+mod2_off:
+mod2_switch:
+               rts
+
+               ORG     P:$03C0
+
+mod2_auto:
+               rts
+
+               ORG     P:$03D0
+
+mod3_auto:
+               rts
+
+               ORG     P:$03F0
+
+mod3_off:
+mod3_switch:
+               rts
+
+               END

@@ -1,0 +1,39 @@
+
+J'ai ‚crit cette petite librairie GNU C++ pour pouvoir utiliser facilement
+les commandes audio du lecteur CD.
+
+
+Quelques petites explications (il n'en faut pas beaucoup) :
+
+La classe "CdDrive" offre la plupart des commandes audio dont on peut
+avoir besoin : play, pause, resume, stop...
+
+Les erreurs sur l'accŠs CD sont trait‚es avec la classe "CdStatus".
+
+La longueur totale du CD et les positions des pistes sont g‚r‚es … l'aide
+des classes "CdLocation" et "CdTrackLocation".
+
+
+
+Ces codes sont bas‚s sur les fichiers "cdromio.h" et "metados.h"
+modifi‚s pour pouvoir etre utilis‚s avec le GNU C++.
+
+Le programme cdplay01 est un exemple de ce que l'on peut faire avec cette
+librairie. Il marche bien sur mon Falcon avec le driver Extendos et mon
+lecteur NEC...
+
+
+Si vous apportez des am‚lioration … ce code, faites le moi savoir.
+On peut me joindre … l'adresse suivante :
+
+           Olivier AZEAU
+           2 rue Jean-Baptiste POTIN
+           92170 VANVES
+           FRANCE
+
+           email : azeau@MicroNet.fr
+
+
+Ces codes sont plac‚s sous la "GNU General Public License".
+Pour les d‚tails, se reporter au fichier "COPYING".
+

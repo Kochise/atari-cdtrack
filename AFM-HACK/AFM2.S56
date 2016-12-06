@@ -1,0 +1,425 @@
+; /// Equalizer & Surround Effect for CDTracker - KOSS 2000-2002 ///
+
+	ORG	P:$0000		; DSP Starts Here !
+
+	JMP	dsp_reset		;>DSP Init
+
+; *****************************************************************************
+
+	ORG	P:$000C		; SSI Receive Data
+
+	JSR	ssi_receive		;>Receive Interrupt
+
+; *****************************************************************************
+
+	ORG	P:$0010		; SSI transmit Data
+
+	JSR	ssi_transmit		;>Transmit Interrupt
+
+; *****************************************************************************
+
+	ORG	P:$0040		; Fast Routines (On-Chip RAM)
+
+; -*- R‚ception -*-
+
+ssi_receive	JSET	#$08,Y:<$0000,ssi_receive_ri	; If Bit 8 of
+				; Y:$0000 (24 Bits
+				; memory location)
+				; is SET, then Jump
+				; to...
+
+	movep	X:<<$FFEF,X:<$0000	; Move Peripheral Data
+				; (<<) in X:$0000
+				; (Here LeftData)
+
+				; X:$FFEF is :
+				; SSI Receive/Transmit
+				; Data Reg. (RX/TX)
+
+	bchg	#<$08,Y:<$0000		; Netx time, RightData...
+				; Complement Bit 8 of
+				; Y:$0000
+
+	RTI			; Youps, End Of Interrupt
+
+ssi_receive_ri	movep	X:<<$FFEF,X:<$0001	; Load Peripheral Data
+				; in X:$0001 (RightData)
+
+	bchg	#<$08,Y:<$0000		; Netx time, LeftData...
+
+				; Save Registers
+
+	move	B,L:<$0002		; B1 stored in X:$0002
+				; B0 stored in Y:$0002
+
+	move	Y,L:<$0003		; Y1 stored in X:$0003
+				; Y0 stored in Y:$0003
+				; Send 3 (Surround + Equalizer)
+				; Y:$0000 Bit	9 Transmit Flag
+				; Bit	8 Receive Flag
+				;
+				; Bit	1 Surround
+				; Bit	0 Equalizer
+
+	JSSET	#$01,Y:<$0000,surround_main	; If Bit 1 of Y:$0000
+				; is SET, then Jump to
+				; the SubRoutine...
+
+	JSSET	#$00,Y:<$0000,equaliz_main	; If Bit 0 of Y:$0000
+				; is SET, then Jump to
+				; the SubRoutine...
+
+	move	X:<$0001,X0	 	; Move RightData in X0
+	move	X0,X:<$0009	 	; Move X0 (RightData) in
+				; X:$0009
+
+				; DON'T FORGET : IT'S
+				; IMPOSSIBLE TO ACCESS
+				; TWICE THE SAME MEMORY,
+				; THAT'S WHY X0 IS USED
+				; TO TRANFERT THESE MEMORY
+				; LOCATIONS...
+
+	move	X:<$0000,X0	 	; Move LeftData in X:$0008
+	move	X0,X:<$0008
+
+				; Restore Registers
+
+	move	L:<$0002,B
+	move	L:<$0003,Y
+
+	RTI
+
+; -*- Transmission -*-
+
+ssi_transmit	JSET	#$09,Y:<$0000,ssi_transmit_ri	; If Bit 9 of
+				; Y:$0000 (24 Bits
+				; memory location)
+				; is SET, then Jump
+				; to...
+
+	movep	X:$0008,X:<<$FFEF	; Send LeftData
+	bchg	#<$09,Y:<$0000		; Next time, RightData...
+
+	RTI
+
+ssi_transmit_ri	movep	X:$0009,X:<<$FFEF	; Send RightData
+	bchg	#<$09,Y:<$0000
+
+	RTI
+
+; -*- Equilazer Graphique -*-
+
+equaliz_main	clr	A	X:<$0000,X0
+	move	Y:(R4)+,Y0
+	ori	#<$08,MR
+
+	DO	#<8,equaliz_g
+
+	mpy	Y0,X0,B	X:(R0),X1	Y:(R4)+,Y1
+	mac	-X1,Y0,B	X:(R1)+,X1	Y:(R4)+,Y0
+	mac	Y1,X1,B	X:(R1),X1
+	macr	-X1,Y0,B	Y:(R5)+,X1
+	move	B,X:(R1)+	B,Y1
+	mac	Y1,X1,A	X:(R1)+N1,X1	Y:(R4)+,Y0
+equaliz_g	 ; END Loopa !
+
+	move	X0,X:(R0)+
+
+	andi	#<$F7,MR
+	move	A,X:<$0004
+	clr	A	X:<$0001,X0
+	ori	#<$08,MR
+
+	DO	#<8,equaliz_d
+
+	mpy	Y0,X0,B	X:(R0),X1	Y:(R4)+,Y1
+	mac	-X1,Y0,B	X:(R1)+,X1	Y:(R4)+,Y0
+	mac	Y1,X1,B	X:(R1),X1
+	macr	-X1,Y0,B	Y:(R5)+,X1
+	move	B,X:(R1)+	B,Y1
+	mac	Y1,X1,A	X:(R1)+N1,X1	Y:(R4)+,Y0
+equaliz_d	 ; END Loopa !
+
+	andi	#<$F7,MR
+
+	move	X0,X:(R0)+	Y:(R4)-,Y0
+	move	X:<$0020,Y0
+	move	X:<$0004,B
+	macr	Y0,X0,A	X:<$0000,X0
+	macr	Y0,X0,B	X:<$0021,Y0
+	move	Y:(R1)+,Y1
+	move	A,X0
+	mpy	Y0,X0,A	B,X1
+	mpy	X1,Y0,B	#$000020,N1
+	asl	A
+	asl	A	(R1)-N1
+	asl	B	#$000002,N1
+	asl	B
+	move	A,X:<$0001
+	move	B,X:<$0000
+
+	RTS
+
+; -*- Surround -*-
+
+surround_main	move	X:<$0000,A
+	move	A,X:(R2+N2)
+	move	Y:(R2),Y1
+	move	Y:<$0008,Y0
+	macr	Y1,Y0,A	X:<$0001,B
+	move	B,Y:(R2+N2)
+	move	X:(R2)+,Y1
+	macr	Y1,Y0,B	A,X:<$0000
+	move	B,X:<$0001
+
+	RTS
+
+; *****************************************************************************
+
+	ORG	P:$0200	; Outa Memory : Main Code
+
+dsp_reset	ori	#<$04,OMR	; Yagi...
+
+; Empty PipeLine
+
+	nop	; Clear Instruction Fetch Logic (3rd NOP)
+	nop	; Clear Instruction Decode Logic (2nd NOP)
+	nop	; Clear Instruction Execution Logic (1st NOP)
+
+	movep	X:<<$FFFF,X:$0011	; X:$FFFF (IPR)
+				; Save IPR...
+
+	move	#$000000,X0
+	move	X0,Y:<$0000	 	; Clear Y:$0000
+
+	movep	#$001000,X:<<$FFFF	; Interrupt Priority Register
+				; IPR :
+	movep	#$0001F8,X:<<$FFE1	; PORT C -	Control	Register
+				; PCC :
+	movep	#$004100,X:<<$FFEC	; SSI Control Register A
+				; CRA :
+	movep	#$000000,X:<<$FFE8	; Host Control Register
+				; HCR :
+	movep	#$000001,X:<<$FFE0	; PORT B - Bus	Control	Register
+				; PBC :
+	movep	#$00F800,X:<<$FFED	; SSI Control Register B
+				; CRB :
+
+	andi	#<$FC,MR
+	
+dsp_mainloop	jclr	#$00,X:<<$FFE9,dsp_mainloop	; Wait for something
+				; incoming...
+				; Loopa !
+
+	movep	X:<<$FFEB,Y:$0001	; Read Peripheral,
+				; then put it in
+				; Y:$0001
+				; Y:$0001 Bit 23 Equalizer AUTO
+				;	Bit 22 Surround	AUTO
+				;	Bit 21 Equalizer OFF
+				;	Bit 20 Surround	OFF
+				;	Bit 19 Equilazer SWITCH
+				;	Bit 18 Surround	SWITCH
+
+	JSSET	#23,Y:<$0001,equaliz_auto
+	JSSET	#22,Y:<$0001,surround_auto
+	JSSET	#09,Y:<$0001,surround_off
+	JSSET	#08,Y:<$0001,equaliz_off
+	JSSET	#01,Y:<$0001,surround_switch
+	JSSET	#00,Y:<$0001,equaliz_switch
+
+	JMP	<dsp_mainloop		; Loopa !
+
+; -*- Equalizer Graphique -*-
+
+; -=- Switch Equalizer ON/OFF : Command $000001 -=-
+
+equaliz_switch	JSET	#00,Y:<$0000,equaliz_off
+	JSET	#22,Y:<$0000,equaliz_on
+
+	move	#equaliz_coef,R0
+	move	#$000040,R4
+	move	#$000000,Y0
+
+	DO	#<$20,equaliz_init
+
+	movem	P:(R0)+,Y1
+	move	Y0,X:(R4)
+	move	Y1,Y:(R4)+
+equaliz_init	;
+
+	move	#$000020,R4
+
+	REP	#<$10
+	move	Y0,Y:(R4)+
+
+	move	#$000020,Y0
+	move	Y0,X:<$0020
+	move	#>$7FFFFF,Y0
+	move	Y0,X:<$0021
+	move	#>$000040,Y0
+	move	Y0,X:<$0022
+
+equaliz_on	move	#$000020,R5
+	movec	#<$0F,M5
+	move	#$000040,R4
+	movec	#<$17,M4
+	move	#$00003C,R0
+	movec	#<$03,M0
+	move	#$000040,R1
+	movec	#<$01,M1
+	move	#$000002,N1
+
+	bset	#<$16,Y:<$0000
+	bset	#<$00,Y:<$0000
+
+	RTS
+
+; -=- Switch Equalizer OFF : Command $000100 -=-
+
+equaliz_off	bclr	#<$00,Y:<$0000
+
+	RTS
+
+; Y:$0001 Bit 22 Equilazer ADJUST
+; Bit 21 Equilazer ASK
+; Bit 20 Equilazer END
+
+; -=- AUTO Equalizer : Command $800000 -=-
+
+equaliz_auto	JSET	#22,Y:<$0001,equaliz_adjust
+	JSET	#20,Y:<$0001,equaliz_end
+
+	JSR	equaliz_reset
+
+equaliz_feed	clr	B
+	move	B,Y:<$0001
+
+	RTS
+
+equaliz_end	movep	X:$0011,X:<<$FFFF
+
+	stop
+
+equaliz_reset	move	#$000020,R7
+	move	#$000000,Y0
+
+	REP	#<$10
+
+	move	Y0,Y:(R7)+
+
+	RTS
+
+equaliz_adjust	clr	B	#>$001F00,Y1
+	move	Y:<$0001,B1
+	and	Y1,B
+
+	REP	#<$08
+	asr	B
+
+	move	B1,N7
+	move	#equaliz_gain,R7
+	move	#>$00000F,B1
+	movem	P:(R7+N7),Y0
+	move	Y:<$0001,Y1
+	and	Y1,B	#$000020,R7
+	move	B1,N7
+	nop
+	move	Y0,Y:(R7+N7)
+
+	JMP	<equaliz_feed
+
+equaliz_coef	DC	0.0006910
+	DC	0.9985841
+	DC	0.4986178
+	DC	0.0013802
+	DC	0.9971048
+	DC	0.4972395
+	DC	0.0027527
+	DC	0.9939569
+	DC	0.4944943
+	DC	0.0054748
+	DC	0.9869132
+	DC	0.4890505
+	DC	0.0108258
+	DC	0.9699004
+	DC	0.4783481
+	DC	0.0211545
+	DC	0.9247567
+	DC	0.4576910
+	DC	0.0403062
+	DC	0.7950938
+	DC	0.4193875
+	DC	0.0725827
+	DC	0.4238151
+	DC	0.3548345
+
+equaliz_gain	DC	-0.1947
+	DC	-0.1889
+	DC	-0.1823
+	DC	-0.1752
+	DC	-0.1673
+	DC	-0.1585
+	DC	-0.1488
+	DC	-0.1381
+	DC	-0.1263
+	DC	-0.1133
+	DC	-0.09881
+	DC	-0.08281
+	DC	-0.06512
+	DC	-0.04556
+	DC	-0.02392
+	DC	0.0
+	DC	0.02646
+	DC	0.05571
+	DC	0.08806
+	DC	0.1238
+	DC	0.1634
+	DC	0.2071
+	DC	0.2555
+	DC	0.309
+
+; -*- Surround -*-
+
+; -=- Switch Surround ON/OFF : Command $000002 -=-
+
+surround_switch	JSET	#$01,Y:<$0000,surround_off
+
+	move	#>$002000,R2
+	move	#>$000F00,N2
+	movec	#>$001DFF,M2
+	move	#$000040,Y0
+	move	Y0,Y:<$0008
+
+	bset	#<$01,Y:<$0000
+
+	RTS
+
+; -=- Switch Surround OFF : Command $000200 -=-
+
+surround_off	bclr	#<$01,Y:<$0000
+
+	RTS
+
+; -=- AUTO Surround : Command $400000 -=-
+
+surround_auto	move	Y:<$0001,B
+
+	REP	#<$03
+	lsl	B
+
+	move	#>$001DFF,Y1
+	cmp	Y1,B
+
+	jlt	x_2fb
+
+	move	Y1,B1
+
+x_2fb	move	B1,N2
+	clr	B
+	move	B,Y:<$0001
+
+	RTS
+
+	END
