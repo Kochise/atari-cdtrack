@@ -1,2 +1,2 @@
-*.ss linguist-language=assembler
-*.SS linguist-language=assembler
+*.ss linguist-language=Assembly
+*.SS linguist-language=Assembly
