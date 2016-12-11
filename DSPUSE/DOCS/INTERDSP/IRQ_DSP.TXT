@@ -1,0 +1,30 @@
+
+DSP INTERRUPT ON CENTURBO II
+****************************
+
+Thanks to Rodolphe Czuba !!
+
+DSP interrupt not exist on CT2, but the following modifications
+have to be done (look at pictures .IMG):
+
+   * Bent the pins of the new 74LS05 to the outside exept. no.14.
+   * Solder a resistor of 1 Kohm between pins 10 and 14 of the 74LS05.
+   * Connect together the pins 4, 5, 9 and 10 on the 74LS05.
+   * Place the 74LS05 on GAL U44 as shown on picture MONTAGE.IMG.
+   * Solder pin 14 of the 74LS05 on pin 24 of U44.
+   * Solder some wires as shown on picture between 75LS05 and U44.
+   * Connect a wire at pin 6 and 8 of 74LS05 to the pin 42 on CT2 2x40 
+     connector or pin 31 of 68882 on CT2B (MONTAGE2.IMG).
+
+The author is not liable for damage through this modification can 
+create.
+
+Now you can remove DSP_IRQ.PRG in your auto-folder.
+
+e-mail: didier.mequignon@wanadoo.fr
+
+
+
+
+
+ 
