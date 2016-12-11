@@ -1,2 +1,4 @@
 *.ss linguist-language=Assembly
 *.SS linguist-language=Assembly
+*.S56 linguist-language=Assembly
+*.56K linguist-language=Assembly
