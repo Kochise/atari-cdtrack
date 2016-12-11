@@ -1,0 +1,327 @@
+AFM 1.02 / 12 Mai 1993
+
+             **********************************
+             *                                *
+             *  AFM : The Audio Fun Machine.  *
+             *                                *
+             ************* V:1.02 *************
+
+
+          Un amusement sonore pour votre Falcon030
+
+          (C) 1992,93 by Atari France & Atari Corp.
+
+
+
+Cr‚dits:
+========
+
+* Code DSP, et code GEM original ‚crits par:
+          Vincent Habchi (Email : elendir@enst.fr);
+
+* Le code GEM a ‚t‚ revu, d‚bugu‚ et largement am‚lior‚ par:
+          Loic Duval, qui a ‚galement supervis‚ tout le projet.
+
+* Bill Rehbock nous a moralement support‚ et a ‚mis quelques
+  judicieuses remarques. Merci Bill!
+
+
+
+
+Remerciements :
+===============
+
+A Jean-Marie Cocheteau pour ses remarques et tests de fonctionnement.
+A J.Laroche des Telecom de Paris qui a fourni des algorithmes Audio.
+A Pierre Faure pour la documentations et les id‚es
+Une "Application Note" de Motorola qui a inspir‚ l'‚qualiseur.
+A Brainstorm pour l'aide apport‚e au debugging DSP.
+A Atari France, et en particulier … Mr Daniel Hammaoui, pour leur
+aide et leur soutien.
+A Atari Corp. qui a con‡u le Falcon030.
+
+
+AVERTISSEMENT
+=============
+AFM fonctionne sous TOS comme sous MultiTOS. Cependant certaines
+pr‚cautions sont … prendre sous MultiTOS. En raison d'un comportement
+‚trange des appels DSP sous MultiTOS, vous devez, si vous utilisez ce
+systŠme multitache, recopier le fichier AFM.LOD dans la racine de la
+partition o— est install‚ AFM ainsi que dans la racine de la
+partition C:\. Pour ne pas rencontrer de problŠme sous MultiTOS, le
+mieux est certainement d'installer AUDIO FUN MACHINE dans la racine
+de la partition C:.
+Ces pr‚cautions ne sont … prendre que sous MultiTOS.
+
+
+Comment utiliser l'Audio Fun Machine?
+=====================================
+
+AFM fonctionne dans toutes les r‚solutions des Atari Falcon030. Il a
+cependant plus sp‚cifiquement ‚t‚ con‡u pour les hautes r‚solutions
+couleur (640x400 en 16 ou 256 couleurs).
+AFM fonctionne sous MultiTOS, cependant avant de lancer AFM sous ce
+systŠme il vous faudra vous assurer qu'aucun autre programme n'utilise
+d‚j… le DSP. Sinon rien ne se passera.
+Pour d‚marrer l'Audio Fun Machine, il suffit de cliquer sur AFM.PRG.
+Les fichiers AFM.LOD et AFM.RSC doivent absolument se trouver dans le
+mˆme r‚pertoire qu'AFM.PRG. Au lancement, le programme active le
+systŠme sonore des Falcon030 et configure la matrice interne de la
+machine afin que tout son en provenance de l'entr‚e microphone soit
+directement envoy‚ vers AFM et le DSP.  
+AFM peut aussi fonctionner comme accessoire de bureau.  Il suffit pour
+cela de renommer AFM.PRG en AFM.ACC et de copier sur votre disque de
+d‚marrage les fichiers:  AFM.ACC, AFM.RSC et AFM.LOD.
+
+Au chargement AFM se pr‚sente sous la forme d'une importante boite de
+dialogue enferm‚e dans une fenˆtre. La plus grande partie de cette
+boite est occup‚e par la zone d'affichage des barres d'‚qualisation.
+Sur la droite vous trouverez deux gros boutons, un slider et un mini
+bouton indicateur d'‚tat associ‚ au slider.
+
+
+
+
+
+Utilisation de l'‚qualiseur
+===========================
+
+Le r“le principal de l'Audio Fun Machine est d'offrir … votre walkman,
+discman ou chaŒne hifi un ‚qualiseur graphique st‚r‚o 8 bandes. Les
+barres affich‚es dans la zone d'‚qualisation sont divis‚es en deux
+groupes:  celui de gauche agit sur le canal sonore gauche, celui de
+droite sur le canal sonore droit.  A l'int‚rieur d'un groupe les
+barres les plus … gauche affectent les fr‚quences les plus basses, et
+celles de droite les fr‚quences les plus hautes. Plus une barre est
+grande, plus forte est l'intensit‚ sonore affect‚e … cette fr‚quence.
+Pour modifier la taille d'une barre, autrement dit pour  corriger
+l'intensit‚ d'une fr‚quence, cliquez simplement avec la souris sur la
+barre, … la hauteur … laquelle vous voulez rŠgler cette fr‚quence.
+
+Si vous maintenez la touche SHIFT appuy‚e tout en cliquant sur une
+barre vous modifierez simultan‚ment la fr‚quence sur les deux canaux
+Gauche et Droit.
+
+Vous pouvez supprimer les effets d'‚qualisation en d‚sactivant
+simplement le bouton Equaliseur.
+
+
+
+
+
+Utilisation des effets.
+=======================
+
+Sous la zone d'‚qualisation, 6 boutons permettent d'activer des effets
+sonores. Les trois boutons du haut commandent les trois effets
+int‚gr‚s d'AFM:
+- Surround cr‚e une profondeur musicale artificielle en g‚n‚rant un
+retard sur le signal, dont l'effet est surtout imressionnant en ‚coute
+au casque.
+- Cyborg cr‚e un effet m‚tallique bien adapt‚ … la parole.
+- Flanger reproduit un effet trŠs en vogue dans les ann‚es 70.
+
+Les trois boutons situ‚s en dessous (EFFET 1,2,3) permettent de
+contr“ler des effets externes se pr‚sentant sous forme de module DSP
+que l'on peut charger … l'aide du menu "DSP Module" (voir plus loin).
+
+Le Slider sur la droite agit dynamiquement sur les paramŠtres des
+effets. Il permet par exemple d'augmenter le d‚lai du Surround ou de
+modifier la fr‚quence d'action du Cyborg.  Le Slider ne contr“le qu'un
+effet … la fois. L'effet qui sera affect‚ par le slider est affich‚
+dans le petit bouton situ‚ sur la droite du Slider. Si vous avez
+plusieurs boutons s‚lectionn‚s ou si au contraire aucun n'effet n'est
+actif, ce bouton affichera le message "Aucun" indiquant
+l'impossibilit‚ d'utiliser le slider.
+
+AFM possŠde deux modes de fonctionnement: Normal ou Expert.  En mode
+Normal un seul des 6 effets peut-ˆtre actif … un moment donn‚. DŠs que
+vous activez un effet, l'effet pr‚c‚demment actif est d‚sactiv‚.  En
+mode Expert, vous pouvez mixer autant d'effet que vous le souhaitez.
+Mais attention: c'est … vos risques et p‚ril. En effet certains effets
+peuvent pr‚senter des incompatibilit‚s entre eux ou, une fois
+m‚lang‚s, n‚cessiter une trop longue dur‚e de calcul incompatible
+avec le fonctionnement temps r‚el de AFM. Dans de tels cas des
+"accidents" sont … pr‚voir (Non non, ce n'est pas un BUG!).  Dans le
+meilleur des cas vous n'obtiendrez qu'une absence totale de son ou
+d'effet. Si cela se produit, vous devrez effectuer un RESET TOTAL
+d'AFM en appuyant simultan‚ment sur les touches [CTRL][X].
+Pour basculer d'un mode … l'autre, s‚lectionnez l'option
+"Mode Expert" du menu "Options".
+
+Surround et Flanger ne peuvent jamais ˆtre s‚lectionn‚ simultan‚ment
+car ils utilisent les mˆme ressources.
+
+
+
+Le menu AFM
+===========
+
+En cliquant sur le bouton "AFM" vous appellerez un menu PopUp compos‚
+de nombreux choix:
+
+AUDIO FUN : Cette option affiche la boite d'informations du logiciel.
+
+QUITTER : Permet de sortir du programme. Vous pouvez quitter AFM de
+plusieurs fa‡ons:
+    - Actif : AFM reste totalement actif en tache de fond. Le DSP
+            continue de fonctionner et de lui appartenir, tout comme
+            le systŠme sonore.
+    - Endormi : AFM reste pr‚sent et actif dans le DSP. Par contre le
+            systŠme sonore est rendu aux autres applications.
+    - Supprim‚ : AFM est "‚teint". Le DSP devient libre aux autres
+            applications.
+
+ANNULER : Annule l'op‚ration et retourne … l'‚qualiseur.
+
+AMBIANCES : Quatres ambiances types, pr‚d‚finies au noveau des
+            paramŠtres de l'‚qualiseur, sont propos‚es.
+
+SPECTRUM : Ce choix bascule l'‚qualiseur en mode analyseur spectral.
+Cet analyseur ne doit pas ˆtre compar‚ … des systŠmes hyper
+professionnels. Remarquez que cet analyseur sera plus pr‚cis dans les
+hautes fr‚quences. Pour sortir de ce mode il suffit de cliquer avec la
+souris n'importe o— dans la fenˆtre d'AFM.
+
+OPTIONS : Elles donnent accŠs … de multiples param‚trages: 
+    - RESET DSP remet … z‚ro le DSP et l'‚qualiseur. Cette fonction se
+    limite … un Reset simple contrairement … la combinaison de touches
+    [CTRL][X] qui effectue un reset total et brutal du DSP.
+    - VOLUME affiche une boite d'ajustement des contr“les de puissance
+    en entr‚e et en sortie du Falcon030.
+    - DMA IN en ENTREE modifie la configuration de la matrice du
+    Falcon030 afin d'indiquer … AFM que les sons ne proviennent pas du
+    microphone mais d'un logiciel utilisant le son en DMA.
+    - MODE EXPERT autorise la s‚lection de plusieurs effets
+    simultan‚ment.
+
+MODULES DSP : Cette option permet de charger dans AFM jusqu'… 3 effets
+sonores externes. Les effets externes sont des petits modules de
+programmation ‚crits pour le DSP. En cliquant sur cette option vous
+ferez apparaŒtre une boite de dialogue. Cliquez sur le l'effet que
+vous voulez charger. Effet 1 permet de charger des modules de type
+.LO1, Effet 2 ceux de type .LO2 et Effet 3 ceux de type .LO3.  Les
+modules sont activ‚s par les boutons EFFET 1 … EFFET 3 de l'‚cran
+principal. Ces boutons ne peuvent pas ˆtre s‚lectionn‚s si aucun module
+ne leur a ‚t‚ associ‚.
+
+Raccourcis Clavier
+==================
+AFM dispose de quelques fonctions doubl‚es au clavier. Voici ces
+raccourcis:
+
+        Z   :   Met … "0" toutes les bandes de l'‚qualiseur.
+        N   :   Remet au niveau Normal toutes les bandes de
+                l'‚qualiseur.
+        I   :   Appelle la boite d'informations.
+        Q   :   Quitte le programme.
+        R   :   Reset le Sound system. TrŠs pratique si un accessoire
+                comme SAM (System Audio Manager) a d‚tourn‚ les sons
+                pour son propre usage. Cette touche replace la matrice
+                sonore pour un fonctionnement sous AFM.
+     CTRL X :   RESET TOTAL (… utiliser avec pr‚caution et sans abus)
+
+
+
+COMMENT ECRIRE DES MODULES  (pour les programmeurs)
+
+Il est trŠs facile d'‚crire de nouveaux modules d'effets pour l'Audio
+Fun Machine. Tous les modules suivent une mˆme logique et les mˆme
+rŠgles. Il existe trois type de modules: 1, 2, 3 correspondant
+respectivement aux boutons d'Effet 1, Effet 2 et Effet 3.
+
+Attention les modules ne sont pas interchangeables! Un module type 1
+ne peut pas ˆtre install‚ en effet 2 ou 3, idem pour les autres.
+
+Les modules sont divis‚s en trois parties:
+
+* La premiŠre est la partie TEMPS REEL. Elle est appel‚e chaque fois
+qu'une paire d'‚chantillon est re‡ue (toutes les 20 microsecondes).
+L'‚chantillon Droit est disponible dans le mot x:$0000 alors que le
+Gauche l'est en x:$0001. Les modules devront modifier ces valeurs en
+fonction des effets recherch‚s et les stocker pour reproduction aux
+mˆme places. Cette partie se termine par un RTS.
+
+* La deuxiŠme partie est l'INITIALISATION. Elle est appel‚e chaque
+fois que le bouton correspondant est cliqu‚ (aussi bien pour
+l'activer que le d‚sactiver).
+Pour savoir si ce code est appel‚ pour ˆtre ‚teint ou allum‚, un bit
+du mot y:$0000 est ainsi r‚serv‚:
+    bit 4 : 1 -> Module #1 est ON d'abord OFF ensuite.
+    bit 5 : 1 -> Idem pour module #2.
+    bit 6 : 1 -> Idem pour module #3.
+
+Aussi toutes les parties d'initialisation devraient ressembler …
+celle donn‚e ci-dessous:
+ 
+init
+    jset    #X,y:$0000,end
+; CODE DE DEMARRAGE ICI
+    bset    #X,y:$0000
+    rts
+end
+; CODE DE FIN ICI
+    bclr    #X,y:$0000
+    rts
+
+* La troisiŠme partie est celle dite de l'ACTION. Elle est appel‚e
+chaque fois que l'utilisateur modifie la position du slider d'effet.
+La valeur envoy‚e par AFM est comprise entre 0 et 1000. Elle est
+contenue dans la partie basse du mot y:$0001.
+Cette partie "Action" doit se terminer par une mise … z‚ro du mot
+y:$0000 suivie d'un RTS.
+
+
+L'ESPACE MEMOIRE RESTREINT NOUS A OBLIGE A RESERVER UNE ZONE
+SPECIFIQUE POUR CHAQUE MODULE DANS LA MEMOIRE DSP.
+La carte m‚moire ci-dessous illustre les zones r‚serv‚es … chaque
+module:
+
+    MODULE #    PARTIE TPS REEL   PARTIE INIT      PARTIE ACTION
+    --------    ---------------   --------------   --------------
+       1        p:$e0 -> $13f     p:$370 -> $38f   p:$390 -> $39f
+       2        p:$140 -> $19f    p:$3a0 -> $3bf   p:$3c0 -> $3cf
+       3        p:$1a0 -> $1ff    p:$3d0 -> $3ef   p:$3f0 -> $3ff
+
+L'abscence de mode d'adressage relatif explique la n‚cessit‚ d'avoir
+trois types de module. Chaque partie du code doit ˆtre s‚par‚e par une
+instruction "dc.w $408000".
+
+Pour un module de type 1, le code ressemble donc …:
+
+    org p:$00e0
+; Code partie temps r‚el
+    rts
+    dc.w    $408000
+    
+    org p:$0370
+; Code de la partie d'initialisation
+    rts
+    dc.w    $408000
+    
+    org p:$0390
+; Code de la partie ACTION
+    rts
+    dc.w    $408000
+
+De la m‚moire est disponible aux modules … l'int‚rieur du DSP.
+Ces zones vont de l:$0011 … l:$001f pour un stockage permanent
+et de l:$0004 … l:$0007 pour un stockage temporaire durant
+l'ex‚cution d'un module.
+Le reste de la m‚moire est r‚serv‚e … AFM. La m‚moire au dessus
+de x:$0400 et y:$0400 est ‚galement disponible pour les effets ou
+stockage de variables mais des incompatibilit‚s peuvent apparaŒtre
+avec les effets internes d'AFM.
+Les modules peuvent utiliser tous les registres ALU et les registres
+R2, R3, R6. Les autres devront ˆtre sauv‚s puis restaur‚s si leur
+utilisation s'impose. R7 est aussi utilisable dans les parties
+d'initialisation et d'action.
+
+Maintenant c'est … vous de jouer...
+
+Have Fun...
+
+February 23th, 1993.
+V. B. Habchi (Email : elendir@enst.fr) & Loic Duval (CIS:100015,3044)
+
+
