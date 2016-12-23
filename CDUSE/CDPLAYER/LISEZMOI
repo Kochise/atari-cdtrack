@@ -1,0 +1,60 @@
+CD-Player v1.3f                                                  02/1996
+========================================================================
+Un player de CD audio pour ATARI ST/STE/TT/Falcon
+
+Auteur:
+-------
+Alexander Clauss 
+Stresemannstr. 44
+D-64297 Darmstadt
+Germany
+          
+Email: aclauss@rbg.informatik.th-darmstadt.de
+
+
+CD-Player est FREEWARE. Il peut àtre copiÇ et utilisÇ librement.
+Sa distribution par le biais de BBSs et PD librairies est interdite.
+NÇanmoins, CD-Player NE doit en AUCUNES circonstances inclus dans le
+contenu d'un CD-ROM ou en couverture de magazine sans ma permission
+Çcrite. CD-Player et sa documentation  doivent toujours rester
+ensemble et complets avec tous les fichiers et la documentation.
+Toute modification du programme et de sa documentation est strictement
+interdite.
+
+Si quelqu'un est intÇressÇ par la traduction de la documentation et/ou
+le fichier RSC, contactez moi.
+
+
+CD-Player comprend les fichiers suivants:
+-----------------------------------------
+CDP.APP              Le Programme
+CDP.RSC              Fichier RSC (en Allemand)
+CDP.DAT              Base de données (Exemple)
+CDP.TXT              Documentation (en Allemand)
+LIESMICH             Ce texte en Allemand
+README               Ce texte en Anglais
+LEEME                Ce texte en Espagnol (Merci à Antonio Lillo)
+LISEZMOI             Ce texte en Franáais (Fait par Brahim HamadiCharef)
+RESOURCE/
+    CDP_D.RSC        Fichier RSC en Allemand
+    CDP_E.RSC        Fichier RSC en Anglais
+    CDP_FR.RSC       Fichier RSC en Franáais (prochainement)
+    CDP_SP.RSC       Fichier RSC en Espagnol (Merci à Antonio Lillo)
+    CDP_ICON.RSC     Icone en couleur (par Martin Rothaemel)
+
+La langue des menus, boites de dialogues et autres messages dans CD-player
+peut àtre changÇe en remplaçant le fichier CDP.RSC par un des fichiers .RSC
+dans le rÇpertoire RESOURCE. Copiez le fichier RSC dÇsirÇ dans le màme
+rÇpertoire que CDP.APP et renommez le CDP.RSC (effacez ou renommez le
+fichier RSC existant).
+
+S'il y a plusieurs unitÇs MetaDOS, vous pouvez sÇlectionner le CD-ROM en
+renommant CDP.APP par CDP_x.APP (ou x est la lettre du l'unitÇ du CD-ROM
+qui est utilisÇe par le bureau)
+
+Configuration minimale:
+-----------------------
+* Atari ST/STE/TT/Falcon
+* Lecteur CD-ROM (doit supporter les commandes audio)
+* Driver CD-ROM pour MetaDOS (doit supporter les commandes audio)
+-----------------------------------------------------------------

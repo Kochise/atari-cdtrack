@@ -1,0 +1,135 @@
+Achtung: nderungen in den untenstehenden Abs„tzen sind mit den aktuellen 
+Versionsnummer gekennzeichnet (damit man schneller die `Neuigkeiten' 
+finden kann). Zum Beispiel so: [1.24]
+
+šBERSICHT šBER GETESTETE GERTE
+
+    Im folgenden eine kurze šbersicht ber die CD-ROM-Laufwerke, mit denen 
+    wir bereits Erfahrungen sammeln konnten. Beachten Sie, da dies 
+    wirklich nur Einzelerfahrungen sind; Kabel, Interfaces, andere 
+    Firmware-Versionen und „hnliche Nebenbedingungen k”nnen natrlich zu 
+    anderen Erfahrungen fhren! Fr den Anschlu an TT- oder Falcon-SCSI 
+    steht nichts gesondert dabei, weil es dabei grunds„tzlich keine 
+    Probleme gibt. [1.08]
+
+    Achtung! Mehrere Kunden berichten, da es mit ddd-Hostadaptern zu 
+    Problemen bei der Audio-Steuerung kommt. Ein m”glicher Grund dafr 
+    w„re, da sich diese Adapter bei einer bestimmten Befehlsart anders 
+    als alle anderen verhalten. Dagegen k”nnen wir leider nichts machen    
+    [1.24].
+
+    Apple CD150 (Sony CDU-8002)
+
+        ACSI: geht, allerdings keine Audio-Kommandos ber ACSI (auer mit 
+        ICD-Hostadaptern). Gezielter Audio-Play zu einem Index ungleich 1 
+        sowie Lautst„rkeeinstellung ist nicht m”glich [1.12]
+
+    Apple CD150 (Sony CDU-541)
+
+        ACSI: geht. Sporadische Lesefehler (0x11), scheint bei XA-Disks 
+        seltener aufzutreten. Gezielter Audio-Play zu einem Index ungleich 
+        1 funktioniert nicht. Es scheint, da diese Firmware nicht mit dem 
+        Ger„t harmoniert, daher sollte besser die Originalfirmware benutzt 
+        werden. [1.12]
+
+    Apple CD300 (Sony CDU-8003A)
+
+        ACSI: geht. Multisession: ja, Audio-Kommandos: ja, vermutlich mit 
+        der gleichen Einschr„nkung wie bei CDU-541. [1.04]
+
+    Apple PowerCD (Philips CDF080)
+
+        Einen mit diesem CD-ROM funktionierenden ACSI-Hostadapter haben 
+        wir bislang nicht gefunden. Multisession: ja. Audio-Kommandos: 
+        hakelig, scheint am Laufwerk zu liegen. Ansteuern von Tracks mit 
+        Index ungleich 1 fhren zu Timeout.
+
+        Achtung: dieses CD-ROM beginnt nach dem Einlegen von Audio-CDs 
+        automatisch mit Audio-Play, schaltet aber offenbar den Ton ab. 
+        Abhilfe: einmal 'Skip rckw„rts' anklicken. [1.04]
+
+        Noch eine Merkwrdigkeit: sobald das Laufwerk Aktivit„t am 
+        SCSI-Bus erkannt hat, k”nnen die eigenen Bedienelemente fr die 
+        Audiosteuerung nicht mehr benutzt werden. Umgekehrt funktioniert 
+        die Kommunikation mit dem Computer nicht mehr richtig, wenn man 
+        einmal eine der Tasten bet„tigt hat. Man mu sich also 
+        entscheiden, wie man das Ger„t steuern will... [1.26]
+
+    Atari CDAR504
+
+        Dieses Ger„t gibt es nur mit ACSI-Schnittstelle. Audio-Kommandos 
+        funktionieren eingeschr„nkt (bis auf `Eject', `Pause', 
+        Lautst„rkewahl und Direktwahl eines Index ungleich 1), Datenspuren 
+        werden von `CDDA' nicht erkannt. Bei XA-CDs (Photo-CD) kann nur 
+        die erste Session gelesen werden. [1.16]
+
+	Hitachi CDR-3750
+
+		Bei ACSI-Betrieb keine Audio-Kommandos, wenn nicht ein 
+		ICD-kompatibler Hostadapter eingesetzt wird! [2.04]
+
+    Media Vision CDR-H93MV
+
+        Meldet sich als `SCSI-5'-Ger„t (!!), reagiert aber auf triviale 
+        SCSI-1-Kommandos mit einem Timeout. Kann nicht empfohlen werden.
+
+	Mitsumi FX300
+
+		Erfolgreich getestet an einem Atari 260 ST mit IDE-Karte von Hard 
+		& Soft.
+
+    NEC Multispin 2x (NEC CD-ROM DRIVE:211)
+    NEC Multispin 3x (NEC CD-ROM DRIVE:500)
+
+        ACSI: verschieden (es lief: GE-Link, es lief nicht: ICD-Link). 
+        Multisession: ja, aber unter Umst„nden mit sehr langsamer 
+        Erkennung. Audio-Kommandos: ja, aber mit der Einschr„nkung, da 
+        gezielter Audio-Play zu einem Index ungleich 1 nicht geht (an ACSI 
+        bislang gar nicht). Beim 3x hatten wir auerdem das Problem, da 
+        die Lautst„rkeregelung nicht richtig funktionierte.
+
+        Achtung: das uns vorliegende Ger„t vom Typ 2x hatte eine ganze 
+        Reihe dicker Fehler in der Firmware. Auch wenn CD-Tool damit nun 
+        halbwegs klarkommt, kann ich nur vom Kauf abraten!!! [2.06]
+
+    Sony CD-541
+
+        ACSI: geht. Audio-Kommandos: ja, aber vermutlich mit der 
+        Einschr„nkung, da gezielter Audio-Play zu einem Index ungleich 1 
+        nicht geht und die Lautst„rke nicht verstellt werden kann. [1.14]
+
+    Toshiba XM3301, XM3401, XM3501, XM4101, XM5201
+
+        Die meisten ACSI-Hostadapter haben Probleme, mit dem `GE-Link' und 
+        dem SCSI-II-Link von Hard&Soft haben wir gute Erfahrungen gemacht. 
+        Multisession: ja. Audio-Kommandos: ja. [2.04]
+
+	Vertos 300
+
+		Dieses Ger„t gengt *nicht* dem ATAPI-IDE-Standard und wird nur 
+		teilweise untersttzt (alles, was mit Audio-Kommandos 
+		zusammenh„ngt, funktioniert zur Zeit nicht). [2.04]
+
+
+CD-ROM-LAUFWERKE AUS DEM DOS-BEREICH [1.22]
+
+    Oft werden wir gefragt, welche `billigen' CD-ROM-Laufwerke aus dem 
+    DOS-Bereich benutzt werden k”nnen. Also: es gibt drei Gattungen von 
+    Laufwerken:
+
+    SCSI-Laufwerke: SCSI-Ger„te k”nnen an Falcon und TT direkt, an andere 
+    Ataris per ACSI-Hostadapter angeschlossen werden. Aber das wissen Sie 
+    ja schon lange...
+
+    IDE-Laufwerke: CD-ROMs mit IDE-Schnittstelle kommen erst jetzt langsam 
+    auf den Markt (der Standard wurde erst im Sommer '94 verabschiedet). 
+    Diese Ger„te nach dem sogenannten ATAPI-Standard werden 
+    von CD-Tool nun untersttzt.
+
+    Laufwerke mit herstellerspezifischer Schnittstelle: diese Laufwerke 
+    werden am PC entweder mit einer eigenen Controllerkarte oder am 
+    Anschlu einer Soundkarte betrieben. Fr den Betrieb an Ataris hat 
+    Hard&Soft keine L”sung im Programm. Achtung: alle Mitsumi-Laufwerke 
+    bis auf die ganz neuen Ger„te mit IDE-Interface geh”ren zu dieser 
+    Gruppe.
+

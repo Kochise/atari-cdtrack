@@ -1,0 +1,628 @@
+Žnderungen gegenber Version 1.00 von `CD-Tool'
+
+    Žnderungen in den untenstehenden Abs„tzen sind mit den aktuellen 
+    Versionsnummer gekennzeichnet (damit man schneller die `Neuigkeiten' 
+    finden kann). Zum Beispiel so: [1.18]
+
+    Version 1.18 (7. Juni 1994)
+
+        HS-ISO.DOS: `Fdatime()' funktioniert wieder (fhrte zu 
+        Fehlermeldungen beim Kopieren).
+
+    Version 1.16 (1. Juni 1994)
+
+        Der neue Menpunkt `Geschwindigkeit' verbirgt einen einfachen 
+        CD-ROM-Benchmark.
+
+        Eine per Doppelklick auf Songdatei ausgel”ste Audio-Wiedergabe 
+        wird nicht mehr unterbrochen, wenn das Verzeichnis neu eingelesen 
+        werden muž (zB beim Desktop-Redraw).
+
+        Abstrze mit Standard-Dateiauswahl-Box behoben.
+
+    Version 1.14 (19. Mai 1994)
+
+        Erkennung von Daten-CDs funktioniert wieder besser.
+
+        Multisession-Erkennung bei Nicht-Toshiba-Laufwerken funktioniert 
+        wieder.
+
+    Version 1.12 (24. April 1994)
+
+        Die Funktionalit„t von `HS-CDAR.BOS' ist in `HS-CDROM.BOS' mit 
+        aufgenommen worden.
+
+        Das Apple CD150 wird gesondert untersttzt (Audio-Kommandos).
+
+        ICD-Hostadapter werden besonders untersttzt; mit ihnen k”nnen 
+        Audio-Kommandos bei allen handelsblichen Ger„ten benutzt werden 
+        (und nicht nur den `meisten').
+
+        Der Dateisystemtreiber (`HS-ISO.DOS') zeigt nun bei Audio-CDs die 
+        einzelnen Spuren als Dateinamen (`TRACKXY.PRG') an. Dies dient 
+        nicht nur der besseren šbersicht: die Dateien k”nnen auch direkt 
+        als Programme ausgefhrt werden (und sorgen dann dafr, daž die CD 
+        beginnend bei dem angegebenen Lied abgespielt wird).
+
+    Version 1.10 (29. M„rz 1994)
+
+        HS-CDAR.BOS, HS-CDROM.BOS: noch einen Fehler in den ACSI-Routinen 
+        beseitigt (trat ebenfalls bei langen Transfers auf).
+
+        HS-ISO.DOS: bei Fseek() wurde unter Umst„nden die falsche 
+        Dateiposition zurckgeliefert.
+
+    Version 1.08 (27. M„rz 1994)
+
+        HS-ISO.DOS: Die GEMDOS-Funktion `Fdatime()' liefert jetzt die 
+        richtigen Werte. `Dsetpath()' macht nun einen Existenzcheck (im 
+        Gegensatz zum Atari-Treiber).
+
+        HS-CDAR.BOS: Kann auch Photo-CDs lesen (mit eingeschr„nkter 
+        Fehlerkorrektur).
+
+        HS-CDROM.BOS: Setzen der Lautst„rke bei Ger„ten an ACSI l„uft 
+        besser. Fehler bei Transfers von mehr als rd. 512KByte auf einmal 
+        beseitigt.
+
+    Version 1.06 (20. M„rz 1994)
+
+        CDDA: Titel k”nnen direkt per Tastatur angew„hlt werden. 
+        Datentracks werden als solche angezeigt. Die Lautst„rke kann 
+        eingestellt werden (aužer bei CDAR504). Achtung: die 
+        `Aufnahme'-Taste hat noch keine Funktion.
+
+        neu: HS-CDAR.BOS (spezieller Treiber fr Atari CDAR504), 
+        HS-ISO.DOS (ersetzt die entsprechenden Treiber von Atari).
+
+        An manchen STs gab es Abstrze bei ACSI-Zugriffen, das sollte 
+        behoben sein.
+
+    Version 1.04 (12. M„rz 1994)
+
+        CDDA: kein Absturz mehr beim Žndern des Time-Modus, `Cue' geht 
+        auch dann, wenn Time-Modus `TOTAL' gew„hlt ist. Erweiterungen an 
+        der Tastaturbedienung (siehe unten).
+
+        Problem mit Toshiba XM4101 an Falcon-SCSI beseitigt.
+
+    Version 1.02 (10. M„rz 1994)
+
+        Medienwechsel-Erkennung verbessert.
+
+        `Installieren' h„ngt nicht mehr, wenn der gesuchte AUTO-Ordner 
+        noch nicht da ist.
+
+        `CDDA.ACC' meldet sich nicht mehr ein weiteres Mal an, wenn man 
+        ein anderes Ger„t ausw„hlt.
+
+        Audio-Play mit CD150 mit Firmware CDU-541 funktioniert besser.
+
+        Kleine Erweiterung in der Tastatur-Bedienung von `CDDA'. 
+
+------------------------------------------------------------------------
+
+VORLŽUFIGE DOKUMENTATION ZU CD-TOOL UND CDDA
+
+    Herzlich Willkommen bei unserem neuen Produkt `CD-Tool'. Wir wissen: 
+    niemand liest gerne Dokumentation. Dennoch m”chten wir Ihnen 
+    empfehlen, wenigstens einen Teil der folgenden Beschreibung zu lesen, 
+    um sich Irrtmer und Mižverst„ndnisse zu ersparen.
+
+    Fr die ganz Eiligen:
+
+
+SCHNELLINSTALLATION FšR DIEJENIGEN, DIE ES GANZ EILIG HABEN
+
+    (1) Starten Sie `CD-TOOL.APP'. Klicken Sie im Men `MetaDOS' den Punkt 
+    `Installation' an. W„hlen Sie in der Dialogbox fr 
+    `ISO9660-Dateisystem' einen im System bislang nicht benutzten 
+    Laufwerksbuchstaben (siehe Anzeige oben). Drcken Sie RETURN, um die 
+    Konfiguration zu sichern.
+
+    (2) Starten Sie das System neu. Legen Sie eine Daten-CD ein und ”ffnen 
+    sie das in Schritt (1) angegebene Laufwerk. Es sollten nun die Daten 
+    auf der CD angezeigt werden.
+
+    (3) Sie wollen eine Audio-CD abspielen? Dann starten Sie `CDDA.APP' 
+    oder kopieren Sie `CDDA.ACC' in das Wurzelverzeichnis des 
+    Bootlaufwerks. Die angezeigten Tasten funktionieren in etwa so, wie 
+    man es von einem CD-Player erwartet.
+
+    (4) Irgendetwas funktioniert nicht wie erwartet? Pech, dann mssen Sie 
+    nun wohl doch den Rest der Dokumentation lesen.
+
+
+    Sie haben es bis hierhin geschafft? Sch”n. Dann wollen wir auf ein 
+    paar Grundlagen eingehen, die zum Verst„ndnis der Angelegenheit sehr 
+    wichtig sind.
+
+
+WARUM BRAUCHT MAN EIGENTLICH EINEN SPEZIELLEN TREIBER FšR CD-ROMS?
+
+    Das fragen sich viele, und nicht ganz zu unrecht. Schliežlich ist ein 
+    CD-ROM aus der Sicht des Rechners ja auch nichts anderes als eine 
+    grože Wechselplatte, die nicht beschrieben werden kann. Dies stimmt, 
+    und tats„chlich sind die Programmteile, die sich mit dem CD-ROM 
+    `unterhalten', (fast) mit denen aus einem Festplattentreiber identisch 
+    (von der Blockgr”že und einigen Spezialit„ten wie Audio-Kommandos 
+    abgesehen).
+
+    Die Unterschiede liegen auf einem anderen Gebiet: w„hrend auf 
+    Festplattem die Dateien in der Art und Weise gespeichert sind, wie sie 
+    das GEMDOS im ROM des Ataris erwartet, wird auf CDs ein anderes 
+    `Dateisystem' benutzt. Dies nicht unbedingt, um uns das Leben schwerer 
+    zu machen, sondern weil bei sehr grožen Datenmengen, die allerdings 
+    niemals ver„ndert werden, andere Formate einfach effektiver sind.
+
+    Daten-CDs -- dazu geh”ren auch Photo-CDs -- enthalten also im 
+    Allgemeinen ein sogenanntes `ISO-9660-Dateisystem'. Dies muž man 
+    irgendwie dem Betriebssystem unterschieben.
+
+    Atari hat sich schon ziemlich frh damit befažt. Herausgekommen ist 
+    die Betriebssystemerweiterung `MetaDOS', die auf allen Ataris l„uft 
+    und eine relativ flexible Anbindung neuer Ger„te und Dateisysteme 
+    m”glich macht. Neueren Ursprungs ist natrlich `MultiTOS' bzw. `MiNT', 
+    das eine v”llig andere Methode zur Einbindung neuer Ger„te vorsieht.
+
+    `MetaDOS' besteht aus drei Teilen. `METADOS.PRG' ist ein 
+    AUTO-Ordner-Programm, das den Eingriff ins Betriebssystem vornimmt, 
+    sich um das Einlesen der Konfigurationsdatei kmmert etc. 
+    `BOS'-Treiber kmmern sich um die Kommunikation mit den Ger„ten, 
+    entsprechen also in etwa dem, was ein Festplattentreiber macht. Die 
+    `DOS'-Treiber hingegen kmmern sich um andere Dateisystemformate.
+
+    Bevor wir uns nun diese Bestandteile n„her ansehen, mssen wir leider 
+    erst einmal ein paar Fachbegriffe aus der CD-ROM-Welt verstehen (ich 
+    verspreche, es kurz und schmerzlos zu machen):
+
+    DOUBLE-SPEED: normalerweise dreht sich die CD im Laufwerk genauso 
+    schnell, wie es auch bei Audio-Ger„ten der Fall ist. Dabei kommen bei 
+    Daten-CDs rund 150 KByte pro Sekunde an nutzbaren Daten heraus, was 
+    fr viele Anwendungen ein wenig mager ist. Daher sind Laufwerke, die 
+    Daten-CDs doppelt so schnell rotieren lassen, mittlerweile Standard. 
+    Manche Hersteller bieten sogar Ger„te mit drei- oder vierfacher 
+    šbertragungsrate an. Man beachte allerdings, daž sich die mittlere 
+    Zugriffszeit meist nicht in demselben Maže verbessert!
+
+    XA: CDs im XA-Format benutzen ein spezielles Aufzeichnungsformat, das 
+    von „lteren CD-ROMs oft nicht gelesen werden kann. Photo-CDs sind 
+    normalerweise im XA-Format beschrieben! [1.10]
+
+    MIXED-MODE-CD: eine CD, die sowohl Daten als auch Musikstcke enth„lt. 
+    [1.10].
+
+    MULTISESSION: neuerdings gibt es auch CDs, die in mehreren `Sitzungen' 
+    vollgeschrieben werden k”nnen. Dabei werden zwar nie die bereits 
+    vorhandenen Daten berschrieben, aber es kommen neue hinzu. Dies ist 
+    beispielsweise dann der Fall, wenn Sie mit einer Photo-CD ein zweites 
+    Mal zum Fotoh„ndler gehen und weitere Bilder draufschreiben lassen. 
+    Wenn diese weitere `Session' gelesen k”nnen werden soll, dann brauchen 
+    Sie ein `Multisession-f„higes' Laufwerk.
+
+    ISO9660: dies ist der Name des normalerweise auf CD-ROMs benutzten 
+    Dateisystems. Wie der Name schon sagt, handelt es sich nicht um 
+    irgendeinen `de-facto'-Standard, sondern um eine internationale Norm. 
+    ISO9660 k”nnen brigens entweder (`Level 1') die blichen 
+    DOS-Dateinamen (8+3 Zeichen) oder bis zu 32 Zeichen lange Dateinamen 
+    enthalten (`Level 2', diese kommt allerdings nur sehr selten vor). Auf 
+    jeden Fall ist aber die maximale Verzeichnistiefe auf 8 Ordner 
+    beschr„nkt. [1.06]
+
+    HIGH-SIERRA: bevor das ISO9660-Format festgelegt wurde, gab es bereits 
+    ein leider nicht ganz kompatibles Vorg„ngerformat. Eigentlich sollte 
+    es kaum noch solche CDs geben, aber aus unerfindlichen Grnden werden 
+    auch heute noch manchmal solche CDs produziert.
+
+    PHOTO-CD bzw. PCD: Bilder auf Photo-CDs benutzen ein spezielles 
+    Dateiformat, das leider nur von wenigen Programmen gelesen werden 
+    kann. Allerdings finden Sie im Lieferumfang eine Kopie von Dieter 
+    Fiebelkorns `GEM-View', das PCD-Dateien bis zur Aufl”sung von 768*512 
+    laden und in andere Formate konvertieren kann. Denken Sie aber daran, 
+    daž Sie das Programm bei regelm„žiger Benutzung bezahlen mssen 
+    (Registrierkarte liegt bei!). Photo-CDs benutzen brigens das 
+    ISO-Dateisystem. [1.10]
+
+    PHOTO-CD PORTFOLIO: eine Photo-CD, die zus„tzlich auch eine oder 
+    mehrere Tonspuren enth„lt. [1.06]
+
+
+    Welche Teile von `MetaDOS' sind nun brauchbar?
+
+    Der `BOS'-Treiber (`CDARGEN.BOS') funktioniert nur mit CD-ROMs am 
+    SCSI-Port des TT sowie mit dem `Atari CDAR 504' (nur in geringen 
+    Stckzahlen verkauft) an der ACSI-Schnittstelle. Zudem untersttzt er 
+    keine Multisession-CDs. Daher haben wir einen neuen Treiber 
+    entwickelt, der handelsbliche SCSI-Ger„te sowie das `Atari CDAR504' 
+    untersttzt. [1.12]
+
+    Die `DOS'-Treiber (`ISO9660F.DOS' und `HSMAY.DOS') haben zwar ein paar 
+    kleinere `Macken' (siehe weiter unten), erfllen aber ihre Aufgabe 
+    weitestgehend zufriedenstellend. Dennoch haben wir sie durch einen 
+    eigenen, neuen Treiber ersetzt (`HS-ISO.DOS'), der nicht nur ein wenig 
+    schneller ist, sondern automatisch zwischen High-Sierra- und ISO-CDs 
+    unterscheidet und zudem etwas nachsichtiger gegenber solchen CDs ist, 
+    bei denen die Hersteller vom ISO-Standard abgewichen sind. 
+    Darberhinaus werden auch die Level-2-CDs mit langen Dateinamen 
+    untersttzt. [1.12]
+
+    `MetaDOS' selbst funktioniert unseres Wissens mittlerweile sehr 
+    stabil. Der Betrieb unter `MultiTOS' oder `MagiC' (vormals `Mag!x') 
+    ist prinzipiell m”glich, kann aber in Einzelf„llen zu Fehlfunktionen 
+    fhren. Grund: `MetaDOS' ist nicht auf das `Task-Switching' dieser 
+    Systeme vorbereitet. Wenn Sie `MetaDOS' unter `MultiTOS' bzw. `MiNT' 
+    einsetzen wollen, dann achten Sie darauf, daž die Datei `MINT.PRG' 
+    bzw. `MINTNP.PRG' vor `METADOS.PRG' im AUTO-Ordner steht.
+
+    Die vorliegende Version von `CD-Tool' befažt sich daher in erster 
+    Linie mit den Teilen, wo unserer Meinung nach besonderer 
+    Handlungsbedarf vorlag:
+
+    `CD-TOOL.APP': ein komfortables Installations- und Diagnoseprogramm 
+    (`MetaDOS' wird normalerweise ber eine etwas schwer verst„ndliche 
+    ASCII-Datei konfiguriert; diese Arbeit nimmt Ihnen `CD-Tool' ab).
+
+    `HS-CDROM.BOS': ein Treiber fr CD-ROMs an ACSI-, TT-SCSI oder 
+    Falcon-SCSI, der auch Multisession-CDs untersttzt.
+
+    `HS-ISO.DOS': Treiber fr ISO- und High-Sierra-CDs. [1.06]
+
+    `CDDA.APP' bzw. `CDDA.ACC': ein kleines Programm bzw. Accessory, um 
+    Audio-CDs abzuspielen.
+
+    `ID-TEST.APP': ein einfaches Testprogramm, das fr alle ACSI- und 
+    SCSI-Ger„te den Ger„tenamen anzeigt. Kann hilfreich sein, um auf die 
+    Schnelle festzustellen, ob ein Ger„t berhaupt korrekt angeschlossen 
+    ist.
+
+    `STOPLOCK.CPX': ein XControl-Modul zum Blockieren des Auswurftaste. 
+    Muž in das Verzeichnis mit den anderen CPX-Modulen kopiert werden.
+
+    Falls Sie sich wundern, wo denn nun die ganzen anderen beschriebenen 
+    Dateien (`HS-CDROM.BOS', `HS-ISO.DOS' und `METADOS.PRG') stecken: wir 
+    haben sie in der Archivdatei `CD-TOOL.LIB' versteckt, damit Sie nicht 
+    mit so vielen Dateien herumhantieren mssen. [1.12]
+
+    Damit haben Sie die Einleitung berstanden, kommen wir zur 
+    Beschreibung von `CD-Tool':
+
+
+
+CD-TOOL
+
+    Bei der Bedienung von `CD-Tool' sind diejenigen klar im Vorteil, die 
+    bereits ihre Erfahrungen mit `SCSI-Tool' gemacht haben. Wer sich 
+    angesprochen fhlt, kann vermutlich problemlos gleich beim Menpunkt 
+    `MetaDOS' weiterlesen.
+
+    `CD-Tool' sucht gleich zu Beginn nach CD-ROMs. Dabei werden alle 
+    angeschlossenen Ger„te untersucht. ACHTUNG: wenn Sie eine 
+    Vortex-Festplatte der Baureihe `HD-PLUS' benutzen, dann muž diese 
+    entweder ausgeschaltet sein, oder `CD-Tool' muž so konfiguriert sein, 
+    daž es nicht auf die entsprechende Ger„tenummer zugreift.
+
+    Wie das geht: entweder w„hrend des Programmstarts eine der 
+    Shift-Tasten festhalten oder das Programm mit der Option `-i' starten. 
+    Es erscheint dann eine Dialogbox, in der die abzuprfenden 
+    Ger„tenummern eingestellt werden k”nnen.
+
+    Nach erfolgreichem Programmstart erscheinen die Menleiste sowie ein 
+    Programmfenster. Alle Funktionen im `CD-ROM'-Men beziehen sich im 
+    Normalfall auf die hier angezeigte Platte. Wenn nur ein CD-ROM 
+    gefunden wurde, zeigt das Fenster gleich die zugeh”rigen 
+    Informationen. Anderenfalls kann man das Ger„te ber `CD-ROM -- 
+    ausw„hlen' selektieren. Durch Drcken von ESC kann man veranlassen, 
+    daž die Informationen aktualisiert werden. Durch Maus-Doppelklick wird 
+    erneut nach CD-ROMs gesucht.
+
+    Wenn Sie `MultiTOS' benutzen, k”nnen Sie auch einfach ein zu dem Ger„t 
+    geh”riges Laufwerkssymbol auf das Fenster ziehen. `CD-Tool' versucht 
+    dann, das zugeh”rige Ger„t zu ermitteln und zeigt im Erfolgsfall die 
+    zugeh”rigen Daten im Fenster an.
+
+    Fehlt noch die Angabe, was denn im Fenster angezeigt wird. Neben 
+    Ger„tenummer, -name und Version der Firmware zeigt `CD-Tool' auch an, 
+    in wieweit das betreffende Ger„te Photo-CD-tauglich ist, und ob man 
+    erwarten darf, daž Audio-Kommandos (zum Abspielen von Audio-CDs) 
+    untersttzt werden.
+
+
+    Kommen wir zu den einzelnen Drop-Down-Mens:
+
+
+    Men: `Datei'
+
+    Neben dem unerl„žlichen `Beenden' gibt es hier noch die Menpunkte zum 
+    Sichern und Drucken von `Reportdateien', zum Sichern der Einstellungen 
+    sowie zum Speichern einer `Ger„teinformationsdatei'. Kurze 
+    Begriffserkl„rung: in einer `Reportdatei' werden wichtige 
+    Informationen ber die aktuelle Systemkonfiguration gespeichert. Wenn 
+    einmal etwas nicht richtig funktioniert, dann senden Sie uns bitte 
+    immer diese Datei mit.
+
+    Eine `Ger„teinformationsdatei' wiederum enth„lt Daten ber ein 
+    spezielles Ger„t. Auch diese Datei kann uns bei der Fehlerdiagnose 
+    sehr behilflich sein. Beachten Sie, daž Sie diese Datei auch dann 
+    erzeugen k”nnen, wenn `CD-Tool' das entsprechende Ger„t aus 
+    ungekl„rten Grnden nicht als CD-ROM akzeptiert hat.
+
+    Beim Sichern der Einstellungen merkt sich `CD-Tool', auf welche Ger„te 
+    zugegriffen werden soll (siehe `Ger„teliste').
+
+
+    Men: `CD-ROM'
+
+    `ausw„hlen' ist nur dann interessant, wenn tats„chlich mehrere CD-ROMs 
+    gefunden wurden. In diesem Fall kann man ber diesen Menpunkt das im 
+    Fenster anzuzeigende Ger„t ausgew„hlt werden.
+
+    `Ger„teliste' ruft einen Dialog auf, ber den man `CD-Tool' mitteilen 
+    kann, welche Ger„tenummern beim Programmstart untersucht werden 
+    sollen. Die hier gemachte Einstellung wird durch `Datei -- 
+    Einstellungen sichern' in einer Konfigurationsdatei festgehalten.
+
+    `Status anzeigen' zeigt den aktuellen Ger„testatus an. Dies kann 
+    notwendig sein, um gewissen Fehlern (wie zum Beispiel dem 
+    Nicht-Erkennen eines Medienwechsels) auf den Spur zu kommen.
+
+
+    Men: `MetaDOS'
+
+    Dieses Men befažt sich mit der Installation und Konfiguration von 
+    `MetaDOS'. Bevor wir zu den Details kommen, muž aber noch auf einen 
+    wichtigen Unterschied zu Festplatten hingewiesen werden:
+
+    Festplattentreiber verhalten sich auf dem Atari ziemlich intelligent: 
+    Ger„te mssen nicht speziell angemeldet werden und werden je nach 
+    Treiberversion mehr oder minder automatisch erkannt. Dabei werden die 
+    Laufwerkskennungen in der Regel automatisch verteilt.
+
+    `MetaDOS' geht allerdings anders vor: die Konfiguration wird in einer 
+    ASCII-Datei gespeichert. Mit dem Aufbau dieser Datei brauchen Sie sich 
+    nicht zu befassen, da sich darum bereits `CD-Tool' kmmert. Wichtig 
+    ist aber, daž nur die in dieser Konfigurationsdatei angegebenen Ger„te 
+    gefunden und die entsprechend zugeordneten Laufwerksbuchstaben benutzt 
+    werden.
+
+    `installieren' kopiert alle zu MetaDOS geh”rigen Dateien in den 
+    AUTO-Ordner. Anschliežend geht's direkt weiter zum `konfigurieren'.
+
+    `konfigurieren' ruft einen Dialog auf, in dem jedem der gefundenen 
+    CD-ROMs Laufwerkskennungen zugeordnet werden. Als Hilfestellung werden 
+    oben die bereits belegten Laufwerkskennungen angezeigt: schwarze 
+    stehen fr gefundene `normale' Laufwerke, graue fr solche, die 
+    bereits von `MetaDOS' bedient werden. Bedenken Sie, daž sich die 
+    Anzahl der vom Festplattentreiber benutzten Laufwerkskennungen leicht 
+    „ndern kann (zum Beispiel durch Anschluž einer Wechselplatte).
+
+    Achtung: Laufwerkskennungen jenseits von `P' stellen viele Programme 
+    vor Schwierigkeiten; unter anderem die GEM-Dateiauswahlbox. Denken Sie 
+    auch daran, daž Laufwerk `U:' unter MultiTOS bzw MiNT schon eine 
+    spezielle Bedeutung hat.
+
+    Und schliežlich: das Žndern von ASCII-Konfigurationsdateien ist immer 
+    etwas kritisch. `CD-Tool' tut sein Bestes, um alle Informationen, die 
+    mit anderen Treibern oder Ger„ten zu tun haben k”nnten, unver„ndert zu 
+    lassen. Zus„tzlich wird eine Kopie der ursprnglichen Datei als 
+    `CONFIG.BAK' gesichert.
+
+    `entfernen' desaktiviert `MetaDOS'. Dabei wird lediglich die 
+    Programmdatei so umbenannt, daž sie beim Abarbeiten des AUTO-Ordners 
+    nicht mehr aufgerufen wird.
+
+    `Geschwindigkeit' fhrt zu einem Benchmark. W„hlen Sie zun„chst das zu 
+    testende Ger„t aus. Anschliežend werden die Transferrate (es wird 
+    gemessen, wieviele Daten das Laufwerk innerhalb von 20 Sekunden lesen 
+    kann) und die mittlere Lesezeit (20 Sekunden lang zuf„llig ausgew„hlte 
+    Sektoren lesen) gemessen. Die Transferrate wird auch als `Faktor', 
+    n„mlich als Vielfaches der `einfachen' Leserate von 150 Kbyte/s, 
+    ausgegeben. Achtung: die Mežwerte sind auch vom Typ der benutzten CD 
+    (`normal', Photo-CD etc.) abh„ngig. [1.16]
+
+    `Letzter Fehler' ist anw„hlbar, wenn Sie als Festplattentreiber 
+    `HuSHI' benutzen und der MetaDOS-Treiber einen Fehler gemeldet hat. In 
+    diesem Fall wird der genaue Ger„tename sowie eine etwas genauere 
+    Fehlererkl„rung angezeigt.
+
+
+    Men: `Hilfe'
+
+    Enth„lt kurze Hilfstexte. Was soll man da noch erkl„ren?
+
+
+STOPLOCK.CPX
+
+    Dies ist ein Modul fr das erweiterbare Kontrollfeld `XControl', mit 
+    dem man den Auswurftaste des CD-ROMs blockieren kann (sofern das Ger„t 
+    dies zul„žt). Wenn das Laufwerk an einem ”ffentlich zug„nglichen Ort 
+    steht, kann man damit den Gelegenheitsdieben das Leben etwas schwerer 
+    machen.
+
+    Zur Installation mssen Sie diese Datei in das CPX-Verzeichnis Ihres 
+    Systems kopieren. Wenn Sie nichts an der Standardinstallation ge„ndert 
+    haben, dann ist der Ordner `CPX' im Hauptverzeichnis von Laufwerk `C:'.
+
+    Wenn Sie `XControl' nicht besitzen (sollte als `XCONTROL.ACC' auf dem 
+    Bootlaufwerk installiert sein), dann sollten Sie es sich entweder aus 
+    einer Mailbox oder bei Ihrem Atari-Fachh„ndler besorgen.
+
+    `Stop&Lock' ist nicht nur fr CD-ROMs, sondern auch fr per `HuSHI' 
+    bediente Festplatten nutzbar (wenn Sie sowieso HuSHI-Benutzer sind, 
+    kennen Sie es ja wahrscheinlich schon) und kann nicht nur den Auswurf 
+    blockieren, sondern auch den Laufwerksmotor stoppen bzw. wieder 
+    anfahren.
+
+    Fr jedes fr geeignet befundene Ger„t wird ein Knopf angezeigt, der 
+    mit den zu dem Laufwerk geh”rigen Buchstaben beschriftet ist. Ein 
+    einmaliger Mausklick stoppt bzw. blockiert das Ger„t, ein weiterer 
+    Mausklick gibt es wieder frei. Beachten Sie, daž `Stop&Lock' nicht 
+    dazu in der Lage ist, die aktuelle Einstellung des Ger„ts zu erfragen 
+    und daher zun„chst immer unselektierte Kn”pfe zeigt.
+
+    Die Einstellungen bezglich der Auswurfblockierung k”nnen auch 
+    gesichert werden. So k”nnen Sie erreichen, daž der Auswurfknopf nach 
+    einem Systemstart automatisch wieder verriegelt ist.
+
+
+CDDA.APP bzw. CDDA.ACC
+
+    `CD Digital Audio' ist ein kleines Programm zum Abspielen von 
+    Audio-CDs. `CDDA.APP' und `CDDA.ACC' sind brigens identisch -- der 
+    Einsatz als `normales' Programm bietet sich dann an, wenn man `MagiC' 
+    (vormals `Mag!x') oder `MultiTOS' benutzt.
+
+    In der oberen H„lfte des Fensters werden der Songnummer, Index und 
+    Songzahl neben zwei verschiedenen Zeitanzeigen aufgefhrt. Was ein 
+    `Index' ist? Manche Audio-CDs -- vornehmlich aus dem Klassik-Bereich 
+    -- enthalten innerhalb der Tracks noch eine feinere Unterteilung. Wenn 
+    als Index '00' erscheint, handelt es sich bei der Spur um einen 
+    Datentrack, der nicht abgespielt werden kann. [1.06]
+
+    Die Zeitanzeigen sind vom jeweiligen Modus abh„ngig. Eine šbersicht:
+
+    MODUS    SONG                        DISC
+    remain   verbleibende Zeit im Lied   verbleibende Zeit auf der CD
+    current  aktuelle Position im Lied   aktuelle Position auf der CD
+    total    Gesamtl„nge des Songs       Gesamtl„nge der CD
+
+    Der MODUS wird automatisch umgesetzt, wenn Wiedergabe begonnen bzw. 
+    abgebrochen wird. Durch einen Mausklick aus das Wort kann man ihn auch 
+    manuell verstellen.
+
+    Die Tasten in der unteren Fensterh„lfte machen in etwa das, was man 
+    von einem handelsblichen CD-Player erwartet: EJECT (Auswurf), STOP, 
+    START, PAUSE, `ein Lied zurck', `ein Lied vor', `suchen rckw„rts', 
+    `suchen vorw„rts' und RECORD (in dieser Version noch unbenutzt). Im 
+    STOP-Zustand kann man mit den letzten vier Tasten das Startlied und 
+    den Startindex ausw„hlen (EJECT, PAUSE, Einstellung der Lautst„rke 
+    sowie die Wahl des Index werden beim `Atari CDAR 504' nicht 
+    untersttzt). [1.16]
+
+    Die Tastaturbelegung [1.16]:
+
+    'HELP'      Copyright anzeigen
+    'RETURN     Play
+    'E'         Eject
+    'P'         Pause
+    'R'         Record (noch unbenutzt)
+    'S'         Stop
+    Ctrl-'Q'    Programm beenden
+    Ctrl-'U'    Fenster schliežen
+    '->', '+'   >
+    '<-', '-'   <
+    Ctrl-'->'   >>
+    Ctrl-'<-'   <<
+
+    Zahl        direkt zum angegebenen Titel springen
+
+    `CDDA' sucht automatisch das erste CD-ROM am System. Der gefundene 
+    Laufwerksbuchstabe wird im Fenstertitel angezeigt. Ein Minuszeichen 
+    steht dabei fr: `kein passendes Laufwerk gefunden'.
+
+    Wenn Sie mehrere Ger„te angeschlossen haben, k”nnen Sie `CDDA' dazu 
+    zwingen, ein bestimmtes Ger„t zu benutzen. Benennen Sie dazu 
+    `CDDA.ACC' in `CDDADRV#.ACC' um und fgen fr `#' die Bezeichnung des 
+    zugeh”rigen GEMDOS-Laufwerks ein (entsprechend fr `CDDA.APP'). Wenn 
+    Sie `MultiTOS' und/oder als Desktop `Gemini' benutzen, k”nnen Sie 
+    aužerdem das Symbol des entsprechenden Laufwerks auf das Fenster 
+    ziehen (Drag&Drop). `CDDA' versucht dann, das dazugeh”rige CD-ROM zu 
+    ermitteln. [1.12]
+
+    Hinweis: wenn Sie Speicherplatz sparen mssen oder aus anderen Grnden 
+    `CDDA' nicht als Accessory installieren wollen, k”nnen Sie CDs auch 
+    dadurch abspielen, daž Sie das Programm `TRACK01.PRG' auf dem zum 
+    CD-ROM geh”rigen Laufwerk starten. [1.12]
+
+
+šBERSICHT šBER GETESTETE GERŽTE
+
+    Im folgenden eine kurze šbersicht ber die CD-ROM-Laufwerke, mit denen 
+    wir bereits Erfahrungen sammeln konnten. Beachten Sie, daž dies 
+    wirklich nur Einzelerfahrungen sind; Kabel, Interfaces, andere 
+    Firmware-Versionen und „hnliche Nebenbedingungen k”nnen natrlich zu 
+    anderen Erfahrungen fhren! Fr den Anschluž an TT- oder Falcon-SCSI 
+    steht nichts gesondert dabei, weil es dabei grunds„tzlich keine 
+    Probleme gibt. [1.08]
+
+    Apple CD150 (Sony CDU-8002)
+
+        ACSI: geht, allerdings keine Audio-Kommandos ber ACSI (aužer mit 
+        ICD-Hostadaptern). Gezielter Audio-Play zu einem Index ungleich 1 
+        sowie Lautst„rkeeinstellung ist nicht m”glich [1.12]
+
+    Apple CD150 (Sony CDU-541)
+
+        ACSI: geht. Sporadische Lesefehler (0x11), scheint bei XA-Disks 
+        seltener aufzutreten. Gezielter Audio-Play zu einem Index ungleich 
+        1 funktioniert nicht. Es scheint, daž diese Firmware nicht mit dem 
+        Ger„t harmoniert, daher sollte besser die Originalfirmware benutzt 
+        werden. [1.12]
+
+    Apple CD300 (Sony CDU-8003A)
+
+        ACSI: geht. Multisession: ja, Audio-Kommandos: ja, vermutlich mit 
+        der gleichen Einschr„nkung wie bei CDU-541. [1.04]
+
+    Apple PowerCD (Philips CDF080)
+
+        Einen mit diesem CD-ROM funktionierenden ACSI-Hostadapter haben 
+        wir bislang nicht gefunden. Multisession: ja. Audio-Kommandos: 
+        hakelig, scheint am Laufwerk zu liegen. Ansteuern von Tracks mit 
+        Index ungleich 1 fhren zu Timeout.
+
+        Achtung: dieses CD-ROM beginnt nach dem Einlegen von Audio-CDs 
+        automatisch mit Audio-Play, schaltet aber offenbar den Ton ab. 
+        Abhilfe: einmal 'Skip rckw„rts' anklicken. [1.04]
+
+    Atari CDAR504
+
+        Dieses Ger„t gibt es nur mit ACSI-Schnittstelle. Audio-Kommandos 
+        funktionieren eingeschr„nkt (bis auf `Eject', `Pause', 
+        Lautst„rkewahl und Direktwahl eines Index ungleich 1), Datenspuren 
+        werden von `CDDA' nicht erkannt. Bei XA-CDs (Photo-CD) kann nur 
+        die erste Session gelesen werden. [1.16]
+
+    Media Vision CDR-H93MV
+
+        Meldet sich als `SCSI-5'-Ger„t (!!), reagiert aber auf triviale 
+        SCSI-1-Kommandos mit einem Timeout.
+
+    Sony CD-541
+
+        ACSI: geht. Audio-Kommandos: ja, aber vermutlich mit der 
+        Einschr„nkung, daž gezielter Audio-Play zu einem Index ungleich 1 
+        nicht geht und die Lautst„rke nicht verstellt werden kann. [1.14]
+
+    Toshiba XM3301, XM3401, XM4101
+
+        Die meisten ACSI-Hostadapter haben Probleme, mit dem `GE-Link' 
+        haben wir gute Erfahrungen gemacht. Multisession: ja. 
+        Audio-Kommandos: ja. [1.04]
+
+
+BEKANNTE PROBLEME VON METADOS
+
+    Manche Programme funktionieren nicht korrekt mit `MetaDOS', weil sie 
+    bei Betriebssystemaufrufen nicht alle vorgeschriebenen Register 
+    sichern. Das drckt sich oft dadurch aus, daž Dateien gar nicht oder 
+    nur unvollst„ndig gelesen werden k”nnen (nicht nur solche von der 
+    CD!). Wenden Sie sich im Zweifelsfall an den Hersteller des Programms 
+    und fragen Sie nach einem Update.
+
+    Viele Programme erlauben keinen Zugriff auf Laufwerke mit 
+    Laufwerksbuchstaben gr”žer `P:'. Abhilfe: einen anderen 
+    Laufwerksbuchstaben benutzen oder das Programm durch eine aktuellere 
+    Version ersetzen. Achtung: auch die Dateisauswahlbox im GEM kann nur 
+    16 Laufwerke anzeigen; im PD- und Sharewarebereich gibt es aber eine 
+    ganze Reihe von sch”nen Ersatzprogrammen (wie zum Beispiel 
+    `Selectric').
+
+    Alte Versionen des Atari-Desktop strzen ab, wenn die 
+    L„ngenangaben von Dateien `zu grož' werden (`Info anzeigen' bzw. 
+    Verzeichnisfenster in Textdarstellung). Abhilfe: neuere ROM-Version 
+    (beispielsweise TOS 2.06) benutzen oder einen anderen Desktop 
+    verwenden (Beispiele: Gemini, Ease etc.).
+
+    Fr Benutzer von Kommandoshells: es ist nicht m”glich, beim Zugriff 
+    auf MetaDOS-Ger„te Ein-/Ausgabeumlenkung zu benutzen.
+

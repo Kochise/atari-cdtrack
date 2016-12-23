@@ -1,0 +1,319 @@
+  *******************************************************
+  *    Steuercodetabelle fÅr den Epson - LQ 850         *
+  *           sowie Kompatieble hierzu                  *
+  *                                                     *
+  *         Erstellt von Alexander GÅth                 *
+  *******************************************************
+
+#HEpson LQ 850
+#I04.01.93 by Alexander GÅth @ Wö
+#S5000
+#V100
+#OP
+
+#EReset 
+#C $1B $40
+
+#ESignalton ^G
+#C $7
+
+#ECarrier Return
+#C $0D
+
+#ELine Feed ...
+#C ? $0A                 @*  1 mal |\
+     $0A $0A              @  2 mal |\
+     $0A $0A $0A          @  3 mal |\
+     $0A $0A $0A $0A      @  4 mal |\
+     $0A $0A $0A $0A $0A  @  5 mal ?
+     
+#EForm Feed
+#C $0C
+
+#EProbetexte - Select ...
+#C *.
+#C <* 
+#C !10 !13
+
+#EKopftext senden
+#C "Ausdruck am " %t '. %m '. %J " um " %h ': %M " Uhr"
+#C $0D $0A
+
+#EDruckgeschwindigkeit ...
+#C $1B $73 ? $1 @*  Full Speed |\
+             $0  @  Half Speed ?
+            
+#EOnline/Offline ...
+#C ? $11 @*  Online  |\
+     $13  @  Offline ?
+    
+#EPapierquelle ...
+#C $1B $19 ? !4 @*  Einzelblatt |\
+             !1  @  Schacht 1   |\
+             !2  @  Schacht 2   |\
+             !0  @  Endlosblatt ?
+
+#EMost Significant Bit ...
+#C $1B ? $3D  @  MSB auf 0 setzen    |\
+         $3E  @  MSB auf 1 setzen    |\
+         $23 @*  MSB-Vorgabe lîschen ?
+
+#E----- Positionierung -------
+
+#ESeitenlÑnge in Zeilen ..
+#C $1B $43
+#C [SeitenlÑnge in Zeilen|!1 !127 !66]
+
+#ESeitenlÑnge in Zoll ..
+#C $1B $43 $0
+#C [SeitenlÑnge in Zoll|!1 !22 !11] 
+
+#E1/8"-Zeilenabstand
+#C $1B $30
+
+#E1/6"-Zeilenabstand
+#C $1B $32
+
+#En/60"-Zeilenabstand ..
+#C $1B $41
+#C [n/60"-Zeilenabstand|!0 !85 !8] 
+
+#En/180"-Zeilenabstand ..
+#C $1B $33
+#C [n/180"-Zeilenabstand|!0 !255 !24]
+
+#En/360"-Zeilenabstand ..
+#C $1B $2B
+#C [n/360"-Zeilenabstand|!0 !255 !48]
+
+#En/120"-Zeichenabstand ..
+#C $1B $20
+#C [n/120"-Zeichenabstand|!0 !127 !6]
+
+#En/180"-Zeilenvorschub ..
+#C $1B $4A
+#C [n/180"-Zeilenvorschub|!0 !255 !20]
+
+#ELinker Rand ..
+#C $1B $6C
+#C [Linker Rand: n Zeichen|!0 !80 !10]
+
+#ERechter Rand ..
+#C $1B $51
+#C [Rechter Rand: n Zeichen|!0 !80 !5]
+
+#ETextausrichtung ...
+#C $1B $61 
+#C ? $0 @*  LinksbÅndig  |\
+     $2  @  RechtsbÅndig |\
+     $1  @  Zentriert    |\
+     $3  @  Blocksatz    ?
+
+#EDruckrichtung ...
+#C $1B $55 ? $0 @*  Bidirektional <-> |\
+             $1  @  Unidirektional -> ?
+            
+#EPerforationssprung AUS
+#C $1B $4F
+
+#EPerforation ..
+#C $1B $4E
+#C [Perforation: n Zeilen|!1 !127 !6]
+
+#E------ Schriftstyle --------
+#ESchriftart ...
+#C $1B $78 ? $0  @  Draft      |\
+  $1 $1B $6B $0 @*  Roman      |\
+  $1 $1B $6B $1  @  Sans Serif |\
+  $1 $1B $6B $2  @  Courier    |\
+  $1 $1B $6B $3  @  Prestige   |\
+  $1 $1B $6B $4  @  Script     |\
+  $1 $1B $6B $5  @  OCR-B      |\
+  $1 $1B $6B $6  @  OCR-A      |\
+  $1 $1B $6B $7  @  Orator     |\
+  $1 $1B $6B $8  @  Orator-S   ?
+
+#EZeichenbreite ...
+#C $1B ?        $70 $1   @  Proportional |\
+         $70 $0 $1B $50  @  Pica  10 cpi |\
+         $70 $0 $1B $4D @*  Elite 12 cpi |\
+         $70 $0 $1B $67  @  Micro 15 cpi ?
+ 
+#ECharacter Set ...
+#C $1B  $52 
+#C ? $0  @  USA            |\
+     $1  @  Frankreich     |\
+     $2 @*  Deutschland    |\
+     $3  @  Groûbritannien |\
+     $4  @  DÑnemark I     |\
+     $5  @  Schweden       |\
+     $6  @  Italien        |\
+     $7  @  Spanien I      |\
+     $8  @  Japan          |\
+     $9  @  Norwegen       |\
+    $10  @  DÑnemark II    |\
+    $11  @  Spanien II     |\
+    $12  @  Lateinamerika  |\
+    $64  @  LEGAL          ?
+
+#E------ Zeichenstyling ------
+
+#ESchmaldruck ...
+#C ? $0F  @  EIN |\
+     $12 @*  AUS ?
+
+#EBreitdruck ...
+#C $1B $57 ? $1  @  EIN |\
+             $0 @*  AUS ?
+
+#EDoppelthohe Zeichen ...
+#C $1B $77 ? $1  @  EIN |\
+             $0 @*  AUS ?
+
+#EKursivdruck ...
+#C $1B ? $34  @  EIN |\
+         $35 @*  AUS ?
+
+#EFettdruck ...
+#C $1B ? $45  @  EIN |\
+         $46 @*  AUS ?
+
+#EDoppeldruck ...
+#C $1B ? $47  @  EIN |\
+         $48 @*  AUS ?
+
+#EHoch/Tiefstellung ...
+#C $1B
+#C ? $53 $0  @  Hochstellung EIN |\
+     $53 $1  @  Tiefstellung EIN |\
+     $54    @*        AUS        ?
+
+#ESchatten/Umriûdruck ...
+#C $1B $71 
+#C ? $1  @  Umriûdruck EIN             |\
+     $2  @  Schattendruck EIN          |\
+     $4  @  Umriû- & Schattendruck EIN |\
+     $0 @*             AUS             ?
+
+#EUnterstrichen ...
+#C $1B $2D ? $1  @  EIN |\
+             $0 @*  AUS ?
+
+#ELinienmarkierung ...
+#C $1B $28 $2D $3 $0 $1
+#C ? $1 @*  Unterstreichen   |\
+     $2  @  Durchstreichen   |\
+     $3  @  öberstreichen    ?
+#C ? $0  @                 AUS                 |\
+     $1 @*  einfache, durchgezogene Linie  EIN |\
+     $2  @  doppelte, druchgezogene Linie  EIN |\
+     $5  @  einfache, unterbrochene Linie  EIN |\
+     $6  @  doppelte, unterbrochene Linie  EIN ?
+
+#E----- Vertikale TAB's ------
+
+#EV-TAB 
+#C $11 
+  Es ist mîglich bis zu 16 vertikale Tabulator zu setzten, hier nur eine
+  Auswahl bis zu 3 V-Tabs.
+#EV-TAB setzen (1-3) ..
+#C $1B $42
+#C [V-TAB #1 auf Zeile|!1 !255 !4]
+#C [V-TAB #2 auf Zeile|!1 !255 !8]
+#C [V-TAB #3 auf Zeile|!1 !255 !12]
+#C $0
+
+#EV-TAB's lîschen
+#C $1B $42 $0
+
+#EV-TAB-Kanal wÑhlen ..
+#C $1B $2F 
+#C [aktueller V-TAB Kanal|!0 !7 !2]
+
+#EV-TAB Kanal lîschen ..
+#C $1B $62
+#C [lîsche V-TAB Kanal|!0 !7 !2] 
+#C $0
+ 
+#EV-TAB Kanal setzen ..
+#C $1B $62 
+#C [V-TAB Kanal|!0 !7 !2] 
+#C [V-TAB #1 auf Zeile|!1 !255 !4]
+#C [V-TAB #2 auf Zeile|!1 !255 !8]
+#C [V-TAB #3 auf Zeile|!1 !255 !12]
+#C $0
+
+#E---- Horizontale TAB's -----
+
+#EH-TAB
+#C $9
+
+#EH-TAB setzen (0-32) ..
+#C $1B $44
+#C [H-TAB #1 auf Zeichen|!1 !255 !8]
+#C [H-TAB #2 auf Zeichen|!1 !255 !12]
+#C [H-TAB #3 auf Zeichen|!1 !255 !16]
+#C [H-TAB #4 auf Zeichen|!1 !255 !20]
+#C $0
+
+#EH-TABs lîschen
+#C $1B $44 $0
+
+#E------- ZeichensÑtze -------
+
+#EZeichensatz download ...
+#C $1B $26 $00
+#C [ ASCII-Beginn |!1 !255 !32]
+#C [ ASCII-Ende |!1 !255 !127]
+#C [ Linker Pixelabstand |!0 !13 !0]
+#C [ Zeichen Pixelbreite |!1 !37 !9]
+#C [ Rechter Pixelabstand |!0 !13 !2]
+#C *.
+#C <* 
+#C !10 !13
+
+#EDownload ZS aktivieren ...
+#C $1B $25
+#C ? $00 @*  Normaler Zeichensatz            |\
+     $01  @  Benutzerdefinierter Zeichensatz ?
+
+#EROM ins RAM kopieren
+#C $1B $3A $00 $00 $00
+
+#EZeichentabelle ...
+#C $1B $74 
+#C ? $0 @*  EPSON Standart-Zeichensatz      |\
+     $1  @  EPSON Grafik-Zeichensatz        |\
+     $2  @  Benutzerdefinierter Zeichensatz ?
+
+#EErweiterte Steuercodes ...
+#C $1B ? $36  @  EIN |\
+         $37 @*  AUS ?
+
+
+#E---------- Grafik ----------
+
+#EGrafik dpi horizontal ...
+#C $1B $2A
+#C ? !0  @   8-Nadel  60 dpi       |\
+     !1  @   8-Nadel 120 dpi       |\
+     !2  @   8-Nadel 120 dpi Speed |\
+     !3  @   8-Nadel 240 dpi       |\
+     !4  @   8-Nadel  80 dpi       |\
+     !6  @   8-Nadel  90 dpi       |\
+    !32  @  24 Nadel  60 dpi       |\
+    !33  @  24 Nadel 120 dpi       |\
+    !38  @  24 Nadel  90 dpi       |\
+    !39  @  24 Nadel 180 dpi       |\
+    !40 @*  24 Nadel 360 dpi       ?
+#C ?!128 !2  @   640 Dots/line |\
+    !208 !2  @   720 Dots/line |\
+    !192 !3  @   960 Dots/line |\
+    !0   !5  @  1280 Dots/line |\
+    !160 !5 @*  1440 Dots/line |\
+    !128 !7  @  1920 Dots/line |\
+    !96  !9  @  2400 Dots/line |\
+    !64  !11 @  2880 Dots/line ?
+
+#X
+

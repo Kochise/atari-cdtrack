@@ -1,0 +1,84 @@
+============================================================================
+								    21/02/96
+
+Je vous permet d'obtenir par simple envoi postal les derniŠres versions des
+logiciels de certains auteurs. Je suis le traducteur de CAB et de CD-PLayer
+en Fran‡ais, Cela concerne les services suivant
+
+- Service de maintenance par email ou par la poste
+- Service de mises … jour gratuites
+- Plus de problŠmes avec les devises ‚trangŠres
+- Une disquette ‚tiquett‚e et une lettre d'enregistrement
+- Aide en ligne hypertexte ST-Guide (certains logiciels)
+- D'autres logiciels (selon la place disque disponible)
+
+Le montant de l'enregistrement est d‚termin‚ afin de couvrir le co–t du change,
+le support et les frais postaux occasionn‚s par l'envoi des disquettes et/ou
+d'une explication efficace.
+
+Il s'agit d'une solution qui permet d'‚viter les enregistrements directs avec
+l'auteur, je m'occupe pour vous des problŠmes de courrier, adresses, devises.
+
+Les logiciels support‚s actuellement sont :
+
+Version Logiciel   Montant Status and description 
+----------------------------------------------------------------------------
+v1.4d   OCR           90F+ [F] Reconnaissance optique de CaractŠres
+v1.3f   CD-Player     50F+ [F] Joueur de CDs audio
+v1.1    CAB           50F+ [F] Crystal Atari Browser, browser HTML [PRG]
+v116    WWW  (IAP)   120F* [F] CAB plus STiK, on-line OVL file & scripts
+----------------------------------------------------------------------------
+Key:   F=Francs      +=au Minimum         *=Tous les titres
+     [F]=Freeware    [S]=Shareware       [R]=Fairware
+     [G]=Allemand    [DG]=Documentation en Allemand  
+   [ACC]=Accessoire [PRG]=Application [030]=Version 030 sp‚cifique
+============================================================================
+
+Comment vous enregistrer depuis la France
+-----------------------------------------
+
+1)  Calculer le montant total des logiciels pour lesquels vous souhaitez ˆtre
+    enregistrer.
+2)  Etablissez un chŠque du montant consid‚r‚.
+3)  Assurez vous que vos noms et adresse sont pr‚sents et valable !
+4)  Envoyer le ch‚que … l'adresse ci-dessous
+
+Contact
+-------
+Adresse  : Romuald Jouffrey
+	   1 chemin de l'‚glise
+	   38100 GRENOBLE
+Email    : rom38@gen4.pressimage.fr
+
+Comment vous enregistrer depuis l'ext‚rieur de la France
+--------------------------------------------------------
+
+Ajouter 10 francs … votre commandes pour couvrir le surco–t des envois … 
+l'‚tranger, les moyens de paiements possibles sont :
+- un ch‚que payable *en Francs Fran‡ais* encaissable dans une banque fran‡aise
+- un Eurocheque
+- Du liquide ! En Francs, Livres Sterling, Dollars et Deutch Marks
+
+Services de mises … jour
+------------------------
+
+Les derniŠres versions me sont directement envoy‚es par les auteurs. Leur
+disponibilit‚ est donc imm‚diate !
+Les nouvelles versions sont r‚pertori‚es chaque mois dans la page Shareware
+de ST Magazine, maintenue par Jean-Jacques Ardoino.
+
+Par la poste
+------------
+
+Pour recevoir une mise … jour, envoyer dans une une enveloppe vos coordonn‚es
+ainsi qu'une enveloppe pr‚timbr‚e libell‚e … vos noms et adresse, ainsi qu'une
+disquette 720 ou 1,44 (Vierge S.V.P afin d'‚viter les ‚ventuels virus)
+Indiquez clairement :
+
+1) Le logiciel pour lequel vous souhaitez la mise … jour
+2) La version que vous utilisez actuellement
+   
+Si vous avez un acc‚s Internet, vous pouvez directement r‚cup‚rer les derniŠres
+versions auprŠs de diff‚rents serveurs ftp (ftp.cnam.fr dans pub/Atari et www
+(http://www.oxo.ch/ex_cnam/
+

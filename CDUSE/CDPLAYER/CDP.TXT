@@ -1,0 +1,638 @@
+CD-Player V1.3f (Februar 1996)
+
+    ein Audio-CD-Player fr ATARI ST/STE/TT/Falcon mit CD-ROM-Laufwerk
+    von Alexander Clauss, Stresemannstr. 44, D-64297 Darmstadt
+
+
+Dieses  Programm  ist  FREEWARE.  Es  darf  kostenlos  kopiert  und benutzt
+werden.  Eine  Verbreitung  ber  Mailboxen,  FTP-Server  und PD-Serien ist
+erlaubt.   Eine   Verbreitung  auf  CD-ROMs  und  auf  Cover-Disketten  von
+Zeitschriften  ist  NUR  mit  meiner schriftlichen Genehmigung erlaubt. Das
+Programm  muá  immer  komplett weitergegeben werden (siehe LIESMICH Datei).
+Das Ver„ndern des Programms und der Anleitung ist nicht gestattet.
+
+Wenn Ihnen das Programm  gef„llt und Sie es regelm„áig benutzen, k”nnen sie
+mir  natrlich  auch  eine  kleine  Spende  zukommen lassen; ich wrde mich
+freuen.
+
+WICHTIG:
+Ich   bin   natrlich   auch  an  Fehlermeldungen  und/oder  Verbesserungs-
+vorschl„gen  interessiert.  Bei  Fehlermeldungen  bitte  immer  Rechnertyp,
+CD-ROM-Typ,     CD-ROM-Treiber,   TOS-Version,   Autoordner-Programme   und
+Accessories  angeben.  Wenn  m”glich,  bitte genau beschreiben, wie man den
+Fehler reproduzieren kann.
+
+Konstruktive   Kritik   und   Vorschl„ge   fr  zuknftige  Versionen  sind
+ausdrcklich erwnscht!!!
+
+WICHTIG:
+Ich  bitte,  bei  Anfragen  per  Post  immer  auch  einen  frankierten  und
+adressierten  Rckumschlag  beizulegen,  wenn  Sie  eine  Antwort  von  mir
+erwarten.
+
+
+Meine Adresse
+-------------
+  Alexander Clauss
+  Stresemannstraáe 44
+  D-64297 Darmstadt
+  -- Germany --
+
+email: aclauss@rbg.informatik.th-darmstadt.de
+WWW:   http://www.student.informatik.th-darmstadt.de/~aclauss/
+
+(Wer  mich  ber  die email-Adresse nicht (oder nicht mehr) erreichen kann,
+sollte es ber die Post-Anschrift versuchen!)
+
+
+Bankverbindung
+--------------
+  Sparkasse Darmstadt
+      BLZ: 508 501 50
+  Kontonr: 0115032143
+
+---------------------------------------------------------------------------
+
+System-Voraussetzungen
+======================
+Dieses  Programm l„uft auf allen Atari ST/STE/TT/Falcon (und wahrscheinlich
+auch auf Medusa und Eagle) mit CD-ROM-Laufwerk und MetaDOS-Treiber.
+
+Sowohl CD-ROM-Laufwerk als auch der MetaDOS-Treiber mssen in der Lage sein
+Audio-Kommandos zu verstehen.
+
+Das  Programm l„uft in jeder Aufl”sung und Farbtiefe. Einige Dialoge k”nnen
+leider nicht vollst„ndig in der ST-Niedrig-Aufl”sung dargestellt werden.
+
+Die  Proportionen  der Bedienelemente des Hauptfensters sind abgestimmt auf
+den  8x16  Systemzeichensatz.  Das  bedeutet:  auf  z.B.  ST-Niedrig-  oder
+ST-Mittel- Aufl”sungen (8x8 Zeichensatz) sieht das Haupfenster nicht so gut
+aus.  Die 3D-Effekte wirken nur dann gut, wenn mindestens 16 Farben (in der
+normalen Systempalette) zur Verfgung stehen.
+
+
+Installation
+============
+Besitzt  man nur ein Ger„t (CD-ROM) welches durch MetaDOS angesteuert wird,
+muá  man nichts weiter beachten. Dieser Abschnitt kann getrost bersprungen
+werden.  Nur  wenn  man  mehrere MetaDOS-Ger„te installiert hat, sollte man
+diesen Abschnitt beachten.
+
+Sind   mehrere   MetaDOS-Ger„te   (CD-ROMs)  angemeldet,  hat  man  mehrere
+M”glichkeiten, das richtige Ger„t auszuw„hlen:
+
+1)  Man bergibt die GemDOS-Kennung des CD-ROM-Laufwerks als Parameter. (Ab
+    TOS 2.0x kann man im DESKTOP CDP.APP mit diesem Parameter anmelden)
+    Der  Parameter  darf  auch  die  Form 'x.CDP' besitzen (x steht fr die
+    GemDOS-Kennung).  Man  kann  also CDP.APP auf die Dateikennung *.CDP im
+    DESKTOP  anmelden.  ™ffnet man eine Datei (sie darf auch leer sein) mit
+    dem  Namen K.CDP wird  das CD-ROM K: benutzt, ”ffnet man dagegen G.CDP,
+    wird  das  CD-ROM G: benutzt. Diese M”glichkeit ist praktisch, wenn man
+    mehrere CD-ROM-Laufwerke (eventuell sogar gleichzeitig) benutzt.
+
+2)  Benutzt man nur ein bestimmtes CDROM-Laufwerk als Audio-CD-Player, kann
+    man  das Programm von CDP.APP in CDP_x.APP umbenennen - das x steht fr
+    den  Laufwerksbuchstaben, der auch vom Desktop fr das CD-ROM verwendet
+    wird.  Beispiel:  Ist  das CD-ROM unter K: im Desktop angemeldet heisst
+    das Programm jetzt 'CDP_K.APP'.
+
+    HINWEIS: Es  darf  sich nur ein(!) Programm mit  dem Namen CDP_x.APP im
+             Verzeichnis befinden. Ansonsten kann nicht entschieden werden,
+             welches gestartet wurde.
+
+
+Installation als Accessory
+==========================
+Das  Programm  kann  auch  als  Accessory  installiert  werden. Wegen einer
+Einschr„nkung  des GEM (Speicher, der durch ein Accessory reserviert wurde,
+geh”rt  leider  nicht dem Accessory, sondern dem gerade laufenden Programm.
+Der  Speicher wird deshalb beim Starten und Beenden eines Programmes wieder
+freigegeben)  mssen  beim Betrieb als Accessory Abstriche in Kauf genommen
+werden (In einer Multitasking-Umgebung gibt es diese Einschr„nkung nicht!)
+
+Beim Betrieb als Accessory gibt es folgende Einschr„nkungen (Single-TOS):
+ * Die Dialoge ”ffnen sich systemmodal (d.h. nicht in einem Fenster).
+   [ Das  ist  allerdings keine  Einschr„nkung des GEM, sondern ein Problem
+     meiner  GEM-LIB,  die  bei  Fenster-Dialogen  noch  Probleme  mit  der
+     AC_CLOSE-Message hat ]
+ * Es  k”nnen  keine  neuen  CDs in die Datenbank  aufgenommen werden, dazu
+   msste n„mlich dauerhaft Speicher angefordert werden.
+
+Inwieweit   es   Probleme   mit  GEM-Autostart-Programmen (z.B. alternative
+Desktops)  gibt,  kann  ich nicht sagen. Wenn es Probleme gibt, muá man auf
+den  Einsatz  als  Accessory  verzichten.  Da  das  Programm auf jeden Fall
+Speicher anfordert (direkt nach dem Starten), fr die Datenbank und fr die
+RSC-Datei, k”nnen Probleme nicht ausgeschlossen werden. Ohne GEM-Autostart-
+Programme   sollten   alle   Speicheranforderungen    stattfinden,  solange
+ausschliesslich  der Desktop als Hauptprogramm aktiv ist. Dann geh”ren alle
+angeforderten Speicherbl”cke zum Desktop, und der wird ja nie beendet. Wenn
+ein  Autostart-Programm  aber  schon  gestartet  wird,  bevor der CD-Player
+seinen  ben”tigten Speicher angefordert hat, wird es Probleme geben, sobald
+dieses Programm beendet wird.
+
+Es  gibt  irgendeinen  (unsauberen?)  Trick,  mit  dem  man  auch aus einem
+Accessory  dauerhaft  Speicher anfordern kann. Wenn mir jemand diesen Trick
+verr„t,  kann  ich  die  Einschr„nkungen  beim  Accessory-Betrieb eventuell
+vermeiden.
+
+
+Was kann das Programm
+=====================
+Das  Programm  bietet fast alle Funktionen eines normalen Audio-CD-Players.
+Es  verwaltet  ausserdem  noch  eine  kleine  Datenbank,  in  der Titel und
+Interpret  der  einzelnen  CD-Tracks  eingegeben  werden  k”nnen. Mit Hilfe
+dieser  Datenbank kann das Programm die gerade eingelegte CD identifizieren
+und  im  Klartext Titel und Interpret anzeigen. Jeder einzelne Track der CD
+wird  natrlich  auch  als  Text angezeigt. Mit Hilfe dieses Programms kann
+man  weiterhin  Tracks  (oder  beliebige  Ausschnitte davon) auf Festplatte
+kopieren   (ohne  Umwege  ber  D/A-  und  A/D-Wandler).   Es  stehen  dazu
+verschiedene  Sampleformate  zur  Verfgung.  Da  die Atari-Rechner mit der
+Samplefrequenz  von  44100  Hz  einer  Audio  CD leider nicht viel anfangen
+k”nnen,  kann beim Abspeichern auf Festplatte auch noch eine Umrechnung auf
+Atari-(Falcon) bliche Frequenzen stattfinden.
+
+
+Das Haupfenster von 'CD-Player'
+===============================
+Der  Aufbau  dieses  Fensters orientiert sich an normalen Audio-CD-Playern.
+Die  Kn”pfe, die ein CD-Player hat wird man auch in diesem Fenster finden.
+Sie k”nnen auch mit der Tastatur ausgew„hlt werden.
+
+Unterste Reihe:
+---------------
+1. Eject (Taste E):
+  Die Schublade des CD-ROM-Laufwerks wird ausgefahren.
+
+2. Stop (Taste S):
+  Die Audio-Wiedergabe wird gestoppt.
+
+3. Play  (Taste P):
+  Die Audio-Wiedergabe wird begonnen.
+
+4. Pause (Taste P):
+  Die  Wiedergabe wird gestoppt, kann aber an dieser Stelle fortgesetzt
+  werden.
+
+5. Skip Back (Taste -):
+  Springt an den Anfang des aktuellen Tracks; wenn man schon dort ist, an
+  den Anfang des vorherigen Tracks.
+
+6. Back (Taste B):
+  Springt 2 sec zurck. Drckt man zus„tzlich eine SHIFT-Taste, dann 6 sec.
+
+7. FWD (Taste F):
+  Springt 2 sec vor. Drckt man zus„tzlich eine SHIFT-Taste, dann 6 sec.
+
+8. Skip FWD (Taste +):
+  Springt an den Anfang des n„chsten Tracks.
+
+9. Disk-Symbol:
+  Popup mit weiteren Funktionen:
+
+     'ber CD-Player' (Control-I):
+           Informationen ber das Programm
+
+     'Datenbank bearbeiten' (Control-E):
+           Man kann Titel und Interpret der gerade eingelegten CD eingeben
+           und/oder alle anderen Eintr„ge bearbeiten. (siehe unten)
+
+     'Datenbank speichern' (Control-S):
+           Speichert die Datenbank.
+
+     'Datenbank exportieren':
+           Die   Daten  der  Dateinbank  werden in  einer  ASCII-Datei ge-
+           speichert, die in Datebbank-Programmen importiert werden kann.
+
+     'Tracks exportieren' (Control-W):
+           Speichert Tracks auf Festplatte. (siehe unten)
+
+     'Einstellungen' (Alternate-O)
+           Programm-Einstellungen ver„ndern.
+
+     'Einstellungen speichern'
+           Die Einstellungen werden gespeichert.
+
+     'Programm beenden' (Control-Q):
+           Das Programm wird beendet.
+
+10. Titelauswahl:
+  Der  abzuspielende  Titel  kann  direkt  in  einem  Popup-Men ausgew„hlt
+  werden.  Sind die Daten zur CD schon  in der Datenbank vorhanden,  werden
+  hier alle  Titel im  Klartext angezeigt.  Die Titel  k”nnen auch ber die
+  Tastatur  ausgew„hlt werden:  einfach eine  (bis  zu  zweistellige)  Zahl
+  eintippen.
+
+
+Die anderen Kn”pfe:
+-------------------
+(Im  eingeschalteten  Zustand  leuchtet  im Display ein entsprechender Text
+auf)
+
+A (Taste F1), B (Taste F2):
+  Mit  diesen  beiden  Kn”pfen  kann  man  zwei  Stellen  (A  und B) der CD
+  markieren.  Die jeweilige Stelle (Zeit) wird dann unten rechts im Display
+  angezeigt. Ein weiterer Klick auf diese Kn”pfe l”scht die jeweilige Marke
+  wieder.  Bei  einem  Doppelklick auf A oder B springt der Player an diese
+  Position.  Beim  Speichern  von Audio-Daten auf Festplatte  (siehe unten)
+  kann  man auf Wunsch genau den Ausschnitt zwischen A und B speichern. Auf
+  diese Weise  kann ein Ausschnitt sehr einfach bestimmt werden (Play, FWD,
+  Back etc.) um ihn dann mit der Funktion "Track exportieren" zu speichern.
+
+PROGRAM (Taste F3):
+  Die  Reihenfolge,  in der die Titel gespielt werden, kann hier festgelegt
+  werden.  Im Dialog findet man zwei Listen (CD-Inhalt und Reihenfolge). In
+  der  Liste  'CD-Inhalt' werden alle Titel der CD aufgez„hlt, in der Liste
+  'Reihenfolge' werden die Titel in der gewnschten Reihenfolge aufgez„hlt.
+  Die  Reihenfolge  bestimmt  man,  indem  man  die  Titel  aus  der  Liste
+  'CD-Inhalt'   an  die   gewnschte  Stelle  in  der  Liste  'Reihenfolge'
+  verschiebt. Auch <PAUSE> unter 'CD-Inhalt' kann man in die 'Reihenfolge'-
+  Liste verschieben;  beim  Abspielen wird der Player dann an dieser Stelle
+  in  den  Pause-Modus  versetzt.  Titel aus der 'Reihenfolge'-Liste k”nnen
+  wieder    entfernt   werden:  die  entsprechenden  Titel  kurz  anklicken
+  (selektieren)  und dann 'L”schen' ausw„hlen. Das Umsortieren in der Liste
+  ist durch einfaches Verschieben m”glich.
+  'Alles bertragen'  bertr„gt  alle Titel  der  CD in  die 'Reihenfolge'-
+  Liste.
+  Wenn  man  die CD auf Kassette berspielen will, kann man mit 'Aufteilen'
+  die  Titel  der  'Reihenfolge'-Liste  so  aufteilen,  daá sie gut auf die
+  angegebe  Kassettenl„nge  passen.  Dazu  werden  <PAUSE>-Eintr„ge  in die
+  Liste  eingetragen, die  Titel zwischen diesen Eintr„gen sind maximal die
+  angegeben Zeit lang.
+  Mit  dem  Knopf  Zeitanzeige  kann  man  die  jeweilige  L„nger der Titel
+  einblenden.
+  Mit dem Knopf 'Programm in Datenbank'  kann die programmierte Reihenfolge
+  in die Datenbank bernommen werden. Wenn die CD das n„chste Mal ins Lauf-
+  werk gesteckt wird,  kann dieses Programm sofort benutzt werden.  (Daten-
+  bank speichern nicht vergessen)
+
+DATABASE (Taste F4):
+  CD-Datenbank bearbeiten (siehe unten).
+
+PLAY-MODE (Taste F5):
+  Abspiel-Modus
+    - Normal (Control-1):
+                 Die Titel werden von vorne nach hinten gespielt. Nicht
+                 gespielt werden 'ausgeschaltete' Titel.
+    - Einzel (Control-2):
+                 Es wird nur ein Titel gespielt.
+    - Programm (Control-3):
+                 Die Titel werden in der programmierten Reihenfolge abge-
+                 spielt.
+    - Zufall (Control-4):
+                 Die Titel werden in einer zuf„lligen Reihenfolge gespielt.
+                 'Ausgeschaltete' Titel werden nicht gespielt.
+    - Block (Control-5):
+                 Nur der bereich zwischen den Marken A und B wird gespielt.
+    - Anspielen (Control-6):
+                 Alle Titel werden 10 sec angespielt. Kann abgebrochen
+                 werden durch Play, Pause, Stop etc.
+
+TIME (Taste F6):
+  Im Display wird die Zeitanzeige umgeschaltet zwischen
+      'Song':        Zeit, die vom aktuellen Lied schon gespielt wurde.
+      'Disc':        Zeit, die von der CD schon gespielt wurde.
+      'Remain Song': Zeit, die vom aktuellen Lied noch gespielt werden.
+      'Remain Disc': Zeit, die von der CD noch gespielt werden.
+
+REPEAT (Taste F7):
+  Die CD (bzw. der Track) wird, sobald sie (er) komplett gespielt wurde,
+  nochmals gespielt.
+
+
+Volume: (Taste > fr lauter; Taste < fr leiser)
+  Die Lautst„rke fr den Kopfh”rerausgang kann festgelegt werden.
+
+
+Datenbank bearbeiten (F4)
+====================
+Liegt  eine  CD  im  CD-ROM-Laufwerk, die  sich noch nicht in der Datenbank
+befindet,  wird automatisch ein leerer Datensatz erzeugt  den man jetzt mit
+den  Daten  der CD ausfllen kann (Titel und Interpret der CD und die Titel
+der  einzelnen  Lieder).  Befindet  sich die CD  schon in der Datenbank, so
+wird der entsprechende Datensatz angezeigt.
+
+Wenn  man  bestimmte Titel einer CD nicht mag, kann man sie ausschalten, so
+daá  sie  nicht  mehr  gespielt  werden.  Ist  das  K„stchen  vor dem Titel
+angekreuzt,  wird  der Titel gespielt, sonst nicht. Ausnahmen: Bei direkter
+Titelauswahl  (Popup  oder  per  Zifferneingabe  ber  die Tastatur) und im
+SINGLE-Modus k”nnen grunds„tzlich alle Titel gespielt werden.
+
+Mit den Pfeil-Buttons kann man zu den anderen Datens„tzen wechseln. Mit den
+Doppelpfeilen kann man schnell mit gedrckt gehaltener Maustaste durch  die
+Datens„tze bl„ttern.
+Mit dem L”schen-Button wird der angezeigte Datensatz gel”scht. Auch mit den
+Tastenkombinationen ALT-P und ALT-N kann man zurck bzw. vor bl„ttern.
+
+
+Datenbank exportieren
+=====================
+Die  Daten  der  CDs  k”nnen  in  einer  Datei  gespeichert  werden, die in
+richtigen  Datenbanken importiert und bearbeitet werden kann. Da es sich um
+eine ASCII-Datei handelt, muá  man angeben, durch welche Zeichenkombination
+Datenfelder  bzw.  Datens„tze  getrennt werden. In den Eingabemasken werden
+alle  Zeichen  durch  Komma  getrennt. Die Zeichen k”nnen direkt eingegeben
+werden;  dann  mssen  sie mit ' oder " umschlossen werden. Alternativ kann
+auch der ASCII-Code als Dezimalzahl angegeben werden.
+
+Beispiel:   13,10        Trenung durch ASCII-Code 13 (CR) und 10 (LF)
+            ","          Trennung durch Komma.
+
+Ausserdem kann  in  diesem Dialog noch angegeben werden, welche Datenfelder
+exportiert werden sollen.
+
+
+Tracks exportieren (Control-W)
+==================
+Hier  kann  man  einzelne  Tracks  (oder  Ausschnitte  davon)  der  CD  auf
+Festplatte  speichern.  Geht  dabei  der  Speicherplatz auf der Platte aus,
+erh„lt man eine Fehlermeldung. Die Datei wird aber noch korrekt geschlossen
+so daá man sie trotzdem verwenden kann. Auch wenn man die CD aus dem CD-ROM
+Laufwerk  nimmt, w„hrend man Audio-Daten auf Festplatte speichert, wird die
+Datei korrekt geschlossen.
+
+Track:
+  Mit  den  '+'/'-'-Buttons  kann man einen Titel anw„hlen. Mit einem Klick
+  auf  den  Track  Z„hler  (zwischen '-' und '+') kann man sich einen Titel
+  auch  direkt  aus  einem Popup (im Klartext) aussuchen. Die genaue Start-
+  und End-Zeit des Tracks wird in den folgenden beiden Feldern eingetragen.
+
+Block A-B:
+  Falls zwei Stellen (A und B) auf der CD markiert wurden, kann man hiermit
+  genau  den  Ausschnitt  zwischen  A  und  B ausw„hlen. Die entsprechenden
+  Zeiten werden in Start und Ende-Felder bertragen.
+
+Start/Ende:
+  Die  Start-  und  Ende-Zeit  kann  hier  auch  mit der Tastatur ver„ndert
+  werden.  Die  Noten-Buttons  dienen zur akustischen Kontrolle. Der Button
+  bei  Start spielt die CD ab der eingegebenen Zeit ab. Der Button bei Ende
+  spielt die letzten 10 sec bis zur angegebenen Ende-Zeit.
+
+Speicherplatz:
+  Hier  wird  angezeigt  wievel  Speicherplatz die Datei auf der Festplatte
+  ben”tigen wird. Der Wert wird bei allen nderungen, die ber einen Button
+  stattfinden, automatisch neu berechnet. Aber wenn Start und Ende-Zeit per
+  Tastatur  ge„ndert  werden, kann das nicht automatisch geschehen. Deshalb
+  kann man  auch mit dem  Rechnen-Button den Speicherplatzverbrauch neu be-
+  rechnen lassen.
+
+Exportformat:
+  Hier  werden  Einzelheiten  ber das  gewnschte Dateiformat eingestellt.
+  Nicht  alle Kombinationen dieser Einstellungen sind erlaubt. Das Programm
+  sorgt dafr, daá nur erlaubte Einstellungen vorgenommen werden.
+
+  Format (Dateiformat):
+    DVS:    Wird vom Programm WinRec (fr Falcon) benutzt.
+    AVR:    Wird z.B. vom System-Audio-Manager (SAM) benutzt.
+    WAVE:   PC/Windows,   wird  aber  auch  von   einigen  Atari-Programmen
+            untersttzt
+    SND,AU: Bis auf die Endung (AU/SND) sind  beide Formate identisch. Wird
+            benutzt in der Unix-Welt (und auch auf dem Mac).
+
+  Frequenz (in Hz):
+    Die   ersten  acht  Frequenzen  sind  die   auf  dem  Falcon  benutzten
+    Frequenzen.  Einige  der Frequenzen findet man mit kleinen Abweichungen
+    auf  dem  STE  und  TT. Die letzen vier Frequenzen werden auf dem Atari
+    normalerweise  nicht  untersttzt,  aber wenn man die Daten auf anderen
+    Rechnerwelten  (PC/Mac/Unix)  benutzen  m”chte,  kann man sie verwenden
+    (eventuell   auch   auf  Ataris  mit  Zusatzhardware).   Achtung:  Jede
+    Umrechnung  der  Frequenz fhrt zu leichten (hohe Frequenz) bis starken
+    (niedrige Frequenz) Qualit„tseinbuáen.
+
+  Speziell (Frequenz):
+    M”chte man die Daten auf eine ganz bestimmte Frequenz umrechnen, welche
+    nicht  in  der  eben  beschriebenen Auswahl vorhanden ist, kann man sie
+    hier  eingeben. Erlaubt  sind im Prinzip alle Werte - welche Frequenzen
+    sinnvoll  sind,  muá man aber  selbst entscheiden.  TT und STE-Besitzer
+    k”nnen hier natrlich die exakten Frequenzen eintragen, die ein TT bzw.
+    STE verarbeitet (diese weichen von den Falcon-Frequenzen leicht ab).
+
+  Kan„le:
+    Stereo oder Mono. Bei Mono werden beide Kan„le zusammengemischt.
+
+  Aufl”sung:
+    8 oder 16 Bit. Der Falcon benutzt  normalerweise 16 Bit pro Samplewert,
+    auf STE/TT werden  nur  8  Bit  verwendet.  Bei 8 Bit gehen  erhebliche
+    Mengen an Informationen verloren und klingt  daher deutlich schlechter.
+    Aber 8 Bit ben”tigen dafr nur halb soviel Speicherplatz.
+
+  Packen:
+    Bei den Sampleformaten DVR und AU/SND k”nnen die (16 Bit) Daten gepackt
+    gespeichert   werden.   Die   Kompressionsrate  liegt  bei  genau  50%.
+    Prinzipiell muá  man  beim Packen  leichte  Qualit„tseinbuáen erwarten.
+    Beide Packverfahren fhren aber  zu wesentlich besseren Ergebnissen als
+    die Speicherung mit 8 Bit Tiefe (welche den gleichen Platzbedarf hat).
+
+
+Einstellungen
+=============
+Normalerweise  ”ffnet  sich  das  Hauptfenster  nach  dem  Starten  in  der
+Bildschirmmitte.  Wem das nicht gef„llt, kann hier angeben, ob die aktuelle
+Position  gespeichert  werden  soll.  Beim  n„chsten  Start ”ffnet sich das
+Fenster dann an dieser Position.
+Die am  CD-ROM-Laufwerk  eingestellte  Lautst„rke  wird normalerweise  beim
+Programmstart  nicht  ver„ndert. Wem das auch nicht passt (weil z.B. direkt
+nach  dem Einschalten des Computers die Lautst„rke auf Maximum steht), kann
+auch  hier  die  aktuelle Einstellung speichern, welche beim n„chsten Start
+eingestellt wird.
+In   Multitasking-Umgebungen   (Mag!C,  MultiTOS,  Geneva)  kann  man  die
+Menleiste  abschalten. Alle  Funktionen  des Programms sind natrlich auch
+weiterhin erreichbar.
+Falls  der  verwendete  MetaDOS  CD-ROM-Treiber  nicht  alle  vom CD-Player
+verwendeten  Audiokommandos  untersttzt, meldet sich das Programm nach dem
+Starten mit einem entsprechenden Hinweis. Diesen Hinweis kann man natrlich
+auch unterdrcken.
+
+Dialoge
+=======
+Die  Dialoge  werden  in  Fenstern  dargestellt.  Dadurch  werden  in einer
+Multitasking-Umgebung  keine anderen Programme angehalten. Das Hauptfenster
+kann aber nur bei geschlossenen Dialogen bedient werden. Die Dialoge k”nnen
+auch mit der Tastatur bedient werden. In den Buttons sind manche Buchstaben
+unterstrichen.  Drckt man die Alternate-Taste  zusammen  mit diesen  Buch-
+staben,  w„hlt   man   diesen  Button aus. In Popup-Mens kann man auch mit
+Cursor-hoch/runter  und Return einen Menpunkt ausw„hlen. UNDO schlieát ein
+Popup-Men ohne eine Auswahl zu treffen.
+
+
+Einige Hinweise:
+================
+Damit  das  Programm  alle  seine  Dateien  findet (und die Dateien auch im
+richtigen  Verzeichnis  speichern  kann),  sollte  das aktuelle Verzeichnis
+beim  Start von CDP.APP, das Verzeichnis sein, indem sich CDP.APP befindet.
+Auch  sollte  man  darauf  achten,  daá  kein  anderes  Programm  (z.B. ein
+alternativer Fileselector) das aktuelle Verzeichnis von CDP ver„ndert.
+
+Ab  CD-Player  Version 1.2 werden auch die Zeiten jedes einzelnen Titels in
+der  Datenbank  abgelegt. Sie k”nnen somit auch exportiert werden. In alten
+Datenbanken  sind  diese  Zeiten  aber noch nicht vorhanden.  Um sie in die
+Datenbank  zu  bertragen,  mssen  die  jeweiligen  CDs  nur in das CD-ROM
+eingelegt  werden.  Sobald  der  Player die CD erkannt hat, sind die Zeiten
+auch  in der Datenbank vorhanden. Die Zeiten stehen auf 00:00, falls zur CD
+noch keine Zeitinformationen vorliegen.
+
+Es  ist  m”glich,  daá einige Funktionen des Programms nicht funktionieren,
+weil  entweder  der  CD-ROM-Treiber  oder  das  CD-ROM-Laufwerk diese nicht
+untersttzen.
+Voll  funktionsf„hig  ist  das  Programm  beispielsweise  mit  den CD-Tools
+(Treiber) und dem Toshiba XM-4101 (Laufwerk).
+
+Einige Funktionen des Programms (z.B. SHUFFLE und SINGLE) erfordern es, daá
+fr jeden  zu spielenden Titel ein Kommando an MetaDOS (bzw. an das CD-ROM-
+Laufwerk) gesendet werden muá.
+Das  bedeutet:  wenn  man  das  Programm beendet w„hrend eine CD abgespielt
+wird,  wird  die CD normalerweise bis zum Ende durchgespielt unabh„ngig von
+den Einstellungen (SHUFFLE, SINGLE etc.) von CDP, da es nun keine Kommandos
+mehr an das Laufwerk schicken kann.
+
+Die vom Programm  untersttzen Sampleformate  wurden alle in einer Artikel-
+serie der ST-Computer beschrieben (vielen Dank an die beiden Autoren dieser
+Serie: Harald Sch”nfeld, Bernd Spellenberg).
+
+Das  Programm  ist  in  Pure-Pascal geschrieben, die Routinen zur Frequenz-
+umrechnung   und  die  Packroutinen  (DVS:  Deltapack,  AU/SND:  u-Law)  in
+Assembler.
+
+
+
+Versionsliste
+=============
+Version   Datum         Bemerkung
+-------------------------------------------------------------------
+V1.0      12.12.1994   - erste ver”ffentlichte Version
+
+V1.1      15.01.1995   - Auch wenn das Progamm vorher beendet wird, wird
+                         jetzt die CD unter Umst„nden noch bis zum Ende
+                         abgespielt.
+                       - L„ngere Eingabefelder bei Titel-Eingabe
+                       - Voreinstellungen des Programms in CDP.INF
+                       - ASCII-Export der Datenbank (zur Verwendung in
+                         richtigen Datenbanken)
+                       - Peinlicher Fehler aus V1.0 beseitigt: Bei CDs,
+                         welche nicht in der Datenbank vorhanden waren,
+                         ging das Programm davon aus, da alle Tracks
+                         ausgeschaltet waeren. Daher konnte man unbekannte
+                         CDs nur titelweise bzw. im SINGLE-Modus abspielen :-(
+                       - Mehrere MetaDOS-Ger„te: Das gewnschte CD-ROM wird
+                         jetzt ber den Dateinamen des Programms bestimmt
+                         (Umbenennen auf CDP_x.APP - x ist Gemdos-Kennung).
+
+V1.1a     16.01.1995   - Schon wieder ein paar Bugs entdeckt :-(
+                         Doppelklick auf B hatte die CD ab Marke A statt
+                         ab Marke B gespielt. Das Abspielen ab Marke A bzw. B
+                         hatte nicht korrekt geklappt (Eine Umrechnung ging
+                         daneben). Jetzt sollte es aber funktionieren.
+
+V1.2      07.02.1995   - An alle, die noch 'alte' MetaDOS Treiber benutzen,
+                         die nur einen Teil der Audio-Kommandos untersttzen:
+                         CDP.APP kann jetzt auch hiermit die CD abspielen (Es
+                         erscheint ein entsprechender Warnhinweis nach dem
+                         Programmstart). Es wird dann aber nicht alles
+                         funktionieren. Abhilfe: Einen aktuellen audio-
+                         f„higen CD-ROM-Treiber benutzen.
+                       - Bei Datensatz-Eingabe kann man nun auch durch Cursor-
+                         hoch/runter durch die Titeleintr„ge scrollen.
+                       - Durch ein "Nachlaufen" des CD-ROMs konnte es passieren,
+                         daá Titel bersprungen wurden, bzw. bei SINGLE & REPEAT
+                         wurde eventuell der n„chste (falsche) Titel gespielt.
+                         Das sollte jetzt nicht mehr passieren.
+                       - Zwischen den Titeln gab es immer eine winzige Pause
+                         beim Abspielen (fr jeden zu spielenden Titel wurde ein
+                         MetaDOS-Kommando aufgerufen). Normalerweise f„llt das
+                         nicht auf, aber es gibt CDs bei denen die Titel in-
+                         einander bergehen. Hier st”rt die Pause natrlich
+                         (auch wenn sie nur sehr kurz ist). Ab V1.2 tritt keine
+                         Pause mehr auf.
+                       - Die Position des Hauptfensters und die Lautst„rke kann
+                         auf Wunsch gespeichert werden. Die Lautst„rke wird dann
+                         beim Programmstart auf den gespeicherten Wert gesetzt.
+                         Normalerweise wird sie nicht ver„ndert.
+                       - Neue (und alte) Betriebsmodi:
+                          * Programm  (vom Benutzer festgelegte Reihenfolge)
+                          * Block     (beliebiger Ausschnitt -> Blockmarken A,B)
+                          * Single    (nur einzelne Titel)
+                          * Zufall    (zuf„llige Reihenfolge)
+                          * Normal    (komplette CD von vorne bis hinten)
+                          * Anspielen (Titel werden 10sec angespielt)
+                       - Viele Funktionen sind jetzt auch ber die Menzeile
+                         erreichbar. Die Menzeile kann in Multitasking-
+                         Systemen abgeschaltet werden.
+                       - Die Zeiten der einzelnen Titel werden jetzt auch in
+                         der Datenbank abgelegt und k”nnen somit auch exportiert
+                         werden.
+
+V1.2a     06.03.1995   - Bugfix: Die Auswahl von 'Datenbank bearbeiten' fhrte
+                         zum Absturz, wenn keine CD eingelegt war :-(
+                       - Jetzt funktionieren auch im Pause-Modus die
+                         verschiedenen Zeit-Modi.
+
+V1.3      07.06.1995   - Das Einladen der Datenbank geht jetzt wesentlich
+                         schneller.
+                       - Programmieren-Dialog: Zeitangabe in Pause-Elementen.
+                         (Angabe der Zeit seit dem letzten Pause-Element)
+                       - Mixed-Mode-CDs bereiten jetzt keine Probleme mehr
+                         (falls ein 'moderner' CD-ROM-Treiber benutzt wird)
+                       - Bugfix: Fensterkoordinaten wurden falsch gespeichert.
+                       - Untersttzung von langen Dateinamen (z.B. auf Minix-FS
+                         unter MiNT).
+                       - L„uft jetzt auch als Accessory (mit Einschr„nkungen unter
+                         Single-TOS)
+                       - Schnellers Bl„ttern durch die Datenbank m”glich
+                         (Doppelpfeile: Maustaste gedrckt halten)
+                       - Unter Magic blieben die << und >> gedrckt. Jetzt geht's
+                         auch unter Magic. Dieses Verhalten wurde wahrscheinlich durch
+                         einen Bug in Magic hervorgerufen. Laut Profibuch liefert
+                         evnt_multi() immer(!) auch den Status der Maustasten zurck,
+                         unter Magic scheint das aber nicht zu funktionieren.
+                       - Iconify des Hauptfensters wird untersttzt.
+                       - Einige kleinere Bugfixes.
+
+V1.3a     07.07.1995   - Sch”nere 3D-Dialogoptik bei Falcon/MTOS/MagiC 3. (ltere
+                         Versionen von MagiC 3 stellen die Dialoge leider nicht
+                         ganz korrekt dar)
+                       - Einige Bugfixes.
+                       - Wenn das Programm als ACC installiert ist und das Fenster
+                         ist geschlossen, wird jetzt seltener die aktuelle Position
+                         der CD erfragt. Bei langsamen CD-Treibern (wie z.B.
+                         FALCON.BOS) wird dann nicht mehr soviel Rechenzeit
+                         verbraucht.
+                       - Der FALCON.BOS-Treiber unterschl„gt leider die Endezeit
+                         des letzten Titels. Dadurch kam es zu "H„ngern" beim
+                         Abspielen des letzten Titles, da das Programm der Meinung war
+                         der Titel w„re zuende. Jetzt wird bei fehlender Endezeit
+                         diese auf 100:00:00 gesetzt. Jetzt sollte es keine "H„nger"
+                         mehr geben, allerdings stimmen die "Remain"-Zeiten nicht mehr
+                         (naja, vorher hatten sie schlielich auch nicht gestimmt)
+
+V1.3b     29.09.1995   - Die Popup-Mens zur Titelauswahl werden mit Slidern versehen,
+                         wenn mehr als 20 Titel zur Auswahl stehen. Damit kann man
+                         jetz immer alle Titel direkt ausw„hlen.
+                       - Iconify jetzt auch fr die Fenster-Dialoge. (Aber immer noch
+                         kein ALLICONIFY)
+                       - Bugfix: Nachlaufen der Anzeige bei kurzen Bl”cken (Repeat-
+                         Modus) entsch„rft.
+                       - Bugfix: Zwischen den Titeln konnte es zu Aussetzern kommen
+                         (trat besonders dann auf, wenn es das Programm durch
+                         irgendwelche Dialoge blockiert wurde).
+                       - Bugfix: Wenn man im Repeat-Modus im letzten Titel einer CD
+                         'Skip Vorw„rts' drckte, spielte das Programm wieder den
+                         letzten Titel. Jetzt spielt es den ersten Titel.
+
+V1.3c     31.10.1995   - Bugfix: Die Minuten-Anzeige stand manchmal f„lschlicherweise
+                         auf '01'. Zumindest eine Situation, in der der Fehler auftrat
+                         ist jetzt gefunden.
+                       - Kleine Anpassungen an die GENEVA 4 3D-Optik (diese
+                         ist leider nicht ganz MTOS kompatibel)
+                       - Kleine Bugfixes.
+
+V1.3d     13.11.1995   - Workaround fr den EGON!-Treiber eingebaut. Mindestens
+                         Version 2.3 von EGON! besitzt einige Bugs, die verhindern,
+                         da alte Versionen des CD-Players korrekt funktionieren.
+                         Jetzt sollte der CD-Player auch mit EGON! laufen.
+
+V1.3e     16.01.1996   - Beim Export von Audio-Daten auf Festplatte wurde
+                         f„lschlicherweise eine Fehlermeldung ausgegeben, falls das
+                         Ende der CD erreicht wurde. Dieser Fehler war aber harmlos
+                         da keine Daten verloren gingen.
+                       - Beim Export von Audio-Daten wird jetzt, wenn m”glich, ein
+                         gr”erer Puffer verwendet. Dadurch sollte das Einlesen der
+                         Daten beschleunigt werden.

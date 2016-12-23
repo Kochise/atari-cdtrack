@@ -1,0 +1,200 @@
+Text translation performed using XLATOR V2.01 by Gair Shields.
+Support shareware authors, part with some cash..
+Send ú5 to me at: 73 Old Castle Rd, Cathcart, Glasgow, G44 5TG
+You will be rewarded by a warm gooey feeling inside..
+(and a new version that doesn't produce this message) Thanks!
+-------------- XLATOR, UNREGISTERED VERSION 2.01 --------------
+
+alterations in_contrast_to Version 1.00 by `CD-Tool'
+
+	Version 2.02 (4. Dec 1994)
+
+        Datentransferrate for IDE-CD-ROMs to ancient Ataris erhîht.
+
+        In CDDA can the Volume about the Cursor_key reguliert become.
+
+        HS-ISO.DOS: Fsfirst() to Volume-Name liefert improve Returnwerte 
+        (repairs Elf-Entry: "Lesefehler").
+
+	Version 2.00 (20. November 1994)
+
+		All Programme abet now also CD-ROMs to the 
+		IDE-Cut_place(?) to ATAPI-Standard.
+
+		HS-ISO.DOS: Files with the Attribute `associated file' become 
+		not more show.
+
+		HS-ISO.DOS: the Desktop in TOS 1.04 contains alas one schweren 
+		Error, the auftritt, if one in one CD-ROM-Window the 
+		ESC-Key drÅckt. The DOS-Driver contains now one Workaround, 
+		the this (by Atari to verantwortende) Problem go_around.
+
+        HS-ISO.DOS and CD-TOOL.APP: the Size the Readcache in Driver 
+        (normally 16 KByte) is now konfigurierbar.
+
+        CDDA.APP: if one CD-Change it_is_able_to will_be, will_be this the Desktop 
+        automatic joined_to, that he the Fensterinhalt update 
+        can (entails one Desktop, the that can: for Example the 
+        Atari-Desktop in MULTITOS or Gemini).
+
+		METADOS.PRG: Launch by Programs by CD ought to ancient 
+		TOS-Version again correct act.
+
+        CD-Tool and HS-CDROM.BOS abet now SCSI-Bus-Arbitration, 
+        because any neuere GerÑte this compelling entail. More by_it in 
+        the restlichen Guidance.
+
+		With CD-Tool will_be now also a up_to_date MINT-Version (1.12) 
+		ausgeliefert, with the the Collaboration among MINT and METADOS 
+		better as hitherto happen.
+
+
+	Version 1.28 (25. September 1994)
+
+		HS-ISO.DOS: it act now also CDs, from then any 
+		Data in Volume Descriptor absence (that is one Error the 
+		Herstellers, concerns for Example the `Compo Power CD').
+
+    Version 1.26 (11. September 1994)
+
+        ID-Test and Stop&Lock: It become ggfs english- rather. 
+        franzîsischsprachige Text use.
+
+        CDROMS.TXT in Way to Apple Power-CD expands.
+
+        HS-ISO.DOS: Problem with CDs with especially many Files in 
+        Root_symbol fixed.
+
+		HS-CDROM.BOS: Audio-CDs become under UmstÑnden faster it_is_able_to 
+		(ACSI).
+
+    Version 1.24 (19. August 1994)
+
+        CDDA: Shift-Cursortaste might now same as the appropriate 
+        Cursortaste. It become ggfs english- rather franzîsischsprachige 
+        Text use.
+
+    Version 1.22 (2. August 1994)
+
+        It give now a `Junior'-Version by CDDA, from the the Reception 
+        by CD not possible is (spart under anderem Storage_space).
+
+        Toshiba XM3401: it can now also then gebootet become, if no_one 
+        CD inlaid or the Schublade open is.
+
+        Any Sonderbehandlungen for the faulty Firmware the NEC 
+        CD-ROM DRIVE:211 (MultiSpin 2x) included.
+
+        Problem with Mediachange-Recognition mancher Disk_drive supposed_to 
+        fixed be.
+
+        Multisession-CDs become from more Laufwerkstypen it_is_able_to.
+
+        CD-Tool shows now in Window behind `Audio-Commands' to, if 
+        digitales Copy by Audiodaten to Harddisc possible is.
+
+        To Farbbildschirmen erhÑlt the Aufnahmetaste now the right 
+        Colour.
+
+    Version 1.20 (17. June 1994)
+
+        CDDA: from Use the Toshiba XM3401 or XM4101 can now about 
+        the Reception-Key direct by Audio-CDs to Harddisc Åberspielt 
+        become (nÑheres taxi bottom).
+
+    Version 1.18 (7. June 1994)
+
+        HS-ISO.DOS: `Fdatime()' functions again (fÅhrte to 
+        Fehlermeldungen at Copy).
+
+    Version 1.16 (1. June 1994)
+
+        The new Menu_point `Rate' verbirgt one simplify 
+        CD-ROM-Benchmark.
+
+        A per Double_click to Songdatei ausgelîste Audio-Record 
+        will_be not more unterbrochen, if that Directory new eingelesen 
+        become must (ZB at Desktop-Redraw).
+
+        AbstÅrze with Standard-Dateiauswahl-Box fixed.
+
+    Version 1.14 (19. May 1994)
+
+        Recognition by Data-CDs functions again better.
+
+        Multisession-Recognition from Not-Toshiba-Laufwerken functions 
+        again.
+
+    Version 1.12 (24. April 1994)
+
+        The FunktionalitÑt by `HS-CDAR.BOS' is in `HS-CDROM.BOS' with 
+        called been.
+
+        That Apple CD150 will_be separate supports (Audio-Commands).
+
+        ICD-Hostadapter become especially supports; with them can 
+        Audio-Commands from all handelsÅblichen GerÑten use become 
+        (and not just the `most').
+
+        The Dateisystemtreiber (`HS-ISO.DOS') shows now from Audio-CDs the 
+        single Track as Filename (`TRACKXY.PRG') to. This used 
+        not just the bettors overall_view: the Files can also direct 
+        as Programme ausgefÅhrt become (and care then instead, that the CD 
+        start from the given_to Carol abgespielt will_be).
+
+    Version 1.10 (29. March 1994)
+
+        HS-CDAR.BOS, HS-CDROM.BOS: still one Error in the ACSI-Routines 
+        redresses (trat likewise from long Transfers to).
+
+        HS-ISO.DOS: from Fseek() becomes under UmstÑnden the false 
+        Dateiposition zurÅckgeliefert.
+
+    Version 1.08 (27. March 1994)
+
+        HS-ISO.DOS: The GEMDOS-Function `Fdatime()' liefert now the 
+        correct(?) Value. `Dsetpath()' might now one Existenzcheck (in 
+        Contrast for Atari-Driver).
+
+        HS-CDAR.BOS: Can also Photo-CDs read (with eingeschrÑnkter 
+        Fehlerkorrektur).
+
+        HS-CDROM.BOS: Bed the Volume from GerÑten to ACSI works 
+        better. Error from Transfers by more as rd. 512KByte to once 
+        redresses.
+
+    Version 1.06 (20. March 1994)
+
+        CDDA: Title can direct per Keyboard choose(?) become. 
+        Datentracks become as such_as show. The Volume can 
+        installed become (aside from CDAR504). Attention: the 
+        `Reception'-Key have still no_one Function.
+
+        new: HS-CDAR.BOS (spezieller Driver for Atari CDAR504), 
+        HS-ISO.DOS (replace the appropriate Driver by Atari).
+
+        To many STs gave it AbstÅrze from ACSI-Zugriffen, that ought 
+        fixed be.
+
+    Version 1.04 (12. March 1994)
+
+        CDDA: no Crash more at alter the Time-Mode, `Cue' go 
+        also then, if Time-Mode `DEAD' choice is. Amplifications to 
+        the Tastaturbedienung (taxi bottom).
+
+        Problem with Toshiba XM4101 to Falcon-SCSI redresses.
+
+    Version 1.02 (10. March 1994)
+
+        Medienwechsel-Recognition improved.
+
+        `Install' hang not more, if the application AUTO-File 
+        still not as is.
+
+        `CDDA.ACC' meldet it not more one wider Times to, if one 
+        one others Appliance auswÑhlt.
+
+        Audio-Play with CD150 with Firmware CDU-541 functions better.
+
+        Chick Enlargement in the Keyboard-Service by `CDDA'. 
+

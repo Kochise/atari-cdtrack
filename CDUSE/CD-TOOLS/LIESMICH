@@ -1,0 +1,229 @@
+énderungen gegenÅber Version 1.00 von `CD-Tool'
+
+
+    Version 2.08
+
+        CD-TOOL.APP: 'Report sichern' stÅrzt nicht mehr unter UmstÑnden ab, 
+        wenn man einen Rechner mit PAK benutzt.
+
+        METADOS.PRG: Pexec-Modus 3 funktioniert jetzt (wird von 'Turnus' 
+        benîtigt).
+
+        CDDA: benutzt ggfs die in MagiC 3 eingebauten Dialogroutinen.
+
+        HS-ISO.DOS: kleine Detailverbesserungen (zB werden jetzt 
+        erweiterte Dpathconf-Opcodes unterstÅtzt).
+
+    Version 2.06 (11. MÑrz 1994)
+
+        CD-TOOL.APP: IDE-CD-ROMs werden auch dann erkannt, wenn keine CD 
+        eingelegt ist.
+
+        METADOS.PRG: Problem behoben, das zB unter dem Atari-Desktop zu 
+        der Fehlermeldung "Daten auf Disk ... defekt..." fÅhrte, obwohl 
+        gar kein Zugriff auf das CD-ROM gemacht wurde. ZusÑtzlich einen 
+        Fix fÅr einen Fehler im Falcon-GEMDOS eingebaut (fÅhrte zB zum 
+        Verschwinden von Laufwerksicons).
+
+    Version 2.04 (24. Februar 1995)
+
+        Provisorischer Support fÅr Vertos 300 (alles, was mit Audio 
+        zusammenhÑngt, wird vorlÑufig nicht unterstÅtzt).
+
+        CD-Tool erkennt jetzt auch das Toshiba XM4101, wenn es sich unter 
+        der Kennung `TOSHIBA   XM4101TA...' meldet.
+
+        Im CD-Tool-Fenster wird nun, sofern bekannt, die Seriennummer des 
+        CD-ROM-Laufwerks angezeigt.
+
+    Version 2.02 (4. Dezember 1994)
+
+        Datentransferrate fÅr IDE-CD-ROMs an alten Ataris erhîht.
+
+        In CDDA kann die LautstÑrke Åber die Cursortasten reguliert werden.
+
+        HS-ISO.DOS: Fsfirst() auf Volume-Namen liefert bessere Returnwerte 
+        (behebt Kobold-Meldung: "Lesefehler").
+
+    Version 2.00 (20. November 1994)
+
+        Alle Programme unterstÅtzen nun auch CD-ROMs an der 
+        IDE-Schnittstelle nach ATAPI-Standard.
+
+        HS-ISO.DOS: Dateien mit dem Attribut `associated file' werden 
+        nicht mehr angezeigt.
+
+        HS-ISO.DOS: der Desktop in TOS 1.04 enthÑlt leider einen schweren 
+        Fehler, der auftritt, wenn man in einem CD-ROM-Fenster die 
+        ESC-Taste drÅckt. Der DOS-Treiber enthÑlt jetzt einen Workaround, 
+        der dieses (von Atari zu verantwortende) Problem umgeht.
+
+        HS-ISO.DOS und CD-TOOL.APP: die Grîûe des Readcache im Treiber 
+        (normalerweise 16 KByte) ist nun konfigurierbar.
+
+        CDDA.APP: wenn ein CD-Wechsel erkannt wird, wird dies dem Desktop 
+        automatisch mitgeteilt, damit er den Fensterinhalt aktualisieren 
+        kann (erfordert einen Desktop, der das kann: zum Beispiel der 
+        Atari-Desktop im MultiTOS oder Gemini).
+
+        METADOS.PRG: Starten von Programmen von CD sollte auf alten 
+        TOS-Versionen wieder richtig funktionieren.
+
+        CD-Tool und HS-CDROM.BOS unterstÅtzen jetzt SCSI-Bus-Arbitration, 
+        weil einige neuere GerÑte dies zwingend erfordern. Mehr dazu in 
+        der restlichen Anleitung.
+
+        Mit CD-Tool wird nun auch eine aktuelle MiNT-Version (1.12) 
+        ausgeliefert, mit der die Zusammenarbeit zwischen MiNT und MetaDOS 
+        besser als bisher klappt.
+
+
+    Version 1.28 (25. September 1994)
+
+        HS-ISO.DOS: es funktionieren nun auch CDs, bei denen einige 
+        Angaben im Volume Descriptor fehlen (das ist ein Fehler des 
+        Herstellers, betrifft zum Beispiel die `Compo Power CD').
+
+    Version 1.26 (11. September 1994)
+
+        ID-Test und Stop&Lock: Es werden ggfs englisch- bzw. 
+        franzîsischsprachige Texte benutzt.
+
+        CDROMS.TXT in Hinsicht auf Apple Power-CD erweitert.
+
+        HS-ISO.DOS: Probleme mit CDs mit besonders vielen Dateien im 
+        Wurzelverzeichnis behoben.
+
+        HS-CDROM.BOS: Audio-CDs werden unter UmstÑnden schneller erkannt 
+        (ACSI).
+
+    Version 1.24 (19. August 1994)
+
+        CDDA: Shift-Cursortaste macht jetzt dasselbe wie die entsprechende 
+        Cursortaste. Es werden ggfs englisch- bzw franzîsischsprachige 
+        Texte benutzt.
+
+    Version 1.22 (2. August 1994)
+
+        Es gibt jetzt eine `Junior'-Version von CDDA, bei der die Aufnahme 
+        von CD nicht mîglich ist (spart unter anderem Speicherplatz).
+
+        Toshiba XM3401: es kann nun auch dann gebootet werden, wenn keine 
+        CD eingelegt oder die Schublade geîffnet ist.
+
+        Einige Sonderbehandlungen fÅr die fehlerhafte Firmware des NEC 
+        CD-ROM DRIVE:211 (MultiSpin 2x) eingebaut.
+
+        Probleme mit Mediachange-Erkennung mancher Laufwerke sollten 
+        behoben sein.
+
+        Multisession-CDs werden bei mehr Laufwerkstypen erkannt.
+
+        CD-Tool zeigt jetzt im Fenster hinter `Audio-Kommandos' an, ob 
+        digitales Kopieren von Audiodaten auf Festplatte mîglich ist.
+
+        Auf Farbbildschirmen erhÑlt die Aufnahmetaste nun die richtige 
+        Farbe.
+
+    Version 1.20 (17. Juni 1994)
+
+        CDDA: bei Benutzung des Toshiba XM3401 oder XM4101 kann nun Åber 
+        die Aufnahme-Taste direkt von Audio-CDs auf Festplatte Åberspielt 
+        werden (nÑheres siehe unten).
+
+    Version 1.18 (7. Juni 1994)
+
+        HS-ISO.DOS: `Fdatime()' funktioniert wieder (fÅhrte zu 
+        Fehlermeldungen beim Kopieren).
+
+    Version 1.16 (1. Juni 1994)
+
+        Der neue MenÅpunkt `Geschwindigkeit' verbirgt einen einfachen 
+        CD-ROM-Benchmark.
+
+        Eine per Doppelklick auf Songdatei ausgelîste Audio-Wiedergabe 
+        wird nicht mehr unterbrochen, wenn das Verzeichnis neu eingelesen 
+        werden muû (zB beim Desktop-Redraw).
+
+        AbstÅrze mit Standard-Dateiauswahl-Box behoben.
+
+    Version 1.14 (19. Mai 1994)
+
+        Erkennung von Daten-CDs funktioniert wieder besser.
+
+        Multisession-Erkennung bei Nicht-Toshiba-Laufwerken funktioniert 
+        wieder.
+
+    Version 1.12 (24. April 1994)
+
+        Die FunktionalitÑt von `HS-CDAR.BOS' ist in `HS-CDROM.BOS' mit 
+        aufgenommen worden.
+
+        Das Apple CD150 wird gesondert unterstÅtzt (Audio-Kommandos).
+
+        ICD-Hostadapter werden besonders unterstÅtzt; mit ihnen kînnen 
+        Audio-Kommandos bei allen handelsÅblichen GerÑten benutzt werden 
+        (und nicht nur den `meisten').
+
+        Der Dateisystemtreiber (`HS-ISO.DOS') zeigt nun bei Audio-CDs die 
+        einzelnen Spuren als Dateinamen (`TRACKXY.PRG') an. Dies dient 
+        nicht nur der besseren öbersicht: die Dateien kînnen auch direkt 
+        als Programme ausgefÅhrt werden (und sorgen dann dafÅr, daû die CD 
+        beginnend bei dem angegebenen Lied abgespielt wird).
+
+    Version 1.10 (29. MÑrz 1994)
+
+        HS-CDAR.BOS, HS-CDROM.BOS: noch einen Fehler in den ACSI-Routinen 
+        beseitigt (trat ebenfalls bei langen Transfers auf).
+
+        HS-ISO.DOS: bei Fseek() wurde unter UmstÑnden die falsche 
+        Dateiposition zurÅckgeliefert.
+
+    Version 1.08 (27. MÑrz 1994)
+
+        HS-ISO.DOS: Die GEMDOS-Funktion `Fdatime()' liefert jetzt die 
+        richtigen Werte. `Dsetpath()' macht nun einen Existenzcheck (im 
+        Gegensatz zum Atari-Treiber).
+
+        HS-CDAR.BOS: Kann auch Photo-CDs lesen (mit eingeschrÑnkter 
+        Fehlerkorrektur).
+
+        HS-CDROM.BOS: Setzen der LautstÑrke bei GerÑten an ACSI lÑuft 
+        besser. Fehler bei Transfers von mehr als rd. 512KByte auf einmal 
+        beseitigt.
+
+    Version 1.06 (20. MÑrz 1994)
+
+        CDDA: Titel kînnen direkt per Tastatur angewÑhlt werden. 
+        Datentracks werden als solche angezeigt. Die LautstÑrke kann 
+        eingestellt werden (auûer bei CDAR504). Achtung: die 
+        `Aufnahme'-Taste hat noch keine Funktion.
+
+        neu: HS-CDAR.BOS (spezieller Treiber fÅr Atari CDAR504), 
+        HS-ISO.DOS (ersetzt die entsprechenden Treiber von Atari).
+
+        An manchen STs gab es AbstÅrze bei ACSI-Zugriffen, das sollte 
+        behoben sein.
+
+    Version 1.04 (12. MÑrz 1994)
+
+        CDDA: kein Absturz mehr beim éndern des Time-Modus, `Cue' geht 
+        auch dann, wenn Time-Modus `TOTAL' gewÑhlt ist. Erweiterungen an 
+        der Tastaturbedienung (siehe unten).
+
+        Problem mit Toshiba XM4101 an Falcon-SCSI beseitigt.
+
+    Version 1.02 (10. MÑrz 1994)
+
+        Medienwechsel-Erkennung verbessert.
+
+        `Installieren' hÑngt nicht mehr, wenn der gesuchte AUTO-Ordner 
+        noch nicht da ist.
+
+        `CDDA.ACC' meldet sich nicht mehr ein weiteres Mal an, wenn man 
+        ein anderes GerÑt auswÑhlt.
+
+        Audio-Play mit CD150 mit Firmware CDU-541 funktioniert besser.
+
+        Kleine Erweiterung in der Tastatur-Bedienung von `CDDA'. 
+

@@ -1,0 +1,646 @@
+Text translation performed using XLATOR V2.01 by Gair Shields.
+Support shareware authors, part with some cash..
+Send œ5 to me at: 73 Old Castle Rd, Cathcart, Glasgow, G44 5TG
+You will be rewarded by a warm gooey feeling inside..
+(and a new version that doesn't produce this message) Thanks!
+-------------- XLATOR, UNREGISTERED VERSION 2.01 --------------
+
+Attention: alterations in the untenstehenden Abs„tzen where with the up_to_date 
+Version_number labelled (that one faster the `News' 
+find can). For Example so: [1.24]
+
+DOCUMENTATION TO CD-TOOL AND CDDA
+
+    Cordial Welcome from our new Product `CD-Tool'. We know: 
+    nobody read gladly Documentation. Still want_to we Them 
+    commend, least one Deal the series Description to read, 
+    about it Irrtmer and Mižverst„ndnisse to ersparen.
+
+    For the all Eiligen:
+
+
+SCHNELLINSTALLATION FOR THOSE, THE IT ALL HURRY HAVE
+
+    (1) Launch You `CD-TOOL.APP'. Click You in Menu `METADOS' the Dot 
+    `Installation' to. Choose You in the Dialogbox for 
+    `ISO9660-Dateisystem' one in System bislang not used 
+    Laufwerksbuchstaben (taxi Display top). Press You RETURN, about the 
+    Configuration to save.
+
+    (2) Launch You that System new. Impose You a Data-CD one and open 
+    you that in Degree (1) gives_to Disk_drive. It supposed_to now the Data 
+    to the CD show become.
+
+    (3) You intend a Audio-CD abspielen? Then launch You `CDDA.APP' 
+    or copy You `CDDA.ACC' in that Root_symbol the 
+    Bootlaufwerks. The point_at(?) Keys act in about so, as 
+    one it by one CD-Player expected.
+
+    (4) Irgendetwas functions not as expected? Luck, then must You 
+    now good still the Residue the Documentation read.
+
+
+    You have it by hierhin geschafft? Fine. Then intend we to one 
+    couple Basics shrink, the for Comprehension the Concern high 
+    important where.
+
+
+WHY REQUIRED ONE ACTUAL ONE SPECIAL DRIVER FOR CD-ROMS?
+
+    That ask it many, and not all to harm. Eventual is one 
+    CD-ROM from the Sight the Computer yes also negation others as a 
+    grože Wechselplatte, the not describe become can. This true, 
+    and indeed where the Programmteile, the it with the CD-ROM 
+    `amuse', (almost) with then from one Festplattentreiber identical 
+    (by the Block_size and determines Spezialit„ten as Audio-Commands 
+    apart).
+
+    The Unterschiede lie to one other Area: during to 
+    Festplattem the Files in the Fashion and Manner be_saved where, as you 
+    that GEMDOS in ROM the Ataris expected, will_be to CDs one others 
+    `Dateisystem' use. This not unconditional, about us that Being schwerer 
+    to do, but because from high grožen Datenmengen, the indeed 
+    never changes become, other Format plain effektiver where.
+
+    Data-CDs -- by_it belong also Photo-CDs -- abstain so in 
+    Allgemeinen one sogenanntes `ISO-9660-Dateisystem'. This must one 
+    anyhow the Operating_system unterschieben.
+
+    Atari have it already pretty early that befažt. Herausgekommen is 
+    the Operating_system_extension `METADOS', the to all Ataris works 
+    and a relative flexible Anbindung latter Ger„te and Dateisysteme 
+    possible might. Neueren Original is natural `MULTITOS' rather. `MINT', 
+    that a clean other Method to_the Einbindung latter Ger„te vorsieht.
+
+    `METADOS' comprises from three Divide. `METADOS.PRG' is one 
+    AUTO-File-Program, that the Invasion in_the Operating_system taken, 
+    it about that Read the Konfigurationsdatei kmmert etc. 
+    `BOS'-Driver bother it about the Communication with the Ger„ten, 
+    parallel so in about the, which one Festplattentreiber might. The 
+    `DOS'-Driver hingegen bother it about other Dateisystemformate.
+
+    Before we us now this Component n„her credit, must we alas 
+    early once one couple Fachbegriffe from the CD-ROM-World comprehend (i 
+    verspreche, it brief and schmerzlos to do):
+
+    DOUBLE-SPEED: normally turns it the CD in Disk_drive just_as 
+    fast, as it also from Audio-Ger„ten the Case is. With_them come from 
+    Data-CDs round 150 KByte per Second to nutzbaren Data out, which 
+    for many Application(?) one little lean is. Hence where Disk_drive, the 
+    Data-CDs double so fast rotieren have, meantime Standard. 
+    Some Maker afford even Ger„te with three- or vierfacher 
+    šbertragungsrate to. One beachte indeed, that it the mittlere 
+    Zugriffszeit most not in demselben Mass improved!
+
+    XA: CDs in XA-Format improve one spezielles Aufzeichnungsformat, that 
+    by „lteren CD-ROMs often not read become can. Photo-CDs where 
+    normally in XA-Format describe! [1.10]
+
+    MIXED-FASHION-CD: a CD, the both Data as also Musikstcke contains. 
+    [1.10].
+
+    MULTISESSION: neuerdings give it also CDs, the in several `Sitzungen' 
+    vollgeschrieben become can. With_them become though never the already 
+    available Data berschrieben, but it come new hinzu. This is 
+    for_example then the Case, if You with another Photo-CD one zweites 
+    Times for Fotoh„ndler go and wider Image draufschreiben have. 
+    If this wider `Session' read can become shall, then need 
+    You one `Multisession-f„higes' Disk_drive.
+
+    ISO9660: this is the Name the normally to CD-ROMs used 
+    Dateisystems. As the Name already say, installation it it not about 
+    irgendeinen `de-facto'-Standard, but about a internationale Mark. 
+    ISO9660 can brigens either (`Level 1') the blichen 
+    DOS-Filename (8+3 Mark) or by to 32 Mark long Filename 
+    abstain (`Level 2', this gets indeed just high rare before). To 
+    jeden Case is but the maximum Verzeichnistiefe to 8 File 
+    narrow. [1.06]
+
+    HIGH-SIERRA: before that ISO9660-Format fixed becomes, gave it already 
+    one alas not all kompatibles Vorg„ngerformat. Actual ought 
+    it barely still such_as CDs give, but from unerfindlichen Base become 
+    also today still sometimes such_as CDs produziert.
+
+    PHOTO-CD rather. PCD: Image to Photo-CDs improve one spezielles 
+    Dateiformat, that alas just by wenigen Programs read become 
+    can. Indeed find You in Lieferumfang a Copy by Dieter 
+    Fiebelkorns `GEM-View', that PCD-Files by to_the Resolution by 768*512 
+    load and in other Format conversion can. Conceive You but on_it, 
+    that You that Program from regelm„žiger Use fee must 
+    (Registrierkarte bed from!). Photo-CDs improve brigens that 
+    ISO-Dateisystem. [1.10]
+
+    PHOTO-CD PORTFOLIO: a Photo-CD, the additional also a or 
+    several Tonspuren contains. [1.06]
+
+
+    Any Parts by `METADOS' where now usable?
+
+    The `BOS'-Driver (`CDARGEN.BOS') functions just with CD-ROMs at_best 
+    SCSI-Port the TT as_soon_as with the `Atari CDAR 504' (just in slight 
+    Stckzahlen verkauft) to the ACSI-Cut_place(?). Besides supports he 
+    no_one Multisession-CDs. Hence have we one new Driver 
+    developed, the handelsbliche SCSI-Ger„te as_soon_as that `Atari CDAR504' 
+    supports. [1.12]
+
+    The `DOS'-Driver (`ISO9660F.DOS' and `HSMAY.DOS') have though one couple 
+    little_one `Macken' (taxi onward bottom), fill but their Dismissal 
+    weitestgehend zufriedenstellend. Still have we you through one 
+    eigenen, new Driver replace (`HS-ISO.DOS'), the not just one little 
+    faster is, but automatic among High-Sierra- and ISO-CDs 
+    difference and besides any nachsichtiger in_contrast_to solchen CDs is, 
+    from then the Maker from_the ISO-Standard abgewichen where. 
+    Darberhinaus become also the Level-2-CDs with long Filename 
+    supports. [1.12]
+
+    `METADOS' even functions unseres Wissens meantime high 
+    stable. The Service under `MULTITOS' or `MAGIC' (vormals `May!x') 
+    is prinzipiell possible, can but in Einzelf„llen to Fehlfunktionen 
+    carry. Basic: `METADOS' is not to that `Task-Switching' this 
+    System usable. If You `METADOS' under `MULTITOS' rather. `MINT' 
+    insert intend, then heed You on, that the File `MINT.PRG' 
+    rather. `MINTNP.PRG' to `METADOS.PRG' in AUTO-File placed [1.30].
+
+    The in_front_of Version by `CD-Tool' befažt it hence in first 
+    Line with the Divide, where unserer Estimation to special 
+    Handlungsbedarf vorlag:
+
+    `CD-TOOL.APP': one komfortables Installations- and Diagnoseprogramm 
+    (`METADOS' will_be normally about a any big verst„ndliche 
+    ASCII-File configures; this Employment take Them `CD-Tool' down).
+
+    `HS-CDROM.BOS': one Driver for CD-ROMs to ACSI-, TT-SCSI or 
+    Falcon-SCSI, the also Multisession-CDs supports.
+
+    `HS-ISO.DOS': Driver for ISO- and High-Sierra-CDs. [1.06]
+
+    `CDDA.APP' rather. `CDDA.ACC': one little Program rather. Accessory, about 
+    Audio-CDs abzuspielen.
+
+    `ID-TEST.APP': one simple Testprogramm, that for all ACSI- and 
+    SCSI-Ger„te the Ger„tenamen show. Can helpful be, about to the 
+    Fast find_out, if one Appliance berhaupt correct connected(?) 
+    is.
+
+    `STOPLOCK.CPX': one XControl-Modul for Bar the Auswurftaste. 
+    Must in that Directory with the other CPX-Modulen copies become.
+
+    If You it wundern, where for now the altogether other describe 
+    Files (`HS-CDROM.BOS', `HS-ISO.DOS' and `METADOS.PRG') pop: we 
+    have you in the Archivdatei `CD-TOOL.LIB' covert, that You not 
+    with so many Files herumhantieren must. [1.12]
+
+    That have You the Introduction berstanden, come we to_the 
+    Description by `CD-Tool':
+
+
+
+CD-TOOL
+
+    From the Service by `CD-Tool' where those clear in Convenience, the 
+    already their Experienced with `SCSI-Tool' leisure have. Who it 
+    spoken_to fhlt, can presumable problem alike at Menu_point 
+    `METADOS' weiterlesen.
+
+    `CD-Tool' lust alike to Advent to CD-ROMs. With_them become all 
+    on_closing(?) Ger„te untersucht. ATTENTION: if You a 
+    Vortex-Harddisc the Baureihe `HD-PLUS' improve, then must this 
+    either off be, or `CD-Tool' must so configures be, 
+    that it not to the appropriate Device_number zugreift.
+
+    As that go: either during the Programmstarts a the 
+    Shift-Keys hold or that Program with the Option `-i' launch. 
+    It appear then a Dialogbox, in the the abzuprfenden 
+    Ger„tenummern installed become can.
+
+    To erfolgreichem Programmstart figure the Menu_bar as_soon_as one 
+    Programmfenster. All Functions in `CD-ROM'-Menu subscribe_to it in 
+    Default to the here show Dish. If just one CD-ROM 
+    found becomes, shows that Window alike the zugeh”rigen 
+    Information. Anderenfalls can one that Ger„te about `CD-ROM -- 
+    pick' select. Through Press by ESC can one determine, 
+    that the Information updated become. Through Mouse-Double_click will_be 
+    renewed to CD-ROMs wanted.
+
+    If You `MULTITOS' improve, can You also plain one to the Appliance 
+    geh”riges Laufwerkssymbol to that Window drag. `CD-Tool' try 
+    then, that zugeh”rige Appliance to determine and shows in Erfolgsfall the 
+    zugeh”rigen Data in Window to.
+
+    Missing still the Statement, which for in Window show will_be. Ancillary 
+    Device_number, -name and Version the Firmware shows `CD-Tool' also to, 
+    in wieweit that betreffende Ger„te Photo-CD-fit is, and if one 
+    abide may, that Audio-Commands (for Abspielen by Audio-CDs) 
+    supports become.
+
+
+    Come we to the single Drop-Down-Mens:
+
+
+    Menu: `File'
+
+    Ancillary the unerl„žlichen `End' give it here still the Menpunkte for 
+    Save and Print by `Reportdateien', for Save the Setting 
+    as_soon_as for Save another `Ger„teinformationsdatei'. Paragraph 
+    Begriffserkl„rung: in another `Reportdatei' become important 
+    Information about the up_to_date Systemkonfiguration be_saved. If 
+    once any not correct functions, then post You us send 
+    always this File with.
+
+    A `Ger„teinformationsdatei' again contains Data about one 
+    spezielles Appliance. Also this File can us from the Fehlerdiagnose 
+    high helpful be. Note You, that You this File also then 
+    generate can, if `CD-Tool' that appropriate Appliance from 
+    ungekl„rten Base not as CD-ROM accept have.
+
+    At Save the Setting noticed it `CD-Tool', to any Ger„te 
+    to_grip become shall (taxi `Ger„teliste').
+
+
+    Menu: `CD-ROM'
+
+    `pick' is just then interesting, if indeed several CD-ROMs 
+    found become. In this_one Case can one about this_one Menu_point that in 
+    Window anzuzeigende Appliance from_refined become.
+
+    `Ger„teliste' call one Dialogue to, about the one `CD-Tool' acquaint 
+    can, any Ger„tenummern at Programmstart untersucht become 
+    supposed_to. The here made Setting will_be through `File -- 
+    Setting save' in another Konfigurationsdatei fixed_content.
+
+    `Status display' shows the up_to_date Ger„testatus to. This can 
+    necessary be, about conscience Errors (as for Example the 
+    Not-Diagnose one Medienwechsels) to the Lane to come.
+
+
+    Menu: `METADOS'
+
+    This Menu befažt it with the Installation and Configuration by 
+    `METADOS'. Before we to the Minutiae come, must but still to one 
+    important Difference to Harddiscs hingewiesen become:
+
+    Festplattentreiber behave it to the Atari pretty bright: 
+    Ger„te must not special angemeldet become and become ever to 
+    Treiberversion more or minder automatic it_is_able_to. With_them become the 
+    Laufwerkskennungen in the Law automatic verteilt.
+
+    `METADOS' go indeed different before: the Configuration will_be in another 
+    ASCII-File be_saved. With the Setup this File need You it 
+    not to befassen, as it therefore already `CD-Tool' kmmert. Important 
+    is but, that just the in this Konfigurationsdatei given_to Ger„te 
+    found and the correspondent zugeordneten Laufwerksbuchstaben use 
+    become.
+
+    `install' copies all to METADOS geh”rigen Files in the 
+    AUTO-File. Anschliežend go's direct onward for `configure'.
+
+    `configure' call one Dialogue to, in the each the gefundenen 
+    CD-ROMs Laufwerkskennungen to_file(?) become. If You several 
+    CD-ROMs own, can You with the Pfeiltasten (and per Keyboard) 
+    among the single Ger„ten off- and herbl„ttern. [1.22]
+
+    As Hilfestellung become top the already put_down Laufwerkskennungen 
+    show: black placed for found `normal' Disk_drive, graue 
+    for such_as, the already by `METADOS' served become. Scruple You, 
+    that it the Number the from_the Festplattentreiber used 
+    Laufwerkskennungen easy alter can (for Example through Anschluž 
+    another Wechselplatte).
+
+    Attention: Laufwerkskennungen across by `P' adjust many Programme 
+    before Difficulty; under anderem the GEM-Dateiauswahlbox. Conceive You 
+    also on_it, that Disk_drive `U:' under MULTITOS rather MINT already a 
+    special Import have.
+
+	The CD-ROM-Driver noticed it the zuletzt gelesenen Sectors in one 
+	Cache, about zeitraubende Laufwerkszugriffe to avoid. This is 
+	normally 16 KByte large, can but from Demand here vergr”žert 
+	become (for Example then, if it to another CD especially grože 
+	Verzeichnisse or especially deep verschachtelte Verzeichnisse 
+	find). [1.30]
+
+
+
+    And eventual: that alter by ASCII-Konfigurationsdateien is always 
+    any critical. `CD-Tool' do be Good, about all Information, the 
+    with other Driver or Ger„ten to do have k”nnten, unchanged to 
+    have. Additional will_be a Copy the originally File as 
+    `CONFIG.BAK' firmed.
+
+    `removal' desaktiviert `METADOS'. With_them will_be merely the 
+    Program_file so unnammed, that you at Stop_work the AUTO-Folders 
+    not more open will_be.
+
+    `Rate' fhrt to one Benchmark. Choose You next that to 
+    testende Appliance from. Anschliežend become the Transferrate (it will_be 
+    grave, wieviele Data that Disk_drive inside by 20 Seconds read 
+    can) and the mittlere Lesezeit (20 Seconds long casual ausgew„hlte 
+    Sectors read) grave. The Transferrate will_be also as `Factor', 
+    n„mlich as Multiple the `simplify' Leserate by 150 Kbyte/s, 
+    ausgegeben. Attention: the Mežwerte where also from_the Type the used CD 
+    (`normal', Photo-CD etc.) dependent. [1.16]
+
+    `Letzter Error' is anw„hlbar, if You as Festplattentreiber 
+    `HUSHI' improve and the METADOS-Driver one Error gemeldet have. In 
+    this_one Case will_be the genaue Ger„tename as_soon_as a any exact 
+    Fehlererkl„rung show.
+
+
+    Menu: `Aid'
+
+    Contains paragraph Help_text. Which shall one as still avow?
+
+
+STOPLOCK.CPX
+
+    This is one Modul for that erweiterbare Kontrollfeld `XControl', with 
+    the one the Auswurftaste the CD-ROMs bar can (provided that Appliance 
+    this zul„žt). If that Disk_drive to one common zug„nglichen Location 
+    placed, can one that the Gelegenheitsdieben that Being any schwerer 
+    do.
+
+    To_the Installation must You this File in that CPX-Directory Theirs 
+    Systems copy. If You negation to the Standardinstallation changed 
+    have, then is the File `CPX' in Main_directory by Disk_drive `C:'.
+
+    If You `XControl' not own (ought as `XCONTROL.ACC' to the 
+    Boot_disk_drive installed be), then supposed_to You it it either from 
+    another Mailbox or from Her Atari-Fachh„ndler get.
+
+    `Stop&Lock' is not just for CD-ROMs, but also for per `HUSHI' 
+    (Vollversion) bediente Harddiscs effective (if You anyway 
+    HUSHI-Benutzer where, know You it yes probable already) and can 
+    not just the Excreta bar, but also the Laufwerksmotor 
+    chop rather. again snub [1.30].
+
+    For each for fit befundene Appliance will_be one Button show, the 
+    with the to the Disk_drive geh”rigen Letter beschriftet is. One 
+    einmaliger Mouse_click stoppt rather. blockiert that Appliance, one wider 
+    Mouse_click give it again free. Note You, that `Stop&Lock' not 
+    by_it in the Lay is, the up_to_date Setting the Ger„ts to erfragen 
+    and hence next always unselektierte Button shows.
+
+    The Setting relative the Auswurfblockierung can also 
+    firmed become. So can You achieve, that the Auswurfknopf to 
+    one Systemstart automatic again verriegelt is.
+
+
+CDDA.APP rather. CDDA.ACC
+
+    `CD Digitally Audio' is one little Program for Abspielen by 
+    Audio-CDs. `CDDA.APP' and `CDDA.ACC' where brigens identical -- the 
+    Jackpot as `normal' Program bids it then to, if one `MAGIC' 
+    (vormals `May!x') or `MULTITOS' use.
+
+    In the top_most Half the Fensters become the Songnummer, Index and 
+    Songzahl ancillary two different Zeitanzeigen aufgefhrt. Which one 
+    `Index' is? Some Audio-CDs -- vornehmlich from the Klassik-Area 
+    -- abstain inside the Tracks still a feinere Unterteilung. If 
+    as Index '00' appear, installation it it from the Lane about one 
+    Datentrack, the not abgespielt become can. [1.06]
+
+    The Zeitanzeigen where from_the momentary Mode dependent. A overall_view:
+
+    MODE    SONG                        DISC
+    remain   verbleibende Date in Carol   verbleibende Date to the CD
+    current  up_to_date Position in Carol   up_to_date Position to the CD
+    dead    Gesamtl„nge the Songs       Gesamtl„nge the CD
+
+    The MODE will_be automatic umgesetzt, if Record begonnen rather. 
+    has_broken will_be. Through one Mouse_click from that Say can one it also 
+    manuell disguise.
+
+    The Keys in the lowering Fensterh„lfte do in about that, which one 
+    by one handelsblichen CD-Player expected: EJECT (Excreta), STOP, 
+    START, BREAK, `one Carol back', `one Carol before', `look aback', 
+    `look along' and RECORD (in this Version still unemployed). In 
+    STOP-Condition can one with the last four Keys that Startlied and 
+    the Startindex pick (EJECT, BREAK, Setting the Volume 
+    as_soon_as the Choice the Index become at `Atari CDAR 504' not 
+    supports). [1.16]
+
+    The Tastaturbelegung [2.02]:
+
+    'HELP'      Copyright display
+    'RETURN     Play
+    'E'         Eject
+    'P'         Break
+    'R'         Record
+    'S'         Stop
+    Ctrl-'Q'    Program end
+    Ctrl-'U'    Window close
+    '->', '+'   >
+    '<-', '-'   <
+    Ctrl-'->'   >>
+    Ctrl-'<-'   <<
+    Cursor ^    mere
+    Cursor v    lower
+
+    Count        direct for given_to Title bounce
+
+    `CDDA' lust automatic that first CD-ROM at_best System. The found 
+    Laufwerksbuchstabe will_be in Fenstertitel show. One Minuszeichen 
+    placed with_them for: `no passendes Disk_drive found'.
+
+    If You several Ger„te connected(?) have, can You `CDDA' by_it 
+    coerce, one bestimmtes Appliance to improve. Style You by_it 
+    `CDDA.ACC' in `CDDADRV#.ACC' about and fgen for `#' the Label the 
+    zugeh”rigen GEMDOS-Laufwerks one (correspondent for `CDDA.APP'). If 
+    You `MULTITOS' and/or as Desktop `Gemini' improve, can You 
+    also that Symbol the appropriate Laufwerks to that Window 
+    drag (Drag&Drop). `CDDA' try then, that belong_to_it CD-ROM to 
+    determine. [1.12]
+
+    Hint: if You Storage_space save must or from other Base 
+    `CDDA' not as Accessory install intend, can You CDs also 
+    thereby abspielen, that You that Program `TRACK01.PRG' to the for 
+    CD-ROM geh”rigen Disk_drive launch. [1.12]
+
+
+    Absorb with CDDA
+
+    With the TOSHIBA-Laufwerken XM3401 and XM4101 is it possible, 
+    Audiodaten direct by CD `aufzunehmen', about you then to the Computer 
+    weiterzubearbeiten. Before we to_the Service this Function come, 
+    must indeed one couple Concepts gekl„rt become.
+
+    To Audio-CDs become for every Second Music 176400 Bytes be_saved. 
+    That load(?) it leich nachrechnen: 44100 Value per Second (that is the 
+    `Samplingfrequenz') * 16 Bits per Value * two Kan„le (right and 
+    left). This is natural a hugeness Datenmenge, hence bids 
+    `CDDA' several Possiblity, this Deal at_least one little to 
+    reduce.
+
+    So can one in_place_of the 16-Bit-Formats also among two 
+    different 8-Bit-Format choose (8 Bit linear and 8 Bit 
+    logarithmisch -- 'mu-law'). As one it conceive can, leidet 
+    indeed the Klangqualit„t under; eventual will_be the 
+    `Auslenkung' the Lautsprechermembran now just still to 1/256 (in_place_of 
+    by 1/65536) exact be_saved. That is always then mindful, if to_the 
+    Wider_processing anyway just eight Bits to Direction placed 
+    (for_example to one Atari TT or STE). That logarithmische 
+    'mu-law'-Format use likewise just eight Bits, verteilt the Value 
+    indeed not equal, but before the menschlichen 
+    H”rverm”gen correspondent.
+
+    To Audio-CDs is the Music as said with 44100 Mežwerten (`Samples') 
+    per Second digitizes. Alas can neither STE, TT still Falcon 
+    any with Sounddaten this Samplingrate become. `CDDA' bids hence 
+    the Possibility, to 49612 Samples per Second hochzurechnen. Attention: 
+    first will_be thereby the Ausgabedatei major, zweitens go with_them the 
+    Original-Data lost. Who to his Falcon the Possibility have, 
+    with 44100Hz-Samples to work (about a appropriate 
+    Hardwareerweiterung), ought so of_it unconditional Use do.
+
+    A wider Possibility, the Datenmenge to confine, is in Mono 
+    aufzunehmen. With_them become both Kan„le zusammengemischt and the 
+    resultant Datenmenge is logischerweise just half so large.
+
+    Eventual place it still the Query, any Dateiformat for the 
+    Sounddaten use become shall. Just_as as from Grafikdateien give it 
+    also here one regelrechten Formatdschungel. `CDDA' supports hence 
+    alike three Format, with then it possible be ought, exist Data 
+    berallhin to adopt. That `WAV'-Format is that Musikdatenformat 
+    by Microsoft Windows and can hence to operative each Calculator 
+    read become. That `AVR'-Format is a Device the Atari-Department 
+    and will_be by many Programs to `unserer' Rechnerfamilie 
+    supports. That `AU'-Format eventual entstammt the Unix-Area 
+    and find vornehmlich to SUN- and NEXT-Workstations Usage. 
+    Attention: that `mu-law'-Datenformat can just at `AU'-Format from_refined 
+    become.
+
+    To Press the Reception-Key appear a Dialogbox, in the even 
+    this Setting carried_out become can (you appear not, 
+    if the eingelegte CD no_one Audio-CD is or that Disk_drive not for 
+    Read by Audio-Data fit is).
+
+    Ancillary the already angesprochenen Setting can You now still the 
+    Early- and Endzeit as_soon_as the Aufnahmepegel attune. Hierfr sets 
+    `CDDA' automatic the Zeiten for that live show Carol one. The 
+    Statement comprises from Minuten, Seconds and `Frames', with_which every Second 
+    from 75 Frames comprises. The Notensymbole ancillary the Zeitangaben allow 
+    it, respectively the Origin and that Conclusion `anzuspielen'.
+
+    At_best lowering Border the Dialogbox will_be show, as large the Sounddatei 
+    in about become will_be.
+
+    Now to_the Volume: direct at Export as 8-Bit-Data and from gentle 
+    aufgenommenen CDs can it incidence, that the Rauschpegel high high 
+    is. `CDDA' able it hence, the Volume anzuheben. If it 
+    with_them to another šbersteuerung came, will_be `CDDA' that at_best Conclusion the Reception 
+    notify.
+
+    Attention: the `Original'-Data gain You just from `Stereo', `16 Bit', 
+    `44100 Hz' and Volume 1.00. In all other Fell fhrt `CDDA' 
+    the a or other Calculation or Datenreduktion through!
+
+    Through Activate by `Save...' will_be now the Reception restart. 
+    Give You by_it the gewnschten Filename one. The resultant File 
+    can then by einschl„gigen Programs as `SAM' (System Audio 
+    Manager, Atari), `Crazy Sounds' (Maxon) or `WinRec'    
+    (Sch”nfeld/Binner, Shareware) weiterbearbeitet become.
+
+
+Arbitrierung [1.30]
+
+   The SCSI-Standard see the so_called `Arbitrierung' before. In the 
+   Practice means this, that the Calculator a own SCSI-Known verpažt 
+   will_be, about the he it from Zugriffen to the Bus `identifies'. 
+
+   Attention: the eingestellte Known (in Ger„telistendialog) can then by 
+   keinem other Appliance more use become. Normally w„hlt one the 
+   Value 7 (from many Wahlschaltern for SCSI-Addresses can ohnehin just 
+   Value among 0 and 6 installed become).
+
+   From eingeschalteter Arbitrieung shows `ID-Test' to the ausgew„hlten 
+   Address future the Ger„tenamen -- about `Atari TT030' -- to.
+
+   Note You, that SCSI-Arbitrierung at_best ACSI-Bus not possible is.
+
+
+CD-ROM-DISK_DRIVE FROM THE DOS-AREA [1.22]
+
+    Often become we in_demand, any `approve' CD-ROM-Disk_drive from the 
+    DOS-Area use become can. So: it give three Gattungen by 
+    Laufwerken:
+
+    SCSI-Disk_drive: SCSI-Ger„te can to Falcon and TT direct, to other 
+    Ataris per ACSI-Hostadapter connected(?) become. But that know You 
+    yes already long...
+
+    IDE-Disk_drive: CD-ROMs with IDE-Cut_place(?) come early now long 
+    to the Market (the Standard becomes early Conclusion 1993 verabschiedet). 
+    Probable will_be one this Ger„te to the Falcon (internal 
+    IDE-Cut_place(?)) and to TOS-IDE-Adapterkarten (as the by Hard & 
+    Soft) anschliežen can. If Hard&Soft instead Treibersoftware tender 
+    will_be, clinches alone the Inquiry.
+
+    Disk_drive with herstellerspezifischer Cut_place(?): this Disk_drive 
+    become at_best PC either with another eigenen Controllerkarte or at_best 
+    Anschluž another Soundkarte betrieben. For the Service to Ataris have 
+    Hard&Soft no_one Answer in Program. Attention: all Mitsumi-Disk_drive 
+    by to the all new Ger„te with IDE-Interface belong to this 
+    Group.
+
+
+MINT and MULTITOS [1.30]
+
+	`METADOS' can together with `MINT' rather. `MULTITOS' use become. 
+	With_them where following Point to note:
+
+	- `METADOS.PRG' must before `MINT.PRG' rather. `MINTNP.PRG' in Auto-File 
+	placed.
+
+	- You need a neuere `MINT'-Version as diejenige, the Atari 
+	with `MULTITOS' ausliefert. In File `MINT' be it the news 
+	by Atari freigegebene Version (1.12 from_the November 1994). To_the 
+	Installation:
+
+		(1) Vergewissern You it, that You not already a neuere 
+		`MINT'-Version as Version 1.12 improve.
+
+		(2) Do You a Sicherheitskopie the in AUTO-File 
+		befindlichen `MINT'-Version.
+
+		(3) Style You if_need_be the File `MINTNP.PRG' so about, that 
+		You just_as means, as the already to in AUTO-File installierte 
+		Version.
+
+		(4) Copy you this File in the AUTO-File. With_them will_be the 
+		hitherto installierte Version berschrieben!
+
+	Attention: in `MINT'-File find it several 
+	(englischsprachige) Files, the avow, under welchen Bedinungen 
+	`MINT' weitergebeben may. Send read!
+
+
+AVOWED PROBLEM BY METADOS
+
+    Some Programme act not correct with `METADOS', because you 
+    from System_call not all vorgeschriebenen Register 
+    save. That drckt it often thereby from, that Files done not or 
+    just incomplete read become can (not just such_as by the 
+    CD!). Revert You it in Zweifelsfall to the Maker the Program 
+    and ask You to one Update.
+
+    Many Programme allow none Access to Disk_drive with 
+    Laufwerksbuchstaben major `P:'. Abhilfe: one other 
+    Laufwerksbuchstaben improve or that Program through a aktuellere 
+    Version replace. Attention: also the Dateisauswahlbox in GEM can just 
+    16 Disk_drive display; in PD- and Sharewarebereich give it but a 
+    whole File by sch”nen Ersatzprogrammen (as for Example 
+    `Selectric').
+
+    Unchanged Version the Atari-Desktop dart down, if the 
+    L„ngenangaben by Files `to large' become (`Info display' rather. 
+    Verzeichnisfenster in Textdarstellung). Abhilfe: neuere ROM-Version 
+    (for_example TOS 2.06) improve or one other Desktop 
+    employ (Examples: Gemini, Ease etc.).
+
+    For Benutzer by Kommandoshells: it is not possible, at Access 
+    to METADOS-Ger„te One-/Ausgabeumlenkung to improve.
+
+
+OVERALL_VIEW ABOUT GETESTETE GERŽTE [1.24]
+
+    Taxi File `CDROMS.TXT'.
+

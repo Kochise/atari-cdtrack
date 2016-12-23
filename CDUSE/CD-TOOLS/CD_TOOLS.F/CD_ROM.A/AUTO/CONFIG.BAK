@@ -1,0 +1,21 @@
+; CD-Tool BEGIN
+; Note that everything up to `; CD-Tool END' will be erased by
+; CD-Tool's configuration tool!
+; Achtung: alles bis zur Zeile `; CD-Tool END' wird von CD-Tool
+; beim Konfigurieren gel”scht!
+;
+; created by CD-Tool 1.18, Mon Jan 01 00:14:50 1990
+;
+; Ger„te/devices
+;
+; ACSI 1: `TOSHIBA CD-ROM XM-4101TA' -> A
+;
+; BOS-Treiber/BOS drivers
+;
+*BOS, A:\auto\hs-cdrom.bos, A:1
+;
+; DOS-Treiber/DOS drivers
+;
+*DOS, A:\auto\hs-iso.dos, P:A
+;
+; CD-Tool END

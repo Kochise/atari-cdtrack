@@ -1,0 +1,197 @@
+
+	SCSI - A Game With Many Rules and no Rulebook?	Version 1.11
+
+		Copyright Gary Field, 1994 - All rights reserved.
+	Special Internet edition - Freely distributable for non-commercial use.
+Author:	Gary Field (garyf@wiis.wang.com) - SCSI hacker since 1985
+	With a little help from my friends.
+Last Updated: September 9, 1994
+
+Trademarks:
+MSDOS and Windows are trademarks of Microsoft Corp.
+Unix and Netware are trademarks of Novell Corp.
+OS/2 is a trademark of IBM Corp.
+
+Enough with the legal mumbo-jumbo already.
+
+A little scuzzy humor:
+User#1: I just bought myself a new CDROM drive.
+User#2: Is is SCSI?
+User#1: Of course not, it's a really nice one!
+
+How do I connect all this stuff to my PC?
+
+So you want to play SCSI eh? Be warned, the road can be rough, but the rewards
+are great.
+
+The rules of the SCSI game:
+	o Each SCSI device needs to have a unique identifier (ID) from 0 to 7.
+	  The host adapter is usually given ID 7. Each device must have a
+	  different ID.
+	o It makes no difference what order devices are connected to the
+	  bus in. Any ID can be in any position on the bus.
+	o There must be exactly two terminators for the SCSI bus.
+	  If you are playing the FAST SCSI game (meaning that you have a
+	  host adapter that handles the FAST protocol and at least one device
+	  that uses FAST mode), then you need to use active terminators.
+	  See discussions about terminator types in the SCSI FAQ list.
+	o The total length of all SCSI cabling must be less than 20 feet (6 m)
+	  (75 feet (25 m) in the differential version of the game).
+	o The cables must flow continuously from one device to the next.
+	  No stubs more than 3" (.1 m) long are permitted.
+	o All cables used must have an AC impedance of between 90 and 130 Ohms.
+	  This is a tough one! Short of connecting your cables to a RF
+	  impedance meter, you need to have faith on this one. Get your cables
+	  from a vendor that knows SCSI well. Tip: If you keep the cables
+	  really short (like < 2 feet(.6 m) total), you can get away with
+	  murder.
+	o For best reliability, all cables should consist of twisted pairs
+	  for each SCSI signal. This is not optional in the FAST version.
+	o A player may mix flat and round cable as long as the previous four
+	  rules are not violated. In the FAST version you really need to keep
+	  such transitions to an absolute minimum.
+	o Devices may be located internal or external to the system's case.
+	  The simplest situation being all internal or all external, but
+	  mixing is allowed IF all above rules are followed to the letter.
+	o At least one device MUST supply power to the TERMPWR line on
+	  the SCSI bus. (see local rules for important details)
+
+
+Local rules:
+	o Supplying TERMPWR is usually considered the responsibility of the
+	  host adapter. This TERMPWR voltage must be between 4.25V and 5.25V
+	  with both terminators attached to the bus. If your bus seems to
+	  work most of the time, but is intermittent, get out the scope or 
+	  voltmeter and check that TERMPWR is within the above range. In 
+	  addition, the presence of any noise pulses on TERMPWR will really
+	  screw things up. Some external terminators include a capacitor to
+	  help reduce noise.
+	o It is assumed that all devices are connected to power supplies
+	  that can fully satisfy all the device's power requirements (even
+	  during the device's peak load). Also, avoid ground loops by plugging
+	  the system and all external devices into the same outlet if possible.
+	  These two rules are often overlooked and can result in severe hair
+	  loss.
+	o Some vendors may require that any hard disks to be supported
+	  by the PC BIOS (Int 13h) interface, be given ID 0 and ID 1
+	  respectively. Check your manual for this one.
+	o Because of the nature of the PC BIOS INT 13h interface, users
+	  with drives larger than 1024Kbytes (one Gig), should prepare
+	  for extra fun. (see the comp.periphs.scsi FAQ for details)
+	o Some software will allow devices to be powered on only when
+	  needed. Other software, may require all devices to be powered on
+	  when the system is started. It is recommended that you start out
+	  with all devices on until you get everything working.
+	o Some devices power up/down cleanly and will not disturb a running
+	  SCSI bus, others do not. If you tell the doctor "It hurts when I
+	  do this", he may well reply "Then don't do that".
+	o Most vendors properly key the 50 pin connector on the device,
+	  however, it shall be the responsibility of the player to make
+	  sure that pin 1 is really connected to pin 1 everywhere.
+	o Smoking is a bad idea, even for SCSI devices. Some vendors don't
+	  provide a fuse in the TERMPWR line. Forwarned is forearmed.
+	o SCSI vendors should provide connectors that are called for in the
+	  ANSI SCSI spec's. Some will try to pass off 25 pin connectors on
+	  unsuspecting players. These vendors need a good slap. Feel free
+	  to harrass and ridicule them at every opportunity.
+	o Connecting and disconnecting devices to/from a system while it is
+	  powered on is seriously discouraged. It is strictly verboten on any
+	  system that caches disk operations (like Unix) since you don't know
+	  when bus activity might occur. A word to the wise should be sufficient
+	  on this one.
+	o A SCSI device mounted in an external case needs two connectors so
+	  that proper bus chaining can be maintained. In an apparent attempt 
+	  at sick humor, A small number of vendors have played a joke on their
+	  customers by supplying only one connector. If you are a victim of
+	  this joke, you need to put this abomination at one end of your bus.
+	  "Flow-through" terminators are available to help solve the
+	  termination problem.
+	  Hopefully, you haven't fallen for this prank more than once!
+	  (Fool me once - shame on you. Fool me twice - shame on me!)
+
+A word about fair play:
+	o Please don't use unshielded cables for SCSI connections outside
+	  your computer's case. Many of us use the radio spectrum for
+	  something other than a trash heap. Keep your SCSI signals to
+	  yourself, no-one else wants them.
+
+The object of the game:
+	o A player must construct a working SCSI bus using the devices and
+	  adapters supplied to him by multiple vendors.
+	o This SCSI bus should be no longer than necessary to attach all
+	  the given devices.
+
+
+	
+Wive's tales:
+	o Some players will tell you that they needed to connect a third
+	  terminator or only use one instead of the required two. These
+	  players do not realize that these symptoms are the result of having
+	  broken one or more of the other rules. Sometimes, plugging in
+	  terminator resistor packs backwards or using cables of too low
+	  impedance can fool these players into thinking these things are
+	  necessary. Forgive them, for they know not what they're doing.
+
+Judging:
+	o The computer will be the final judge of adherence to all of the
+	  above rules.
+	o The SCSI game is unusual in that everyone can win!
+
+
+The above rules only cover the hardware aspects of SCSI. Without software,
+you'll undoubtedly find that your newly constructed SCSI bus is rather boring.
+Software is a whole 'nother game!
+
+				----------
+
+SCSI software game: (Also called DRIVERS)
+Completion of the above hardware game is a pre-requisite.
+
+A little history of the game:
+Whereas the SCSI hardware game has strict rules, the SCSI drivers game has been
+pretty much a free-for-all. Once, there was total chaos in the land of SCSI.
+Each vendor provided driver software for the specific devices it decided to
+support. If a player later decided he wanted to attach a device that was
+not deemed valuable to their chosen vendor, tough! And to make sure that
+a player would not write his own drivers these vendors would not provide
+interface spec's for their host adapters. All vendors supported hard disks,
+but attaching tapes, or CDROMs was not for the faint of heart.
+
+One wise vendor called Adaptec, eventually heard the wailing cries
+of it's customers and decreed that henceforth SCSI drivers would talk to their
+host adapters via a protocol to be known as ASPI (Adaptec SCSI Programming
+Interface). Since ASPI was deemed by many to be too simple for serious players,
+the ANSI committee came to the rescue with their CAM (Common Access Method).
+These driver interface definitions changed the SCSI software game forever!
+Modern players in SCSI software are frequently heard reverently speaking
+these acronyms. The ASPI definition covers MSDOS, Windows, OS/2, and Netware.
+CAM covers Unix in addition to these.
+
+Still, selection of one of these standards is something of a religious act
+of faith. Future Domain has wisely chosen to support both by implementing
+CAM as their native interface and creating an ASPI interface that goes
+down through CAM to the adapter. CAM cannot be implemented on top of ASPI
+since CAM is a super-set of ASPI.
+These days, in the MSDOS/Windows world, selection of SCSI software is pretty
+much a matter of choosing ASPI or CAM and remaining true to your selection.
+
+
+
+And so the disks, the tapes and the CDROM all ran happily ever after
+and DAT's the end of the story...
+
+If you think you're ready for real fun, be sure to pick up a copy of
+the comp.periphs.scsi FAQ from these fine sources:
+
+(latest version posted during the first week of each month)
+comp.answers:
+comp.periphs.scsi:
+ftp.wang.com:garyf/scsi
+
+Parting shot:
+Individually we're scuzzy, together we're scum!
+
+Don't forget -  The early write eats up the WORM!
+
+No sir, the terminator will not make your SCSI bus stop running.
+
