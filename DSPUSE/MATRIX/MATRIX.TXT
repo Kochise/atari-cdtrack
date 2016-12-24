@@ -1,0 +1,95 @@
+                                MATRIX
+                                      
+                Atari Falcon sound information system
+                          
+                      (C) E.Breen, M.J.Maisey 1994
+                           
+Overview
+========
+
+Matrix graphically  displays  information about  the current  status of 
+the Falcon sound matrix. This is the hardware that allows diverse parts
+of the  sound system  to be linked  together independantly of  the main 
+processor. It also allows the monitored track to  be altered, the sound 
+system to be  reset or  locked, and  the input to be switched from  the 
+external Analogue to Digital converter to the PSG.
+
+
+Requirements
+============
+
+Falcon, 1Mb memory, resolution of 640x200 or above.
+
+
+Installation/Starting Matrix
+============================
+
+Matrix can be run  either as a  program or as  a desk accessory. To run 
+as  a program,  simply double click  the MATRIX.PRG  icon. To run as an 
+accessory, rename  to  MATRIX.ACC, copy  to  your  boot/desk  accessory 
+directory and reboot.
+
+
+Using Matrix
+============
+
+On the right  is a  panel showing  the sound  matrix (in grey)  and the
+outputs  to which the  current input is  connected (in red, or black on 
+a mono monitor). Clicking  the 'Show Thru'  button graphically displays 
+some of  the  additional connections that may  exist (in  blue, or grey 
+arrows on a mono system).
+
+To change  the  current  input, click  on the  name of the input on the 
+left hand side of the panel.
+
+The sound system  can be reset  using the 'Reset Snd' button and locked
+using the  'Lock Snd'  button. The  ADC/PSG input  can be set to PSG by 
+clicking the 'PSG Input' button. The  track which is  currently audible 
+through the internal  speaker can be set using the bank of buttons with 
+'Monitor' above them.
+
+If you run Matrix as an  accessory, other programs may change the sound
+matrix status while the Matrix window  is open. The display will update
+as  soon as the  Matrix window is  redrawn. This usually  happens quite 
+often if you are moving windows about etc., but if you wish to force an
+update, you can do it by  closing Matrix and reopening it from the Desk
+menu.
+
+
+Matrix info
+===========
+
+Program idea:                E. Breen
+Sound system programming:    M. J. Maisey, E. Breen
+GEM programming:             M. J. Maisey
+
+Compiled with Lattice C v5.6, DERCS and FLDLIB v0.93beta2.
+
+Addresses:      Martin Maisey
+                384 Unthank Rd.
+                Norwich
+                NR4 7QE
+                Martin.Maisey@mnn.mettav.exnet.com      (Internet)
+                Martin Maisey on 90:104/105             (NeST)
+                
+                Ellis Breen
+                4 Caroline Court
+                Norwich
+                NR4 7EJ
+
+Legal
+=====
+
+All trademarks acknowledged.
+
+Matrix is  copyright to the  authors, but may  be freely distributed as 
+long  as no  profit is made above and beyond a reasonable  distribution
+charge, and  it  is  copied  unaltered  and  with  this  file.  Written
+permission must therefore be sought  from both authors before inclusion
+on a coverdisk or with a commercial product.
+
+While, every effort has been  made to  ensure this product is bug free,
+this product  is  provided as-is, with no  express or implied warranty. 
+The authors cannot be  held responsible for any damage caused directly, 
+indirectly or consequentially  as a result or the use or misuse of this 
+product, including, but not limited to, the loss of data.
